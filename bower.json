@@ -1,0 +1,21 @@
+{
+  "name": "estudy",
+  "version": "0.0.0",
+  "homepage": "https://github.com/mrGhosd/e-study",
+  "authors": [
+    "vsokoltsov <vforvad@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3",
+    "angular-ui-router": "~0.2.15",
+    "kube-framework": "~3.0.2"
+  }
+}
