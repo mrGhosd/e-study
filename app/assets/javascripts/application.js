@@ -12,5 +12,4 @@
 //
 //= require angular
 //= require angular-ui-router
-//= require kube
 //= require_tree .
