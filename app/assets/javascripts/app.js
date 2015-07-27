@@ -10,7 +10,7 @@ angular.module('estudy', ['ui.router', 'templates', 'Devise'])
                     controller: 'AuthCtrl',
                     onEnter: ['$state', 'Auth', function($state, Auth) {
                         //Auth.currentUser().then(function (){
-                            //$state.go('home');
+                        //    $state.go('profile');
                         //})
                     }]
                 })
@@ -20,10 +20,20 @@ angular.module('estudy', ['ui.router', 'templates', 'Devise'])
                     controller: 'AuthCtrl',
                     onEnter: ['$state', 'Auth', function($state, Auth) {
                         //Auth.currentUser().then(function (){
-                            //$state.go('home');
+                        //    $state.go('profile');
                         //})
                     }]
                 })
+                .state('profile', {
+                    url: '/profile',
+                    templateUrl: 'users/_user.html',
+                    controller: 'UserCtrl',
+                    resolve: {
+                        user: ['$stateParams', 'Auth', function($stateParams, Auth) {
+                            return Auth._currentUser
+                        }]
+                    }
+                });
             $urlRouterProvider.otherwise('sign_in');
         }
     ]);

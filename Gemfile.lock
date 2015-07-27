@@ -181,6 +181,7 @@ DEPENDENCIES
   pry-rails
   rails (= 4.2.1)
   rails-assets-kube-framework!
+  responders
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
