@@ -1,0 +1,7 @@
+ru:
+  auth:
+    sign_in: "Логин"
+    sign_up: "Регистрация"
+    email: "Электронная почта"
+    password: "Пароль"
+    password_confirmation: "Подтверждение пароля"

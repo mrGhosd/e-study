@@ -1,7 +1,5 @@
-<div class="nav nav-sidebar" ng-controller="NavCtrl">
-    <ul class="nav navbar-nav">
-        <li ng-hide="signedIn()" ng-class="{active: isActive('/sign_in')}"><a href="#/sign_in">Log In</a></li>
-        <li ng-hide="signedIn()" ng-class="{active: isActive('/sign_up')}"><a href="#/sign_up">Register</a></li>
-        <li ng-show="signedIn()"><a ng-click="logout()">Log Out</a></li>
-    </ul>
-</div>
+<ul class="nav nav-sidebar" ng-controller="NavCtrl">
+    <li ng-hide="signedIn()" ng-class="{active: isActive('/sign_in')}"><a href="#/sign_in">Log In</a></li>
+    <li ng-hide="signedIn()" ng-class="{active: isActive('/sign_up')}"><a href="#/sign_up">Register</a></li>
+    <li ng-show="signedIn()"><a ng-click="logout()">Log Out</a></li>
+</ul>

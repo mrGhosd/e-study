@@ -1,8 +1,12 @@
-angular.module('estudy', ['ui.router', 'templates', 'Devise'])
+angular.module('estudy', ['ui.router', 'templates', 'Devise', 'pascalprecht.translate'])
     .config([
         '$stateProvider',
         '$urlRouterProvider',
-        function($stateProvider, $urlRouterProvider) {
+        '$translateProvider',
+        function($stateProvider, $urlRouterProvider, $translateProvider) {
+            locale = I18n.currentLocale();
+            $translateProvider.translations(locale, I18n.translations[locale]).preferredLanguage(locale);
+            console.log( $translateProvider.translations());
             $stateProvider
                 .state('sign_in', {
                     url: '/sign_in',

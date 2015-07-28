@@ -21,7 +21,6 @@ angular.module('estudy')
                 $scope.user = {};
             });
             $scope.isActive = function(route){
-                console.log($location);
                 return route === $location.path();
             }
         }]);

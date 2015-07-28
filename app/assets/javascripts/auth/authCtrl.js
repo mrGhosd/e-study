@@ -3,7 +3,8 @@ angular.module("estudy")
         '$scope',
         '$state',
         'Auth',
-        function($scope, $state, Auth){
+        '$translate',
+        function($scope, $state, Auth, $translate){
             $scope.login = function() {;
                 Auth.login($scope.user).then(function(){
                     $state.go('profile');

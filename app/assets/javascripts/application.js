@@ -14,4 +14,8 @@
 //= require angular-ui-router
 //= require angular-rails-templates
 //= require angular-devise
+//= require angular-translate
+//= require i18n
+//= require i18n.js
+//= require i18n/translations
 //= require_tree .
