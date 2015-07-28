@@ -14,3 +14,9 @@
  *= require_tree .
  *= require_self
  */
+.main-content{
+  margin-top: 75px;
+}
+li.active{
+  background-color: greenyellow;
+}

@@ -1,8 +1,9 @@
 angular.module('estudy')
     .controller('NavCtrl', [
         '$scope',
+        '$location',
         'Auth',
-        function($scope, Auth){
+        function($scope, $location, Auth){
             $scope.signedIn = Auth.isAuthenticated;
             $scope.logout = Auth.logout;
             Auth.currentUser().then(function (user){
@@ -19,4 +20,8 @@ angular.module('estudy')
             $scope.$on('devise:logout', function (e, user){
                 $scope.user = {};
             });
+            $scope.isActive = function(route){
+                console.log($location);
+                return route === $location.path();
+            }
         }]);

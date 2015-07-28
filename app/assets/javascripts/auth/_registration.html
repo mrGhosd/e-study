@@ -2,16 +2,16 @@
     <h1>Register</h1>
 </div>
 <div ng-controller="AuthCtrl">
-<form ng-submit="register()" >
+<form ng-submit="register()" name="RegForm">
     <div class="input-group">
-        <input type="email" class="form-control" placeholder="email" ng-model="user.email">
+        <input type="email" class="form-control" placeholder="email" ng-model="user.email" ng-class="{ 'error': RegForm.email.$touched && RegForm.email.$invalid }" required>
     </div>
     <div class="input-group">
-        <input type="password" class="form-control" placeholder="password" ng-model="user.password">
+        <input type="password" class="form-control" placeholder="password" ng-model="user.password" required>
     </div>
     <div class="input-group">
-        <input type="password" class="form-control" placeholder="password_confirmation">
+        <input type="password" class="form-control" placeholder="password_confirmation" required>
     </div>
-    <input type="submit" class="btn btn-default" value="Register">
+    <input type="submit" class="btn btn-default" value="Register" ng-disabled="!RegForm.$valid">
 </form>
 </div>

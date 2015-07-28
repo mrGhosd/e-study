@@ -4,10 +4,11 @@ angular.module("estudy")
         '$state',
         'Auth',
         function($scope, $state, Auth){
-            $scope.login = function() {
-                console.log($scope.user);
+            $scope.login = function() {;
                 Auth.login($scope.user).then(function(){
                     $state.go('profile');
+                }, function(error){
+                    $scope.errors = error;
                 });
             };
 
