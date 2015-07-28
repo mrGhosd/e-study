@@ -6,7 +6,6 @@ angular.module('estudy', ['ui.router', 'templates', 'Devise', 'pascalprecht.tran
         function($stateProvider, $urlRouterProvider, $translateProvider) {
             locale = I18n.currentLocale();
             $translateProvider.translations(locale, I18n.translations[locale]).preferredLanguage(locale);
-            console.log( $translateProvider.translations());
             $stateProvider
                 .state('sign_in', {
                     url: '/sign_in',
@@ -32,11 +31,6 @@ angular.module('estudy', ['ui.router', 'templates', 'Devise', 'pascalprecht.tran
                     url: '/profile',
                     templateUrl: 'users/_user.html',
                     controller: 'UserCtrl',
-                    resolve: {
-                        user: ['$stateParams', 'Auth', function($stateParams, Auth) {
-                            return Auth._currentUser
-                        }]
-                    }
                 });
             $urlRouterProvider.otherwise('sign_in');
         }

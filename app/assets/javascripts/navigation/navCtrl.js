@@ -1,9 +1,10 @@
 angular.module('estudy')
     .controller('NavCtrl', [
         '$scope',
-        '$location',
+        '$state',
+        //'$location',
         'Auth',
-        function($scope, $location, Auth){
+        function($scope, $state, Auth){
             $scope.signedIn = Auth.isAuthenticated;
             $scope.logout = Auth.logout;
             Auth.currentUser().then(function (user){
@@ -21,6 +22,6 @@ angular.module('estudy')
                 $scope.user = {};
             });
             $scope.isActive = function(route){
-                return route === $location.path();
+                return route === $state.current.url;
             }
         }]);
