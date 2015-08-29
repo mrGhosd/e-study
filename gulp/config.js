@@ -36,7 +36,7 @@ module.exports = {
     },
     browserify: {
         bundleConfigs: [{
-            entries: ['app/assets/javascripts/**/*.js', 'vendor/assets/bower_components/**/*.js'],
+            entries: ['./app/assets/javascripts/application.js'],
             dest: publicAssets + '/javascripts',
             outputName: 'global.js',
             extensions: ['.js']
