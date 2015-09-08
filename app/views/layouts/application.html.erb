@@ -4,6 +4,7 @@
   <title>Estudy</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
   <%= csrf_meta_tags %>
   <script>
       I18n.defaultLocale = "<%= I18n.default_locale %>";
@@ -11,12 +12,7 @@
   </script>
 </head>
 <body ng-app="estudy">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header"></div>
-        <div class="navbar-collapse collapse"></div>
-      </div>
-    </div>
+    <div ng-include="'application/_header.html'"></div>
     <div class="container-fluid main-content">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" ng-include="'navigation/_nav.html'"></div>

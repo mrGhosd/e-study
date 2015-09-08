@@ -15,6 +15,8 @@
 //= require angular-rails-templates
 //= require angular-devise
 //= require angular-translate
+//= require angular-bootstrap
+//= require angular-bootstrap/ui-bootstrap-tpls
 //= require i18n
 //= require i18n.js
 //= require i18n/translations
