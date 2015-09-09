@@ -1,16 +1,23 @@
-<form class="form-horizontal auth-form" name="modalView.authForm">
+<form class="form-horizontal auth-form" ng-submit="login()" name="modalView.authForm">
     <fieldset>
-        <div class="form-group">
+        <div class="form-group" ng-class="{ 'has-error':modalView.authForm.$submitted && modalView.authForm.$errors }">
             <label class="control-label col-md-4">Email</label>
             <div class="col-md-6">
-                <input type="email" class="form-control" ng-class="{ 'error': authForm.email.$touched && authForm.email.$invalid }" placeholder="Email" ng-model="modalView.authForm.email" required>
+                <input type="email" class="form-control"  placeholder="Email" ng-model="modalView.authForm.email" required>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-class="{ 'has-error': modalView.authForm.$submitted && modalView.authForm.$errors}">
             <label class="control-label col-md-4">Password</label>
             <div class="col-md-6">
                 <input type="password" class="form-control" placeholder="Password" ng-model="modalView.authForm.password" required>
             </div>
+        </div>
+        <div class="form-actions pull-right col-md-4">
+            <input type="submit" class="btn btn-primary" value="Sign in" ng-disabled="!modalView.authForm.$valid">
+        </div>
+
+        <div ng-if="modalView.authForm.$submitted && modalView.authForm.$errors" class="pull-right error">
+            {{modalView.authForm.$errors}}
         </div>
     </fieldset>
 </form>

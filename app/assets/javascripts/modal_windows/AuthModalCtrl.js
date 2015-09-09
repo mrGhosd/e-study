@@ -13,22 +13,36 @@ angular.module("estudy")
             } else if(currentTab == 'auth'){
                 $scope.activeTabAuth = true;
             }
-            $scope.login = function() {
-                Auth.login($scope.user).then(function(){
-                    $state.go('profile');
-                }, function(error){
-                    $scope.authForm.$errors = error;
-                });
-            };
 
-            $scope.register = function() {
-                Auth.register($scope.user).then(function(){
-                    $state.go('profile');
+            $scope.login = function(){
+                var userParams = {
+                    email: $scope.modalView.authForm.email,
+                    password: $scope.modalView.authForm.password
+                };
+
+                Auth.login(userParams).then(function(){
+                    $modalInstance.dismiss('cancel');
+                }, function(error){
+                    $scope.modalView.authForm.$submitted = true;
+                    $scope.modalView.authForm.$errors = error.data.error;
+                    $scope.modalView.authForm.$invalid = true;
+                    $scope.modalView.authForm.$valid = false;
+                    console.log($scope.modalView.authForm);
                 });
             };
 
             $scope.ok = function(){
-                console.log($scope.modalView.authForm);
+
+                $scope.modalView.currentForm.$submitted = true;
+                if(userParams.password_confirmation){
+                    Auth.register(userParams).then(function(){
+                        $modalInstance.dismiss('cancel');
+                    }, function(error){
+
+                    });
+                } else {
+
+                }
             };
             $scope.cancel = function(){
                 $modalInstance.dismiss('cancel');

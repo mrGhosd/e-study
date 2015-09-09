@@ -3,7 +3,7 @@
 </div>
 <form ng-submit="login()" name="authForm">
     <div class="input-group">
-        <input type="email" class="form-control" ng-class="{ 'error': authForm.email.$touched && authForm.email.$invalid }" placeholder="Email" ng-model="user.email" required>
+        <input type="email" class="form-control" placeholder="Email" ng-model="user.email" required>
     </div>
     <div class="input-group">
         <input type="password" class="form-control" placeholder="Password" ng-model="user.password" required>
