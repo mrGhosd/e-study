@@ -11,7 +11,7 @@ angular.module('estudy')
                 var modalInstance = $modal.open({
                     animation: true,
                     templateUrl: 'modal_windows/_auth_window.html',
-                    controller: 'AuthModalCtrl',
+                    controller: 'AuthModalCtrl as modalView',
                     size: 'lg',
                     resolve: {
                         items: function () {

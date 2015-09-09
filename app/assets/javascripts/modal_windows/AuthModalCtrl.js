@@ -21,7 +21,7 @@ angular.module("estudy")
             };
 
             $scope.ok = function(){
-
+                console.log($scope.modalView.authForm);
             };
             $scope.cancel = function(){
                 $modalInstance.dismiss('cancel');
@@ -29,6 +29,7 @@ angular.module("estudy")
 
             $scope.setModalTitle = function(title){
                 $scope.modalTitle = title;
-            }
+            };
+
         }
     ]);

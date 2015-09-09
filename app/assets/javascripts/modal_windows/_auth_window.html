@@ -3,13 +3,15 @@
 </div>
 <div class="modal-body">
     <tabset>
-        <tab select="setModalTitle('Sign in')" heading="Sign in">Sign in page</tab>
+        <tab select="setModalTitle('Sign in')" heading="Sign in">
+            <div ng-include="'modal_windows/_login.html'"></div>
+        </tab>
         <tab select="setModalTitle('Sign up')" heading="Sign up">Sign up page</tab>
         <tab select="setModalTitle('Password recovery')" heading="Password recovery">Password recovery page</tab>
     </tabset>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <input type="submit" class="btn btn-primary" ng-disabled="modalView.authForm.$invalid" ng-click="ok()"/>
     <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
 </div>
 
