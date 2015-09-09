@@ -30,20 +30,24 @@ angular.module("estudy")
                     console.log($scope.modalView.authForm);
                 });
             };
-
-            $scope.ok = function(){
-
-                $scope.modalView.currentForm.$submitted = true;
-                if(userParams.password_confirmation){
-                    Auth.register(userParams).then(function(){
-                        $modalInstance.dismiss('cancel');
-                    }, function(error){
-
-                    });
-                } else {
-
-                }
+            $scope.register = function(){
+                var userParams = {
+                    email: $scope.modalView.regForm.email,
+                    password: $scope.modalView.regForm.password,
+                    password_confirmation: $scope.modalView.regForm.password_confirmation
+                };
+                $scope.modalView.regForm.$submitted = true;
+                Auth.register(userParams).then(function(){
+                    $modalInstance.dismiss('cancel');
+                }, function(error){
+                    console.log(error);
+                    $scope.modalView.regForm.$submitted = true;
+                    $scope.modalView.regForm.$errors = error.data.errors;
+                    $scope.modalView.regForm.$invalid = true;
+                    $scope.modalView.regForm.$valid = false;
+                })
             };
+
             $scope.cancel = function(){
                 $modalInstance.dismiss('cancel');
             };
@@ -67,7 +71,8 @@ angular.module("estudy")
                     }
                     $scope.modalView.currentForm = form;
                 }
-            }
+                console.log();
+            };
             $scope.$on('$viewContentLoaded', function(){
                 console.log("1");
             });

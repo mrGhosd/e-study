@@ -1,22 +1,43 @@
-<form class="form-horizontal auth-form" name="modalView.regForm">
+<form class="form-horizontal reg-form" ng-submit="register()" name="modalView.regForm">
     <fieldset>
-        <div class="form-group">
+        <div class="form-group"  ng-class="{ 'has-error': modalView.regForm.$submitted && modalView.regForm.$errors.email}">
             <label class="control-label col-md-4">Email</label>
             <div class="col-md-6">
-                <input type="email" class="form-control" ng-class="{ 'error': authForm.email.$touched && authForm.email.$invalid }" placeholder="Email" ng-model="modalView.regForm.email" required>
+                <input type="email" class="form-control"  placeholder="Email" ng-model="modalView.regForm.email" required>
+                <div ng-if="modalView.regForm.$submitted && modalView.regForm.$errors.email" class="error">
+                    <span ng-repeat="error in modalView.regForm.$errors.email">
+                        {{error}}
+                    </span>
+
+                </div>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group"  ng-class="{ 'has-error': modalView.regForm.$submitted && modalView.regForm.$errors.password}">
             <label class="control-label col-md-4">Password</label>
             <div class="col-md-6">
                 <input type="password" class="form-control" placeholder="Password" ng-model="modalView.regForm.password" required>
+                <div ng-if="modalView.regForm.$submitted && modalView.regForm.$errors.password" class="error">
+                    <span ng-repeat="error in modalView.regForm.$errors.password">
+                        {{error}}
+                    </span>
+
+                </div>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group"  ng-class="{ 'has-error': modalView.regForm.$submitted && modalView.regForm.$errors.password_confirmation}">
             <label class="control-label col-md-4">Password confirmation</label>
             <div class="col-md-6">
                 <input type="password" class="form-control" placeholder="Password" ng-model="modalView.regForm.password_confirmation" required>
+                <div ng-if="modalView.regForm.$submitted && modalView.regForm.$errors.password_confirmation" class="error">
+                    <span ng-repeat="error in modalView.regForm.$errors.password_confirmation">
+                        {{error}}
+                    </span>
+                </div>
             </div>
+        </div>
+        <div class="form-actions pull-right col-md-4">
+            <input type="submit" class="btn btn-primary" value="Sign up" ng-disabled="!modalView.regForm.$valid">
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>
     </fieldset>
 </form>
