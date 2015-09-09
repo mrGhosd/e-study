@@ -4,7 +4,7 @@ angular.module("estudy")
         '$state',
         'Auth',
         function($scope, $state, Auth){
-            $scope.login = function() {;
+            $scope.login = function() {
                 Auth.login($scope.user).then(function(){
                     $state.go('profile');
                 }, function(error){

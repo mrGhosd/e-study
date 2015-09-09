@@ -20,7 +20,7 @@ angular.module('estudy')
 
                 });
                 modalInstance.opened.then(function($scope, arg){
-                    console.log($scope);
+                    console.log(modalInstance.$scope);
                 });
             };
             $scope.signUp = function(){

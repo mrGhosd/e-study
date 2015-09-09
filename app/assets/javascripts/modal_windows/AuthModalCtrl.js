@@ -7,6 +7,7 @@ angular.module("estudy")
         'Auth',
         'currentTab',
         function($scope, $state, $modal, $modalInstance, Auth, currentTab){
+            $scope.modalView = {};
             if(currentTab === 'reg'){
                 $scope.activeTabReg = true;
             } else if(currentTab == 'auth'){
@@ -53,5 +54,8 @@ angular.module("estudy")
                     $scope.modalView.currentForm = form;
                 }
             }
+            $scope.$on('$viewContentLoaded', function(){
+                console.log("1");
+            });
         }
     ]);
