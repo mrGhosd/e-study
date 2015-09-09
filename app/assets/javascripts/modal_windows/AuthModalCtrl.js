@@ -5,7 +5,13 @@ angular.module("estudy")
         '$modal',
         '$modalInstance',
         'Auth',
-        function($scope, $state, $modal, $modalInstance, Auth){
+        'currentTab',
+        function($scope, $state, $modal, $modalInstance, Auth, currentTab){
+            if(currentTab === 'reg'){
+                $scope.activeTabReg = true;
+            } else if(currentTab == 'auth'){
+                $scope.activeTabAuth = true;
+            }
             $scope.login = function() {
                 Auth.login($scope.user).then(function(){
                     $state.go('profile');
@@ -27,9 +33,25 @@ angular.module("estudy")
                 $modalInstance.dismiss('cancel');
             };
 
-            $scope.setModalTitle = function(title){
+            $scope.setCurrentViewDetails = function(title, form){
                 $scope.modalTitle = title;
+                $scope.modalView.currentForm = form;
             };
 
+            $scope.init = function(){
+                console.log($scope.modalView);
+            };
+            $scope.defineCurrentForm = function(){
+                var object = $scope.modalView;
+                if(object.hasOwnProperty("currentForm")){
+                    var form;
+                    if($scope.activeTabAuth){
+                        form = $scope.modalView.authForm;
+                    } else if($scope.activeTabReg){
+                        form = $scope.modalView.regForm;
+                    }
+                    $scope.modalView.currentForm = form;
+                }
+            }
         }
     ]);

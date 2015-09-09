@@ -3,15 +3,18 @@
 </div>
 <div class="modal-body">
     <tabset>
-        <tab select="setModalTitle('Sign in')" heading="Sign in">
+        <tab active="activeTabAuth" select="setCurrentViewDetails('Sign in', modalView.authForm)" heading="Sign in">
             <div ng-include="'modal_windows/_login.html'"></div>
         </tab>
-        <tab select="setModalTitle('Sign up')" heading="Sign up">Sign up page</tab>
-        <tab select="setModalTitle('Password recovery')" heading="Password recovery">Password recovery page</tab>
+        <tab active="activeTabReg" select="setCurrentViewDetails('Sign up', modalView.regForm)" heading="Sign up">
+            <div ng-include="'modal_windows/_reg.html'"></div>
+        </tab>
+        <tab select="setCurrentViewDetails('Password recovery')" heading="Password recovery">Password recovery page</tab>
     </tabset>
 </div>
+{{defineCurrentForm()}}
 <div class="modal-footer">
-    <input type="submit" class="btn btn-primary" ng-disabled="modalView.authForm.$invalid" ng-click="ok()"/>
+    <input type="submit" class="btn btn-primary" ng-disabled="modalView.currentForm.$invalid" ng-click="ok()"/>
     <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
 </div>
 

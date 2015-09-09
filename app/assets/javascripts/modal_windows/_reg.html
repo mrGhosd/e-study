@@ -1,0 +1,22 @@
+<form class="form-horizontal auth-form" name="modalView.regForm">
+    <fieldset>
+        <div class="form-group">
+            <label class="control-label col-md-4">Email</label>
+            <div class="col-md-6">
+                <input type="email" class="form-control" ng-class="{ 'error': authForm.email.$touched && authForm.email.$invalid }" placeholder="Email" ng-model="modalView.regForm.email" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-4">Password</label>
+            <div class="col-md-6">
+                <input type="password" class="form-control" placeholder="Password" ng-model="modalView.regForm.password" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-4">Password confirmation</label>
+            <div class="col-md-6">
+                <input type="password" class="form-control" placeholder="Password" ng-model="modalView.regForm.password_confirmation" required>
+            </div>
+        </div>
+    </fieldset>
+</form>

@@ -6,7 +6,6 @@ angular.module('estudy')
         //'$location',
         'Auth',
         function($scope, $modal, $state, Auth){
-            console.log($modal);
             $scope.signIn = function(){
                 var modalInstance = $modal.open({
                     animation: true,
@@ -14,11 +13,27 @@ angular.module('estudy')
                     controller: 'AuthModalCtrl as modalView',
                     size: 'lg',
                     resolve: {
-                        items: function () {
-                            return $scope.items;
+                        currentTab: function () {
+                            return "auth";
                         }
                     }
-                })
 
+                });
+                modalInstance.opened.then(function($scope, arg){
+                    console.log($scope);
+                });
+            };
+            $scope.signUp = function(){
+                var modalInstance = $modal.open({
+                    animation: true,
+                    templateUrl: 'modal_windows/_auth_window.html',
+                    controller: 'AuthModalCtrl as modalView',
+                    size: 'lg',
+                    resolve: {
+                        currentTab: function () {
+                            return "reg";
+                        }
+                    }
+                });
             }
         }]);
