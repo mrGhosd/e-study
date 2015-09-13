@@ -22,6 +22,7 @@ angular.module("estudy")
 
                 Auth.login(userParams).then(function(){
                     $modalInstance.dismiss('cancel');
+                    $state.go('profile');
                 }, function(error){
                     $scope.modalView.authForm.$submitted = true;
                     $scope.modalView.authForm.$errors = error.data.error;
@@ -39,6 +40,7 @@ angular.module("estudy")
                 $scope.modalView.regForm.$submitted = true;
                 Auth.register(userParams).then(function(){
                     $modalInstance.dismiss('cancel');
+                    $state.go('profile');
                 }, function(error){
                     console.log(error);
                     $scope.modalView.regForm.$submitted = true;
@@ -53,7 +55,8 @@ angular.module("estudy")
             };
 
             $scope.setCurrentViewDetails = function(title, form){
-                $scope.modalTitle = title;
+                console.log(title);
+                //$scope.modalTitle = title;
                 $scope.modalView.currentForm = form;
             };
 

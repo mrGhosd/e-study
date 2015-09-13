@@ -1,9 +1,10 @@
 <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="HeaderCtrl">
     <div class="container-fluid">
         <div class="navbar-header"></div>
-        <div class="navbar-collapse collapse">
-            <a data-remote="true" class="btn btn-primary" ng-click="signIn()">Sign In</a>
-            <a data-remote="true" class="btn btn-info" ng-click="signUp()">Sign Up</a>
+        <div class="navbar-collapse collapse btn-actions pull-right">
+            <a data-remote="true" class="btn btn-primary" ng-show="!signedIn()" ng-click="signIn()">Sign In</a>
+            <a data-remote="true" class="btn btn-info" ng-show="!signedIn()" ng-click="signUp()">Sign Up</a>
+            <a data-remote="true" class="btn btn-danger" ng-show="signedIn()" ng-click="logout()">Sign out</a>
         </div>
     </div>
 </div>

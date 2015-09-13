@@ -3,13 +3,13 @@
 </div>
 <div class="modal-body">
     <tabset>
-        <tab active="activeTabAuth" select="setCurrentViewDetails('Sign in', modalView.authForm)" heading="Sign in">
+        <tab active="activeTabAuth" select="setCurrentViewDetails($element, modalView.authForm)" heading="{{'auth.sign_in' | translate}}">
             <div ng-include="'modal_windows/_login.html'"></div>
         </tab>
-        <tab active="activeTabReg" select="setCurrentViewDetails('Sign up', modalView.regForm)" heading="Sign up">
+        <tab active="activeTabReg" select="setCurrentViewDetails($element, modalView.regForm)" heading="{{'auth.sign_up' | translate}}">
             <div ng-include="'modal_windows/_reg.html'"></div>
         </tab>
-        <tab select="setCurrentViewDetails('Password recovery')" heading="Password recovery">Password recovery page</tab>
+        <tab select="setCurrentViewDetails($element.target)" heading="{{'auth.password_recovery' | translate}}">Password recovery page</tab>
     </tabset>
 </div>
 {{defineCurrentForm()}}

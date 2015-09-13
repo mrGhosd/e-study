@@ -11,6 +11,9 @@
  * file per style scope.
  *
   *= require bootstrap/dist/css/bootstrap
+ *= require auth
+ *= require user
+ *= require main
  *= require_tree .
  *= require_self
  */

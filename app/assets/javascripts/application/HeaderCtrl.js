@@ -6,6 +6,8 @@ angular.module('estudy')
         //'$location',
         'Auth',
         function($scope, $modal, $state, Auth){
+            $scope.signedIn = Auth.isAuthenticated;
+            $scope.logout = Auth.logout;
             $scope.signIn = function(){
                 var modalInstance = $modal.open({
                     animation: true,
@@ -35,5 +37,8 @@ angular.module('estudy')
                         }
                     }
                 });
-            }
+            };
+            $scope.$on('devise:logout', function (e, user){
+                $scope.user = {};
+            });
         }]);
