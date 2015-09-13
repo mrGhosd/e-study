@@ -20,8 +20,9 @@ angular.module("estudy")
                     password: $scope.modalView.authForm.password
                 };
 
-                Auth.login(userParams).then(function(){
+                Auth.login(userParams).then(function(user){
                     $modalInstance.dismiss('cancel');
+                    Auth._currentUser = user;
                     $state.go('profile');
                 }, function(error){
                     $scope.modalView.authForm.$submitted = true;
@@ -38,9 +39,9 @@ angular.module("estudy")
                     password_confirmation: $scope.modalView.regForm.password_confirmation
                 };
                 $scope.modalView.regForm.$submitted = true;
-                Auth.register(userParams).then(function(){
+                Auth.register(userParams).then(function(user){
                     $modalInstance.dismiss('cancel');
-                    $state.go('profile');
+                    $state.go('edit_profile');
                 }, function(error){
                     console.log(error);
                     $scope.modalView.regForm.$submitted = true;
@@ -55,8 +56,7 @@ angular.module("estudy")
             };
 
             $scope.setCurrentViewDetails = function(title, form){
-                console.log(title);
-                //$scope.modalTitle = title;
+                $scope.modalTitle = title;
                 $scope.modalView.currentForm = form;
             };
 
@@ -74,10 +74,6 @@ angular.module("estudy")
                     }
                     $scope.modalView.currentForm = form;
                 }
-                console.log();
             };
-            $scope.$on('$viewContentLoaded', function(){
-                console.log("1");
-            });
         }
     ]);

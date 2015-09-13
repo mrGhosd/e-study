@@ -41,4 +41,8 @@ angular.module('estudy')
             $scope.$on('devise:logout', function (e, user){
                 $scope.user = {};
             });
+
+            Auth.currentUser().then(function(user){
+                $scope.user = user;
+            });
         }]);

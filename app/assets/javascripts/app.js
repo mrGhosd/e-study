@@ -31,7 +31,12 @@ angular.module('estudy', ['ui.router', 'templates', 'ui.bootstrap', 'Devise', 'p
                     url: '/profile',
                     templateUrl: 'users/_user.html',
                     controller: 'UserCtrl',
-                });
+                })
+                .state('edit_profile', {
+                    url: '/profile/edit',
+                    templateUrl: 'users/_form.html',
+                    controller: 'UserFormCtrl'
+                })
             $urlRouterProvider.otherwise('sign_in');
         }
     ]);
