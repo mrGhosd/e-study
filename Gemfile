@@ -23,6 +23,9 @@ gem 'angular-rails-templates'
 gem 'angular_rails_csrf'
 gem 'devise', '~> 3.4.0'
 gem 'pry-rails'
+gem 'carrierwave'
+gem 'rmagick', :require => 'rmagick'
+gem 'mini_magick'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.

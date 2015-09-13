@@ -19,6 +19,9 @@
     "angular-devise": "~1.1.0",
     "angular-translate": "~2.7.2",
     "angular-ui-router": "~0.2.15",
-    "bootstrap": "~3.3.5"
+    "ng-file-upload-shim": "~7.0.15",
+    "angular-upload": "~1.0.12",
+    "bootstrap": "~3.3.5",
+    "ng-file-upload": "~7.2.0"
   }
 }

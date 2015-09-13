@@ -1,4 +1,4 @@
-angular.module('estudy', ['ui.router', 'templates', 'ui.bootstrap', 'Devise', 'pascalprecht.translate'])
+angular.module('estudy', ['ui.router', 'templates', 'ui.bootstrap', 'Devise', 'pascalprecht.translate', 'ngFileUpload'])
     .config([
         '$stateProvider',
         '$urlRouterProvider',
