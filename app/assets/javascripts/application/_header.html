@@ -2,6 +2,9 @@
     <div class="container-fluid">
         <div class="navbar-header"></div>
         <div class="navbar-collapse collapse btn-actions pull-right">
+            <div class="current-user-info" ng-show="signedIn()">
+
+            </div>
             <a data-remote="true" class="btn btn-primary" ng-show="!signedIn()" ng-click="signIn()">Sign In</a>
             <a data-remote="true" class="btn btn-info" ng-show="!signedIn()" ng-click="signUp()">Sign Up</a>
             <a data-remote="true" class="btn btn-danger" ng-show="signedIn()" ui-sref="sign_in" ng-click="logout()">Sign out</a>
