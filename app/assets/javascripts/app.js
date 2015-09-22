@@ -1,4 +1,11 @@
-angular.module('estudy', ['ui.router', 'templates', 'ui.bootstrap', 'Devise', 'pascalprecht.translate', 'ngFileUpload', 'StudentsRoutes'])
+angular.module('estudy',
+    ['ui.router',
+     'templates',
+     'ui.bootstrap',
+     'Devise',
+     'pascalprecht.translate',
+     'ngFileUpload',
+     'StudentsRoutes'])
     .config([
         '$stateProvider',
         '$urlRouterProvider',
@@ -12,7 +19,7 @@ angular.module('estudy', ['ui.router', 'templates', 'ui.bootstrap', 'Devise', 'p
                     templateUrl: 'auth/_login.html',
                     controller: 'AuthCtrl',
                     onEnter: ['$state', 'Auth', function($state, Auth) {
-                        
+
                     }]
                 })
                 .state('sign_up', {
