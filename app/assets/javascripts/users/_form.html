@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div ng-class="{'image-placeholder': !user.image.file.hasOwnProperty('url')}">
+                <div ng-class="{'image-placeholder': !user.image.file.hasOwnProperty('url')}" ngf-drop="upload($file)">
                     <img ng-src="{{ user.image.file.url }}" height="200" width="200" ng-if="user.image.file.hasOwnProperty('url')"/>
                 </div>
                 <input type="file" ngf-select="upload($file)" ng-model="user.image" name="image"
