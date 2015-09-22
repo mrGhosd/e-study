@@ -1,4 +1,4 @@
-angular.module('estudy', ['ui.router', 'templates', 'ui.bootstrap', 'Devise', 'pascalprecht.translate', 'ngFileUpload'])
+angular.module('estudy', ['ui.router', 'templates', 'ui.bootstrap', 'Devise', 'pascalprecht.translate', 'ngFileUpload', 'StudentsRoutes'])
     .config([
         '$stateProvider',
         '$urlRouterProvider',
@@ -12,9 +12,7 @@ angular.module('estudy', ['ui.router', 'templates', 'ui.bootstrap', 'Devise', 'p
                     templateUrl: 'auth/_login.html',
                     controller: 'AuthCtrl',
                     onEnter: ['$state', 'Auth', function($state, Auth) {
-                        //Auth.currentUser().then(function (){
-                        //    $state.go('profile');
-                        //})
+                        
                     }]
                 })
                 .state('sign_up', {
@@ -22,20 +20,8 @@ angular.module('estudy', ['ui.router', 'templates', 'ui.bootstrap', 'Devise', 'p
                     templateUrl: 'auth/_registration.html',
                     controller: 'AuthCtrl',
                     onEnter: ['$state', 'Auth', function($state, Auth) {
-                        //Auth.currentUser().then(function (){
-                        //    $state.go('profile');
-                        //})
+
                     }]
-                })
-                .state('profile', {
-                    url: '/profile',
-                    templateUrl: 'users/_user.html',
-                    controller: 'UserCtrl',
-                })
-                .state('edit_profile', {
-                    url: '/profile/edit',
-                    templateUrl: 'users/_form.html',
-                    controller: 'UserFormCtrl'
                 })
             $urlRouterProvider.otherwise('sign_in');
         }

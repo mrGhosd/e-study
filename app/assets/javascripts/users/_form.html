@@ -35,7 +35,7 @@
                     <img ng-src="{{ user.image.file.url }}" height="200" width="200" ng-if="user.image.file.hasOwnProperty('url')"/>
                 </div>
                 <input type="file" ngf-select="upload($file)" ng-model="user.image" name="image"
-                       accept="image/*" value="{{user.image}}" >
+                       accept="image/*" ngf-max-size="10MB" value="{{user.image}}" >
             </div>
         </div>
     </fieldset>
