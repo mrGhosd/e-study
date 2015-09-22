@@ -18,6 +18,7 @@ gem 'rmagick', :require => 'rmagick'
 gem 'mini_magick'
 gem 'with_advisory_lock'
 gem 'tainbox'
+gem 'font-awesome-sass'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem "i18n-js", ">= 3.0.0.rc8"

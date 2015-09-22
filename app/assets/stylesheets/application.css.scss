@@ -14,9 +14,12 @@
  *= require auth
  *= require user
  *= require main
+ *= require textAngular
  *= require_tree .
  *= require_self
  */
+@import "font-awesome-sprockets";
+@import "font-awesome";
 .main-content{
   margin-top: 75px;
 }

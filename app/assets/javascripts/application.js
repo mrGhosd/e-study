@@ -19,6 +19,10 @@
 //= require angular-bootstrap/ui-bootstrap-tpls
 //= require ng-file-upload
 //= require ng-file-upload-shim
+//= require textAngular/dist/textAngular-sanitize.js
+//= require textAngular/dist/textAngular-rangy.min
+//= require textAngular/dist/textAngularSetup
+//= require textAngular
 //= require i18n
 //= require i18n.js
 //= require i18n/translations

@@ -5,6 +5,8 @@ angular.module('estudy',
      'Devise',
      'pascalprecht.translate',
      'ngFileUpload',
+     'ngSanitize',
+     'textAngular',
      'StudentsRoutes'])
     .config([
         '$stateProvider',

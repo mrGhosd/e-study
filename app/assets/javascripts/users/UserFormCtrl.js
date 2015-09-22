@@ -26,6 +26,7 @@ angular.module('estudy')
                         imageable_type: "User",
                         imageable_id: user.image.id
                     },
+                    description: user.description,
                     image: user.image
                 }};
                 users.update(user.id, userParams).success(function(user){
