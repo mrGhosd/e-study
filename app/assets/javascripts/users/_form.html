@@ -2,32 +2,64 @@
     <fieldset>
         <div class="row">
             <div class="col-md-8">
-                <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors }">
+                <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors.surname }">
                     <label class="control-label col-md-4">Surname</label>
                     <div class="col-md-6">
                         <input type="text" class="form-control"  placeholder="Surname" ng-model="user.surname" required>
                     </div>
+                    <div ng-if="userForm.$submitted && userForm.$errors.surname" class="error">
+                        <p ng-repeat="error in userForm.$errors.surname">
+                            {{error}}
+                        </p>
+                    </div>
                 </div>
-                <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors}">
+                <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors.name }">
                     <label class="control-label col-md-4">Name</label>
                     <div class="col-md-6">
                         <input type="text" class="form-control" placeholder="Name" ng-model="user.name" required>
                     </div>
+                    <div ng-if="userForm.$submitted && userForm.$errors.name" class="error">
+                        <p ng-repeat="error in userForm.$errors.name">
+                            {{error}}
+                        </p>
+                    </div>
                 </div>
-                <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors}">
+                <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors.secondname }">
                     <label class="control-label col-md-4">Second name</label>
                     <div class="col-md-6">
                         <input type="text" class="form-control" placeholder="Second name" ng-model="user.secondname" required>
                     </div>
+                    <div ng-if="userForm.$submitted && userForm.$errors.secondname" class="error">
+                        <p ng-repeat="error in userForm.$errors.secondname">
+                            {{error}}
+                        </p>
+                    </div>
                 </div>
-                <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors}">
+                <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors.email }">
+                    <label class="control-label col-md-4">Email</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Email" ng-model="user.email" required>
+                        <div ng-if="userForm.$submitted && userForm.$errors.email" class="error">
+                            <p ng-repeat="error in userForm.$errors.email">
+                                {{error}}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors.date_of_birth }">
                     <label class="control-label col-md-4">Date of birth</label>
                     <div class="col-md-6">
                         <input type="date" class="form-control" placeholder="Date of birth" ng-model="user.date_of_birth" required>
                     </div>
                 </div>
+                    <div ng-if="userForm.$submitted && userForm.$errors.date_of_birth" class="error">
+                        <p ng-repeat="error in userForm.$errors.date_of_birth">
+                            {{error}}
+                        </p>
+                    </div>
                 <div class="form-actions col-md-8 pull-right">
-                    <input type="submit" class="btn btn-success" value="Save" ng-disabled="!userForm.$valid">
+                    <input type="submit" class="btn btn-success" value="Save" >
                 </div>
             </div>
             <div class="col-md-3">

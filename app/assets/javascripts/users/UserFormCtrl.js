@@ -22,7 +22,7 @@ angular.module('estudy')
                     email: user.email,
                     secondname: user.secondname,
                     date_of_birth: user.date_of_birth,
-                    image_attributes: {
+                    image: {
                         imageable_type: "User",
                         imageable_id: user.image.id
                     },
@@ -30,6 +30,10 @@ angular.module('estudy')
                 }};
                 users.update(user.id, userParams).success(function(user){
                     console.log(user);
+                }).error(function(errors){
+                    $scope.userForm.$submitted = true;
+                    $scope.userForm.$errors = errors;
+                    $scope.userForm.$invalid = true;
                 });
 
             }

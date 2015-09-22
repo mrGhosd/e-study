@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
   before_action :load_user, only: [:update, :show]
+
   def update
-    if @user.update(user_params)
-      render json: @user.as_json, status: :ok
+    user = Form::User.new(@user, params[:user])
+    if user.submit
+      render json: user, status: :ok
     else
-      render json: @user.errors.as_json, status: :unprocessable_entity
+      render json: user.errors, status: :unprocessable_entity
     end
   end
 
