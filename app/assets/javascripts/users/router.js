@@ -17,5 +17,15 @@ angular.module('StudentsRoutes',
                 templateUrl: 'users/_form.html',
                 controller: 'UserFormCtrl'
             })
+            .state('users', {
+                url: '/users',
+                templateUrl: 'users/_users.html',
+                controller: 'UsersCtrl',
+                resolve: {
+                    users: ['users', function(users){
+                        return users.getAll();
+                    }]
+                }
+            })
 
 });

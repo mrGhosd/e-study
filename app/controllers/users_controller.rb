@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   before_action :load_user, only: [:update, :show]
 
+  def index
+    users = User.all
+    render json: users
+  end
+
   def update
     user = Form::User.new(@user, params[:user])
     if user.submit
