@@ -1,6 +1,9 @@
 <h2>Student list</h2>
 <div class="student-list" >
     <div ng-repeat="user in users" class="user-item">
+        <div class="avatar">
+            <img ng-src="{{user.image.file.url || '/images/empty-user.png'}}" height="128" width="128"/>
+        </div>
         <div class="email">{{user.email}}</div>
     </div>
 </div>
