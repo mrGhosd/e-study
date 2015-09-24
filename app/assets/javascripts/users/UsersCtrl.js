@@ -8,7 +8,21 @@ angular.module("estudy")
             $scope.users = users.users;
 
             $scope.search = function(){
-                users.search($scope.searchField).then(function(data){
+              searchRequest($scope.searchField);
+            };
+
+            $scope.dynamicSearch = function(){
+                if($scope.searchField !== ""){
+                    searchRequest($scope.searchField);
+                } else {
+                    users.getAll().then(function(data){
+                        $scope.users = data;
+                    });
+                }
+            };
+
+            function searchRequest(request){
+                users.search(request).then(function(data){
                     $scope.users = data;
                 });
             }
