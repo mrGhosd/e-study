@@ -2,7 +2,8 @@
 <div class="student-list" >
     <div ng-repeat="user in users" class="user-item panel panel-primary">
         <div class="panel-heading">
-            <p>{{ user.correctNaming() }}</p>
+            <span><a href="#/users/{{user.id}}">{{ user.correctNaming() }}</a></span>
+            <span class="pull-right">{{user.humanizedDate(user.created_at) }}</span>
         </div>
         <div class="panel-body">
             <div class="avatar">
