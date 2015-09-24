@@ -30,7 +30,7 @@ angular.module('StudentsRoutes',
                 templateUrl: 'users/_users.html',
                 controller: 'UsersCtrl',
                 resolve: {
-                    users: ['users', function(users){
+                    usersList: ['users', function(users){
                         return users.getAll();
                     }]
                 }

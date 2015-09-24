@@ -1,7 +1,8 @@
 angular.module('estudy').factory('users', [ '$http', '$q', function($http, $q){
     // service body
     var object = {
-        users: []
+        users: [],
+        searchResults: []
     };
     object.getAll = function() {
         var def = $q.defer();
@@ -12,7 +13,7 @@ angular.module('estudy').factory('users', [ '$http', '$q', function($http, $q){
                 newUsers.push(user);
             }
             def.resolve(newUsers);
-            angular.copy(data, object.users)
+            angular.copy(newUsers, object.users)
         });
         return def.promise;
     };
@@ -34,18 +35,19 @@ angular.module('estudy').factory('users', [ '$http', '$q', function($http, $q){
         });
     };
 
-    object.correctNaming = function(user){
-        console.log(user);
-        if(user.surname && user.name){
-            if(user.secondname ){
-                return user.surname + " " + user.name + " " + user.secondname;
-            } else {
-                return user.surname + " " + user.name;
+    object.search = function(query){
+        var def = $q.defer();
+        params = {object: "user", query: query};
+        $http.get('/search.json', {params: params}).success(function(data){
+            var newUsers = [];
+            for(var i = 0; i < data.length; i++){
+                var user = new User(data[i]);
+                newUsers.push(user);
             }
-        } else {
-            return user.email;
-        }
-    }
+            def.resolve(newUsers);
+        });
+        return def.promise;
+    };
 
     return object;
 }]);
