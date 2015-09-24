@@ -4,7 +4,9 @@
         <a ui-sref="edit_profile" class="btn btn-xs btn-primary glyphicon glyphicon-pencil pull-right" ng-show="isProfile"></a>
     </div>
     <div class="panel-body">
-        Panel content
+        <div class="user-avatar">
+            <img ng-src="{{user.image.file.url || '/images/empty-user.png'}}" height="200" width="200"/>
+        </div>
     </div>
 </div>
 
