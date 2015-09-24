@@ -5,5 +5,5 @@ angular.module("estudy")
         'Auth',
         'users',
         function($scope, $state, Auth, users){
-            $scope.users = users.data;
+            $scope.users = users;
         }]);
