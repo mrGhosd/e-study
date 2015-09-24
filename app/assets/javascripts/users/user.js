@@ -20,5 +20,10 @@ var User = function(attributes){
         var date = [newDate.getDate(), newDate.getMonth() + 1, newDate.getFullYear()];
         return time.join(":") + " " + date.join(".");
     };
+    this.humanizedOnlyDate = function(date){
+        var newDate = new Date(date);
+        var date = [newDate.getDate(), newDate.getMonth() + 1, newDate.getFullYear()];
+        return date.join(".");
+    }
     return this;
 };

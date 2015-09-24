@@ -36,16 +36,17 @@ angular.module('StudentsRoutes',
                 }
             })
             .state('user', {
-                url: '/users/{id}',
+                url: '/users/:id',
                 templateUrl: 'users/_user.html',
                 controller: 'UserCtrl',
                 onEnter: ['$state', '$stateParams', '$location', 'Auth', function($state, $stateParams, $location, Auth) {
+                    console.log($stateParams);
                     Auth.currentUser().then(function (user){
                         if(user.id == $stateParams.id) $location.path('/profile').replace("user", new User(user));
                     })
                 }],
                 resolve: {
-                    user: ['users', '$stateParams', function(users, $stateParams){
+                    user: ['users', '$stateParams', '$state', function(users, $stateParams, $state){
                         return new User(users.get($stateParams.id));
                     }],
                     profile: ['$state', function($state){

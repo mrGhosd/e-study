@@ -29,11 +29,9 @@ angular.module('estudy').factory('users', [ '$http', '$q', function($http, $q){
         return def.promise;
     };
     object.update = function(id, user){
-        var def = $q.defer();
-        $http.put('/users/' + id + '.json', user).success(function(res){
-            def.resolve(res.data);
+        return $http.put('/users/' + id + '.json', user).success(function(res){
+           return res.data;
         });
-        return def.promise;
     };
 
     object.correctNaming = function(user){

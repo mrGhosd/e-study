@@ -13,9 +13,9 @@ class UsersController < ApplicationController
   def update
     user = Form::User.new(@user, params[:user])
     if user.submit
-      render json: user, status: :ok
+      render json: user.object, status: :ok
     else
-      render json: user.errors, status: :unprocessable_entity
+      render json: user.object.errors, status: :unprocessable_entity
     end
   end
 

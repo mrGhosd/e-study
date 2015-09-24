@@ -31,6 +31,7 @@ angular.module('estudy')
                 }};
                 users.update(user.id, userParams).success(function(user){
                     console.log(user);
+                    $state.go('user', {id: user.id});
                 }).error(function(errors){
                     $scope.userForm.$submitted = true;
                     $scope.userForm.$errors = errors;
