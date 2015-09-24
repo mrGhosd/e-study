@@ -40,7 +40,6 @@ angular.module('StudentsRoutes',
                 templateUrl: 'users/_user.html',
                 controller: 'UserCtrl',
                 onEnter: ['$state', '$stateParams', '$location', 'Auth', function($state, $stateParams, $location, Auth) {
-                    console.log($stateParams);
                     Auth.currentUser().then(function (user){
                         if(user.id == $stateParams.id) $location.path('/profile').replace("user", new User(user));
                     })
