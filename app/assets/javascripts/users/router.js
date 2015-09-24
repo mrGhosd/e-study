@@ -46,7 +46,7 @@ angular.module('StudentsRoutes',
                 }],
                 resolve: {
                     user: ['users', '$stateParams', function(users, $stateParams){
-                        return users.get($stateParams.id);
+                        return new User(users.get($stateParams.id));
                     }],
                     profile: ['$state', function($state){
                         return false;

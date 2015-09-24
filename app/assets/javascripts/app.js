@@ -7,7 +7,6 @@ angular.module('estudy',
      'ngFileUpload',
      'ngSanitize',
      'textAngular',
-     'bootstrapLightbox',
      'StudentsRoutes'])
     .config([
         '$stateProvider',

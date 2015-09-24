@@ -6,9 +6,7 @@ angular.module("estudy")
         '$modal',
         'user',
         'profile',
-        'Lightbox',
-        function($scope, $state, Auth, $modal, user, profile, Lightbox){
-            $scope.user = user;
+        function($scope, $state, Auth, $modal, user, profile){
             $scope.isProfile = profile;
-
+            $scope.user = profile ? new User(user) : user;
         }]);
