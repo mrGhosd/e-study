@@ -1,13 +1,13 @@
 angular.module('estudy').factory('users', [ '$http', '$q', function($http, $q){
     // service body
+    var def = $q.defer();
     var object = {
         users: []
     };
     object.getAll = function() {
-        var def = $q.defer();
         $http.get('/users.json').success(function(data){
             var newUsers = [];
-            for(var i = 0; i <data.length; i++){
+            for(var i = 0; i < data.length; i++){
                 var user = new User(data[i]);
                 newUsers.push(user);
             }
@@ -19,18 +19,18 @@ angular.module('estudy').factory('users', [ '$http', '$q', function($http, $q){
     object.create = function(user) {
         return $http.post('/users.json', user).success(function(data){
             angular.copy(data, object.users);
-            //object.users.push(data);
         });
     };
     object.get = function(id){
         return $http.get('/users/' + id + '.json').then(function(res){
-            return res.data;
+            return new User(res.data);
         });
     };
     object.update = function(id, user){
-        return $http.put('/users/' + id + '.json', user).success(function(res){
-            return res.data;
+        $http.put('/users/' + id + '.json', user).success(function(res){
+            def.resolve(res.data);
         });
+        return def.promise;
     };
 
     object.correctNaming = function(user){

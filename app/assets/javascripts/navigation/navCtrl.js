@@ -22,6 +22,6 @@ angular.module('estudy')
                 $scope.user = {};
             });
             $scope.isActive = function(route){
-                return route === $state.current.url;
+                return !!$state.current.url.match(route);
             }
         }]);

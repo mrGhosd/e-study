@@ -1,2 +1,10 @@
-<h1>Profile!!</h1>
-<a ui-sref="edit_profile" class="btn btn-xs btn-primary glyphicon glyphicon-pencil"></a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>{{isProfile ? "Profile" : user.correctNaming()}}</h3>
+        <a ui-sref="edit_profile" class="btn btn-xs btn-primary glyphicon glyphicon-pencil"></a>
+    </div>
+    <div class="panel-body">
+        Panel content
+    </div>
+</div>
+

@@ -24,9 +24,10 @@
   margin-top: 75px;
 }
 li.active{
-  background-color: greenyellow;
+  background-color: lightgreen;
+  color: white;
   a:focus{
-    background-color: greenyellow;
+    background-color: lightgreen;
   }
 }
 .error{

@@ -6,6 +6,10 @@ class UsersController < ApplicationController
     render json: users
   end
 
+  def show
+    render json: @user
+  end
+
   def update
     user = Form::User.new(@user, params[:user])
     if user.submit
