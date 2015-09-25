@@ -8,9 +8,9 @@
             <div class="current-user-info" ng-show="signedIn()">
 
             </div>
-            <a data-remote="true" class="btn btn-primary" ng-show="!signedIn()" ng-click="signIn()">Sign In</a>
-            <a data-remote="true" class="btn btn-info" ng-show="!signedIn()" ng-click="signUp()">Sign Up</a>
-            <a data-remote="true" class="btn btn-danger" ng-show="signedIn()" ui-sref="sign_in" ng-click="logout()">Sign out</a>
+            <a data-remote="true" class="btn btn-primary" ng-show="!signedIn()" ng-click="signIn()">{{'auth.sign_in' | translate}}</a>
+            <a data-remote="true" class="btn btn-info" ng-show="!signedIn()" ng-click="signUp()">{{'auth.sign_up' | translate}}</a>
+            <a data-remote="true" class="btn btn-danger" ng-show="signedIn()" ui-sref="sign_in" ng-click="logout()">{{'auth.sign_out' | translate}}</a>
         </div>
     </div>
 </div>

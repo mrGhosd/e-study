@@ -6,3 +6,4 @@ ru:
     password: "Пароль"
     password_confirmation: "Подтверждение пароля"
     password_recovery: "Восстановление пароля"
+    sign_out: "Выйти"
