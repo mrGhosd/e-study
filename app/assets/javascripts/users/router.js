@@ -1,6 +1,6 @@
 angular.module('StudentsRoutes',
     ['ui.router',
-    'templates',
+    'rails-template-cache',
     'ui.bootstrap',
     'Devise',
     'pascalprecht.translate',

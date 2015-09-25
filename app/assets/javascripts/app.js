@@ -1,6 +1,8 @@
-angular.module('estudy',
+"use strict";
+let app = "estudy";
+angular.module(app,
     ['ui.router',
-     'templates',
+     'rails-template-cache',
      'ui.bootstrap',
      'Devise',
      'pascalprecht.translate',
@@ -8,30 +10,53 @@ angular.module('estudy',
      'ngSanitize',
      'textAngular',
      'StudentsRoutes'])
-    .config([
-        '$stateProvider',
-        '$urlRouterProvider',
-        '$translateProvider',
-        function($stateProvider, $urlRouterProvider, $translateProvider) {
-            locale = I18n.currentLocale();
-            $translateProvider.translations(locale, I18n.translations[locale]).preferredLanguage(locale);
-            $stateProvider
-                .state('sign_in', {
-                    url: '/sign_in',
-                    templateUrl: 'auth/_login.html',
-                    controller: 'AuthCtrl',
-                    onEnter: ['$state', 'Auth', function($state, Auth) {
+    .config(($stateProvider, $urlRouterProvider, $translateProvider) => {
+        let locale = I18n.currentLocale();
+        $translateProvider.translations(locale, I18n.translations[locale]).preferredLanguage(locale);
+        $stateProvider
+            .state('sign_in', {
+                                url: '/sign_in',
+                                templateUrl: 'auth/_login.html',
+                                controller: 'AuthCtrl',
+                                onEnter: ['$state', 'Auth', function($state, Auth) {
 
-                    }]
-                })
-                .state('sign_up', {
-                    url: '/sign_up',
-                    templateUrl: 'auth/_registration.html',
-                    controller: 'AuthCtrl',
-                    onEnter: ['$state', 'Auth', function($state, Auth) {
+                                }]
+                            })
+                            .state('sign_up', {
+                                url: '/sign_up',
+                                templateUrl: 'auth/_registration.html',
+                                controller: 'AuthCtrl',
+                                onEnter: ['$state', 'Auth', function($state, Auth) {
 
-                    }]
-                })
-            $urlRouterProvider.otherwise('sign_in');
-        }
-    ]);
+                                }]
+                            })
+                        $urlRouterProvider.otherwise('sign_in');
+    }
+    //[
+    //    '$stateProvider',
+    //    '$urlRouterProvider',
+    //    '$translateProvider',
+    //    function($stateProvider, $urlRouterProvider, $translateProvider) {
+    //        locale = I18n.currentLocale();
+    //        $translateProvider.translations(locale, I18n.translations[locale]).preferredLanguage(locale);
+    //        $stateProvider
+    //            .state('sign_in', {
+    //                url: '/sign_in',
+    //                templateUrl: 'auth/_login.html',
+    //                controller: 'AuthCtrl',
+    //                onEnter: ['$state', 'Auth', function($state, Auth) {
+    //
+    //                }]
+    //            })
+    //            .state('sign_up', {
+    //                url: '/sign_up',
+    //                templateUrl: 'auth/_registration.html',
+    //                controller: 'AuthCtrl',
+    //                onEnter: ['$state', 'Auth', function($state, Auth) {
+    //
+    //                }]
+    //            })
+    //        $urlRouterProvider.otherwise('sign_in');
+    //    }
+    //]
+);

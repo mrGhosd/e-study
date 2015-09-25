@@ -22,5 +22,11 @@ module Estudy
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    RailsTemplateCache.setup do |config|
+      config.templates_path = File.join( ['app', 'assets', 'javascripts'] )
+      config.extensions = %w(erb haml html slim)
+      config.compress_html = false
+    end
   end
 end

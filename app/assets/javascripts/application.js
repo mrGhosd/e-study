@@ -12,7 +12,7 @@
 //
 //= require angular
 //= require angular-ui-router
-//= require angular-rails-templates
+//= require rails-template-cache/rails-template-cache
 //= require angular-devise
 //= require angular-translate
 //= require angular-bootstrap
@@ -27,3 +27,4 @@
 //= require i18n.js
 //= require i18n/translations
 //= require_tree .
+
