@@ -14,7 +14,6 @@ angular.module('estudy',
         '$translateProvider',
         function($stateProvider, $urlRouterProvider, $translateProvider) {
             locale = I18n.currentLocale();
-            console.log(I18n.translations);
             for(var lang in I18n.translations){
                 $translateProvider.translations(lang, I18n.translations[lang]);
                 if(lang === 'en') $translateProvider.preferredLanguage(lang)
