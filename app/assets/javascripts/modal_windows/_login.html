@@ -1,13 +1,13 @@
 <form class="form-horizontal auth-form" ng-submit="login()" name="modalView.authForm">
     <fieldset>
         <div class="form-group" ng-class="{ 'has-error':modalView.authForm.$submitted && modalView.authForm.$errors }">
-            <label class="control-label col-md-4">Email</label>
+            <label class="control-label col-md-4">{{'auth.email' | translate}}</label>
             <div class="col-md-6">
                 <input type="email" class="form-control"  placeholder="Email" ng-model="modalView.authForm.email" required>
             </div>
         </div>
         <div class="form-group" ng-class="{ 'has-error': modalView.authForm.$submitted && modalView.authForm.$errors}">
-            <label class="control-label col-md-4">Password</label>
+            <label class="control-label col-md-4">{{'auth.password' | translate}}</label>
             <div class="col-md-6">
                 <input type="password" class="form-control" placeholder="Password" ng-model="modalView.authForm.password" required>
             </div>

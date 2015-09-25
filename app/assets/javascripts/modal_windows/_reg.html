@@ -1,7 +1,7 @@
 <form class="form-horizontal reg-form" ng-submit="register()" name="modalView.regForm">
     <fieldset>
         <div class="form-group"  ng-class="{ 'has-error': modalView.regForm.$submitted && modalView.regForm.$errors.email}">
-            <label class="control-label col-md-4">Email</label>
+            <label class="control-label col-md-4">{{'auth.email' | translate}}</label>
             <div class="col-md-6">
                 <input type="email" class="form-control"  placeholder="Email" ng-model="modalView.regForm.email" required>
                 <div ng-if="modalView.regForm.$submitted && modalView.regForm.$errors.email" class="error">
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="form-group"  ng-class="{ 'has-error': modalView.regForm.$submitted && modalView.regForm.$errors.password}">
-            <label class="control-label col-md-4">Password</label>
+            <label class="control-label col-md-4">{{'auth.password' | translate}}</label>
             <div class="col-md-6">
                 <input type="password" class="form-control" placeholder="Password" ng-model="modalView.regForm.password" required>
                 <div ng-if="modalView.regForm.$submitted && modalView.regForm.$errors.password" class="error">
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="form-group"  ng-class="{ 'has-error': modalView.regForm.$submitted && modalView.regForm.$errors.password_confirmation}">
-            <label class="control-label col-md-4">Password confirmation</label>
+            <label class="control-label col-md-4">{{'auth.password_confirmation' | translate}}</label>
             <div class="col-md-6">
                 <input type="password" class="form-control" placeholder="Password" ng-model="modalView.regForm.password_confirmation" required>
                 <div ng-if="modalView.regForm.$submitted && modalView.regForm.$errors.password_confirmation" class="error">

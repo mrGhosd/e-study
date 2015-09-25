@@ -5,3 +5,4 @@ ru:
     email: "Электронная почта"
     password: "Пароль"
     password_confirmation: "Подтверждение пароля"
+    password_recovery: "Восстановление пароля"
