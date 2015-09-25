@@ -7,13 +7,20 @@ angular.module('estudy',
      'ngFileUpload',
      'ngSanitize',
      'textAngular',
-     'StudentsRoutes'])
+     'StudentsRoutes',
+     'tmh.dynamicLocale'])
     .config([
         '$stateProvider',
         '$urlRouterProvider',
         '$translateProvider',
-        function($stateProvider, $urlRouterProvider, $translateProvider) {
+        'tmhDynamicLocaleProvider',
+        function($stateProvider, $urlRouterProvider, $translateProvider, tmhDynamicLocaleProvider) {
             locale = I18n.currentLocale();
+            console.log(I18n.translations);
+            for(var lang in I18n.translations){
+                $translateProvider.translations(lang, I18n.translations[lang]);
+                if(lang === 'en') $translateProvider.preferredLanguage(lang)
+            }
             $translateProvider.translations(locale, I18n.translations[locale]).preferredLanguage(locale);
             $stateProvider
                 .state('sign_in', {

@@ -2,6 +2,9 @@
     <div class="container-fluid">
         <div class="navbar-header"></div>
         <div class="navbar-collapse collapse btn-actions pull-right">
+            <div class="current-locale">
+                <a data-remote="true" ng-click="changeLocale()" class="btn btn-primary">{{ locale }}</a>
+            </div>
             <div class="current-user-info" ng-show="signedIn()">
 
             </div>

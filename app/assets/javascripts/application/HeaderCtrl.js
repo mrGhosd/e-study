@@ -5,9 +5,18 @@ angular.module('estudy')
         '$state',
         //'$location',
         'Auth',
-        function($scope, $modal, $state, Auth){
+        '$translate',
+        function($scope, $modal, $state, Auth, $translate){
+            $scope.locale = I18n.currentLocale();
             $scope.signedIn = Auth.isAuthenticated;
             $scope.logout = Auth.logout;
+
+            $scope.changeLocale = function(){
+                var lang = ($translate.use() === 'en' ) ? 'ru' : 'en';
+                $translate.use(($translate.use() === 'en' ) ? 'ru' : 'en');
+                $scope.locale = lang;
+            };
+
             $scope.signIn = function(){
                 var modalInstance = $modal.open({
                     animation: true,

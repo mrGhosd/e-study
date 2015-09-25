@@ -26,4 +26,5 @@
 //= require i18n
 //= require i18n.js
 //= require i18n/translations
+//= require angular-dynamic-locale
 //= require_tree .
