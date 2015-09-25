@@ -23,7 +23,6 @@
     "bootstrap": "~3.3.5",
     "ng-file-upload": "~7.2.0",
     "ng-file-upload-shim": "~7.0.15",
-    "textAngular": "~1.4.6",
-    "angular-dynamic-locale": "~0.1.27"
+    "textAngular": "~1.4.6"
   }
 }
