@@ -1,6 +1,6 @@
 <div class="panel panel-default user-page">
     <div class="panel-heading user-name">
-        <h3>{{isProfile ? "Profile" : user.correctNaming()}}</h3>
+        <h3>{{isProfile ? 'users.profile' : user.correctNaming() | translate }}</h3>
         <a ui-sref="edit_profile" class="btn btn-xs btn-primary glyphicon glyphicon-pencil pull-right" ng-show="isProfile"></a>
     </div>
     <div class="panel-body">

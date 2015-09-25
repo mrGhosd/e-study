@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors.surname }">
-                    <label class="control-label col-md-4">Surname</label>
+                    <label class="control-label col-md-4">{{ 'users.surname' | translate }}</label>
                     <div class="col-md-6">
                         <input type="text" class="form-control"  placeholder="Surname" ng-model="user.surname" required>
                         <div ng-if="userForm.$submitted && userForm.$errors.surname" class="error">
@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors.name }">
-                    <label class="control-label col-md-4">Name</label>
+                    <label class="control-label col-md-4"> {{ 'users.name' | translate }} </label>
                     <div class="col-md-6">
                         <input type="text" class="form-control" placeholder="Name" ng-model="user.name" required>
                         <div ng-if="userForm.$submitted && userForm.$errors.name" class="error">
@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors.secondname }">
-                    <label class="control-label col-md-4">Second name</label>
+                    <label class="control-label col-md-4">{{ 'users.secondname' | translate }}</label>
                     <div class="col-md-6">
                         <input type="text" class="form-control" placeholder="Second name" ng-model="user.secondname" required>
                         <div ng-if="userForm.$submitted && userForm.$errors.secondname" class="error">
@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors.email }">
-                    <label class="control-label col-md-4">Email</label>
+                    <label class="control-label col-md-4">{{ 'users.email' | translate }}</label>
                     <div class="col-md-6">
                         <input type="text" class="form-control" placeholder="Email" ng-model="user.email" required>
                         <div ng-if="userForm.$submitted && userForm.$errors.email" class="error">
@@ -48,7 +48,7 @@
 
                 </div>
                 <div class="form-group" ng-class="{ 'has-error': userForm.$submitted && userForm.$errors.date_of_birth }">
-                    <label class="control-label col-md-4">Date of birth</label>
+                    <label class="control-label col-md-4">{{ 'users.date_of_birth' | translate }}</label>
                     <div class="col-md-6">
                         <input type="date" class="form-control" placeholder="Date of birth" ng-model="user.date_of_birth" required>
                         <div ng-if="userForm.$submitted && userForm.$errors.date_of_birth" class="error">
@@ -62,8 +62,8 @@
                      ta-text-editor-class="form-control wysiwyg-editor"
                      ta-html-editor-class="form-control wysiwyg-editor"></div>
                 <div class="form-actions user-form-actions pull-right col-md-8">
-                    <input type="submit" class="btn btn-success" value="Save" >
-                    <a ui-sref="profile" class="btn btn-default">Back</a>
+                    <input type="submit" class="btn btn-success" value="{{ 'users.save' | translate }}" >
+                    <a ui-sref="profile" class="btn btn-default">{{ 'users.cancel' | translate }}</a>
                 </div>
             </div>
             <div class="col-md-3">

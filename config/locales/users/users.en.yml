@@ -1,0 +1,12 @@
+en:
+  users:
+    list_title: "User list"
+    search_button: "Search"
+    surname: "Surname"
+    name: "Name"
+    secondname: "Second name"
+    email: "Email"
+    date_of_birth: "Date of birth"
+    profile: "Profile"
+    save: "Save"
+    cancel: "Back"

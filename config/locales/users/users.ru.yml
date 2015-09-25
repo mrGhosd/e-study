@@ -1,0 +1,12 @@
+ru:
+  users:
+    list_title: "Список пользователей"
+    search_button: "Поиск"
+    surname: "Фамилия"
+    name: "Имя"
+    secondname: "Отчество"
+    email: "Электронный адрес"
+    date_of_birth: "Дата рождения"
+    profile: "Профиль"
+    save: "Сохранить"
+    cancel: "Отмена"

@@ -1,4 +1,4 @@
-<h2>Student list</h2>
+<h2>{{ 'users.list_title' | translate }}</h2>
 <div class="search-form">
     <form class="form" ng-submit="search()">
         <div class="form-group">
@@ -6,7 +6,7 @@
                 <input type="search" class="form-control" ng-change="dynamicSearch()" ng-model="searchField"/>
             </div>
         </div>
-        <input type="submit" value="Search" class="btn btn-info"/>
+        <input type="submit" value="{{ 'users.search_button' | translate }}" class="btn btn-info"/>
     </form>
 </div>
 <div class="student-list" >
