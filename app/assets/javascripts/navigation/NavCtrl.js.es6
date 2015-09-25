@@ -32,6 +32,29 @@ class NavCtrl {
         this.$scope = $scope;
         this.$state = $state;
         this.Auth = Auth;
+
+        this.$scope.signedIn = Auth.isAuthenticated;
+        this.$scope.logout = Auth.logout;
+
+        this.Auth.currentUser().then(function (user){
+            this.$scope.user = user;
+        });
+        this.$scope.$on('devise:new-registration', function (e, user){
+            this.$scope.user = user;
+        });
+
+        this.$scope.$on('devise:login', function (e, user){
+            console.log(this.$scope);
+            this.$scope.user = user;
+        });
+
+        this.$scope.$on('devise:logout', function (e, user){
+            this.$scope.user = {};
+        });
+    }
+
+    isActive(route){
+        return !!this.$state.current.url.match(route);
     }
 }
-export default NavCtrl;
+angular.module('estudy').controller('NavCtrl', NavCtrl);

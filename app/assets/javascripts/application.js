@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require angular
 //= require angular-ui-router
 //= require rails-template-cache/rails-template-cache
@@ -26,5 +27,6 @@
 //= require i18n
 //= require i18n.js
 //= require i18n/translations
+//= require traceur-runtime
 //= require_tree .
 

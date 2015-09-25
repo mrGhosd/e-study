@@ -1,16 +1,17 @@
-"use strict";
-let app = "estudy";
-angular.module(app,
+'use strict';
+var app = angular.module('estudy',
     ['ui.router',
-     'rails-template-cache',
-     'ui.bootstrap',
-     'Devise',
-     'pascalprecht.translate',
-     'ngFileUpload',
-     'ngSanitize',
-     'textAngular',
-     'StudentsRoutes'])
-    .config(($stateProvider, $urlRouterProvider, $translateProvider) => {
+        'rails-template-cache',
+        'ui.bootstrap',
+        'Devise',
+        'pascalprecht.translate',
+        'ngFileUpload',
+        'ngSanitize',
+        'textAngular',
+        'StudentsRoutes']);
+
+    app.config(
+    ($stateProvider, $urlRouterProvider, $translateProvider) => {
         let locale = I18n.currentLocale();
         $translateProvider.translations(locale, I18n.translations[locale]).preferredLanguage(locale);
         $stateProvider
