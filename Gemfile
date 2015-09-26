@@ -30,6 +30,8 @@ gem 'omniauth-twitter'
 gem 'omniauth-vkontakte'
 gem 'omniauth-instagram'
 gem 'instagram'
+gem "letter_opener"
+gem 'letter_opener_web'
 
 group :development, :test do
   gem 'byebug'

@@ -9,7 +9,9 @@
         <tab active="activeTabReg" select="setCurrentViewDetails('auth.sign_up', modalView.regForm)" heading="{{'auth.sign_up' | translate}}">
             <div ng-include="'modal_windows/_reg.html'"></div>
         </tab>
-        <tab select="setCurrentViewDetails('auth.password_recovery')" heading="{{'auth.password_recovery' | translate}}">Password recovery page</tab>
+        <tab select="setCurrentViewDetails('auth.password_recovery')" heading="{{'auth.password_recovery' | translate}}">
+            <div ng-include="'modal_windows/_restore_password.html'"></div>
+        </tab>
     </tabset>
 </div>
 <div class="modal-footer">
