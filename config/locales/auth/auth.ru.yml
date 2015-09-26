@@ -7,3 +7,5 @@ ru:
     password_confirmation: "Подтверждение пароля"
     password_recovery: "Восстановление пароля"
     sign_out: "Выйти"
+    add_email: "Введите электронную почту"
+    send: "Отправить"

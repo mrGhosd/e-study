@@ -8,3 +8,5 @@ en:
   password_confirmation: "Password confirmation"
   password_recovery: "Password recovery"
   sign_out: "Sign out"
+  add_email: "Insert email"
+  send: "Send"

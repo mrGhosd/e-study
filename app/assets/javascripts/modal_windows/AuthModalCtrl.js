@@ -75,5 +75,20 @@ angular.module("estudy")
                     $scope.modalView.currentForm = form;
                 }
             };
+            $scope.requireEmail = function(event){
+                var path = event.currentTarget.href;
+                var modalInstance = $modal.open({
+                    animation: true,
+                    templateUrl: 'modal_windows/_add_email.html',
+                    controller: 'AddEmailCtrl as emailCtrl',
+                    size: 'lg',
+                    resolve: {
+                        url: function () {
+                            return path;
+                        }
+                    }
+
+                })
+            }
         }
     ]);

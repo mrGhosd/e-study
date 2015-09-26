@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h3>{{'auth.add_email' | translate}}</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" ng-submit="enterMail()" name="emailCtrl.emailForm">
+        <fieldset>
+            <div class="form-group">
+                <label class="control-label col-md-4">{{'auth.email' | translate}}</label>
+                <div class="col-md-6">
+                    <input  class="form-control" type="email" ng-model="emailCtrl.emailForm.additionalEmail" required/>
+                    <p>{{emailForm.email}}</p>
+                </div>
+            </div>
+            <div class="form-actions pull-right col-md-4">
+                <input type="submit" class="btn btn-success" value="{{'auth.send' | translate}}" ng-disabled="!emailCtrl.emailForm.$valid"/>
+            </div>
+        </fieldset>
+    </form>
+</div>
