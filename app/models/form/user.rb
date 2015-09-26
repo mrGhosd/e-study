@@ -5,11 +5,12 @@ class Form::User < Form::Base
   attribute :secondname, String
   attribute :date_of_birth, Time
   attribute :description, String
+  attribute :image
 
   validates :surname, :name, :secondname, :date_of_birth, presence: true
   validates_format_of :email, with: /.+@.+\..+/
 
   def image=(image)
-    super(Image.find_by(imageable_id: image["imageable_id"], imageable_type: @object.class.to_s))
+    super(Image.find_by(id: image["id"], imageable_type: @object.class.to_s))
   end
 end

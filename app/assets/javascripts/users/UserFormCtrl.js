@@ -24,10 +24,9 @@ angular.module('estudy')
                     date_of_birth: user.date_of_birth,
                     image: {
                         imageable_type: "User",
-                        imageable_id: user.image.id
+                        id: user.image.id
                     },
-                    description: user.description,
-                    image: user.image
+                    description: user.description
                 }};
                 users.update(user.id, userParams).success(function(user){
                     console.log(user);
@@ -38,7 +37,7 @@ angular.module('estudy')
                     $scope.userForm.$invalid = true;
                 });
 
-            }
+            };
             $scope.upload = function (file) {
                 Upload.upload({
                     url: 'images',
