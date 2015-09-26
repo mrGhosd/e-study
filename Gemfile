@@ -24,6 +24,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "i18n-js", ">= 3.0.0.rc8"
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-vkontakte'
+gem 'omniauth-instagram'
+gem 'instagram'
 
 group :development, :test do
   gem 'byebug'

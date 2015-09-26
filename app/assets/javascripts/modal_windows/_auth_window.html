@@ -12,5 +12,11 @@
         <tab select="setCurrentViewDetails('auth.password_recovery')" heading="{{'auth.password_recovery' | translate}}">Password recovery page</tab>
     </tabset>
 </div>
+<div class="modal-footer">
+    <a href="/users/auth/facebook" data-remote="true" class="facebook oauth-link"><img src="/images/facebook24.png" height="30" width="30"/></a>
+    <a href="/users/auth/vkontakte" data-remote="true" class="vkontakte oauth-link" ><img src="/images/b.png" height="30" width="30"/></a>
+    <a href="/users/auth/twitter" data-remote="true" class="twitter oauth-link" require-email="true"><img src="/images/twitter2.png" height="30" width="30"/></a>
+    <a href="/users/auth/instagram" data-remote="true" class="instagram oauth-link" require-email="true"><img src="/images/instagram12.png" height="30" width="30"/></a>
+</div>
 {{defineCurrentForm()}}
 
