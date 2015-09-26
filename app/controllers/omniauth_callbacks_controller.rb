@@ -38,14 +38,13 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def instagram
     request.env['omniauth.auth'].info.email = request.env["omniauth.params"]["email"]
-
-    @user = User.from_omniauth(request.env['omniauth.auth'], instagram: true)
-    if @user.persisted?
-      sign_in @user, event: :authentication
+    form = Form::Oauth.new(nil, request.env['omniauth.auth'])
+    if form.submit && form.user.present?
+      sign_in form.user, event: :authentication
       redirect_to root_path
       set_flash_message(:notice, :success, kind: 'instagram') if is_navigational_format?
     else
-      session["devise.twitter_data"] = request.env["omniauth.auth"]
+      session["devise.twitter_data"] = request.env["omniauth.auth"].except("extra")
       redirect_to root_path
     end
   end
