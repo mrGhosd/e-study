@@ -1,15 +1,14 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
-    @user = User.from_omniauth(request.env['omniauth.auth'])
-    if @user.persisted?
-      sign_in @user, event: :authentication
-      redirect_to root_path
+    form = Form::Oauth.new(nil, request.env['omniauth.auth'])
+    if form.submit
+      sign_in form.user, event: :authentication
       set_flash_message(:notice, :success, kind: 'facebook') if is_navigational_format?
     else
       session["devise.facebook_data"] = request.env["omniauth.auth"]
-      redirect_to "/#recipes"
     end
+    redirect_to root_path
   end
 
   def twitter
