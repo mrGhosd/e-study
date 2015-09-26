@@ -235,6 +235,8 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :facebook, Rails.application.secrets.facebook_app_id, Rails.application.secrets.facebook_app_secret,
   scope: [:email], info_fields: 'email, name', client_options:  {ssl: {verify: false}}
+  config.omniauth :vkontakte, Rails.application.secrets.vk_app_id, Rails.application.secrets.vk_app_secret,
+  scope: [:email], client_options: {ssl: {verify: false}}
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

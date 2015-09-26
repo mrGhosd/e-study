@@ -28,7 +28,7 @@ class Form::Oauth < Form::Base
   def create_new_user
     splitted_name = @info.name.split(" ")
     avatar = Image.new(imageable_type: "User")
-    avatar.remote_file_url = @info.image.gsub("http","https")
+    avatar.remote_file_url = @provider.eql?("facebook") ? @info.image.gsub("http","https") : @info.image
     password = Devise.friendly_token[0, 20]
     user_params = {email: @info.email, password: password, password_confirmation: password,
                    name: splitted_name.first, surname: splitted_name.last, image: avatar}

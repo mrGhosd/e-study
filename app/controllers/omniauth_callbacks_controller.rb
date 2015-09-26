@@ -25,9 +25,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def vkontakte
-    @user = User.from_omniauth(request.env['omniauth.auth'])
-    if @user.persisted?
-      sign_in @user, event: :authentication
+    form = Form::Oauth.new(nil, request.env['omniauth.auth'])
+    if form.submit
+      sign_in form.user, event: :authentication
       redirect_to root_path
       set_flash_message(:notice, :success, kind: 'vkontakte') if is_navigational_format?
     else
