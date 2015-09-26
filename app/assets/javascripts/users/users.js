@@ -49,5 +49,14 @@ angular.module('estudy').factory('users', [ '$http', '$q', function($http, $q){
         return def.promise;
     };
 
+    object.resetPassword = function(email){
+        var def = $q.defer();
+        var params = {email: email};
+        $http.post('/users/generate_new_password_email.json', params).success(function(data){
+            def.resolve(data);
+        });
+        return def.promise;
+    };
+
     return object;
 }]);

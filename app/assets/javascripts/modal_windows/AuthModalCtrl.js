@@ -6,7 +6,8 @@ angular.module("estudy")
         '$modalInstance',
         'Auth',
         'currentTab',
-        function($scope, $state, $modal, $modalInstance, Auth, currentTab){
+        'users',
+        function($scope, $state, $modal, $modalInstance, Auth, currentTab, users){
             $scope.modalView = {};
             if(currentTab === 'reg'){
                 $scope.activeTabReg = true;
@@ -71,6 +72,8 @@ angular.module("estudy")
                         form = $scope.modalView.authForm;
                     } else if($scope.activeTabReg){
                         form = $scope.modalView.regForm;
+                    } else {
+                        form = $scope.modalView.restoreForm;
                     }
                     $scope.modalView.currentForm = form;
                 }
@@ -89,6 +92,12 @@ angular.module("estudy")
                     }
 
                 })
-            }
+            };
+
+            $scope.restorePassword = function(){
+                users.resetPassword($scope.modalView.restoreForm.email).then(function(data){
+                    $modalInstance.dismiss('cancel');
+                });
+            };
         }
     ]);

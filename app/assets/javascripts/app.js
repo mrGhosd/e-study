@@ -38,4 +38,6 @@ angular.module('estudy',
                 })
             $urlRouterProvider.otherwise('sign_in');
         }
-    ]);
+    ]).run(['$location', function($location){
+        console.log($location.$$absUrl.match("/users/password/edit"));
+    }]);
