@@ -7,7 +7,8 @@ angular.module('estudy',
      'ngFileUpload',
      'ngSanitize',
      'textAngular',
-     'StudentsRoutes'])
+     'StudentsRoutes',
+     'ChatsRouter'])
     .config([
         '$stateProvider',
         '$urlRouterProvider',
