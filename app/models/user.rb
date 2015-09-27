@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  belongs_to :chat, foreign_key: :owner_id
   has_one :image, as: :imageable, dependent: :destroy
   has_many :authorizations
 

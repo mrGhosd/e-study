@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150926080818) do
+ActiveRecord::Schema.define(version: 20150927142600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20150926080818) do
   add_index "authorizations", ["provider"], name: "index_authorizations_on_provider", using: :btree
   add_index "authorizations", ["uid"], name: "index_authorizations_on_uid", using: :btree
   add_index "authorizations", ["user_id"], name: "index_authorizations_on_user_id", using: :btree
+
+  create_table "chats", force: :cascade do |t|
+    t.integer  "owner_id",   null: false
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "chats", ["name"], name: "index_chats_on_name", using: :btree
+  add_index "chats", ["owner_id"], name: "index_chats_on_owner_id", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.integer  "imageable_id"
@@ -62,4 +72,5 @@ ActiveRecord::Schema.define(version: 20150926080818) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "chats", "users", column: "owner_id"
 end
