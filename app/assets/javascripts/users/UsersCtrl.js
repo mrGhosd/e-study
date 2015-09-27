@@ -7,6 +7,11 @@ angular.module("estudy")
         function($scope, $state, Auth, users){
             $scope.users = users.users;
 
+
+            $scope.createMessage = function(){
+
+            };
+
             $scope.search = function(){
               searchRequest($scope.searchField);
             };

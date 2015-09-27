@@ -13,6 +13,12 @@
             <div class="description" ng-bind-html="user.description">
             </div>
         </div>
+        <div class="writeMessage">
+            <form ng-submit="createMessage()">
+                <textarea ng-model="message"></textarea>
+                <input type="submit" class="btn btn-success" value="Send"/>
+            </form>
+        </div>
     </div>
 </div>
 
