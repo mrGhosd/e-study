@@ -5,6 +5,7 @@ angular.module("estudy")
         'Auth',
         'chats',
         function($scope, $state, Auth, chats){
-            $scope.chats = chats.chats;
+            console.log(chats);
+            $scope.chats = chats;
 
         }]);
