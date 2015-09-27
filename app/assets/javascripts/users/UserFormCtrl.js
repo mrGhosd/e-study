@@ -8,7 +8,7 @@ angular.module('estudy')
         'Upload',
         function($scope, $state, users, Auth, $filter, Upload){
             Auth.currentUser().then(function(user){
-                $scope.user = user;
+                $scope.user = user.user;
                 if($scope.user.hasOwnProperty("date_of_birth")){
                     $scope.user.date_of_birth = new Date($filter("date")(Date.now(), 'yyyy-MM-dd'));
                 }
@@ -28,9 +28,8 @@ angular.module('estudy')
                     },
                     description: user.description
                 }};
-                users.update(user.id, userParams).success(function(user){
-                    console.log(user);
-                    $state.go('user', {id: user.id});
+                users.update(user.id, userParams).success(function(data){
+                    $state.go('user', {id: data.user.id});
                 }).error(function(errors){
                     $scope.userForm.$submitted = true;
                     $scope.userForm.$errors = errors;

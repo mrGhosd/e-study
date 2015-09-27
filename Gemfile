@@ -32,6 +32,7 @@ gem 'omniauth-instagram'
 gem 'instagram'
 gem "letter_opener"
 gem 'letter_opener_web'
+gem 'active_model_serializers'
 
 group :development, :test do
   gem 'byebug'

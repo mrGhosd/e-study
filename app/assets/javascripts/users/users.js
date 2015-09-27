@@ -8,8 +8,8 @@ angular.module('estudy').factory('users', [ '$http', '$q', function($http, $q){
         var def = $q.defer();
         $http.get('/users.json').success(function(data){
             var newUsers = [];
-            for(var i = 0; i < data.length; i++){
-                var user = new User(data[i]);
+            for(var i = 0; i < data.users.length; i++){
+                var user = new User(data.users[i]);
                 newUsers.push(user);
             }
             def.resolve(newUsers);
@@ -25,7 +25,7 @@ angular.module('estudy').factory('users', [ '$http', '$q', function($http, $q){
     object.get = function(id){
         var def = $q.defer();
         $http.get('/users/' + id + '.json').then(function(res){
-            def.resolve(new User(res.data));
+            def.resolve(new User(res.data.user));
         });
         return def.promise;
     };
