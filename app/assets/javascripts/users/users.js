@@ -40,8 +40,8 @@ angular.module('estudy').factory('users', [ '$http', '$q', function($http, $q){
         params = {object: "user", query: query};
         $http.get('/search.json', {params: params}).success(function(data){
             var newUsers = [];
-            for(var i = 0; i < data.length; i++){
-                var user = new User(data[i]);
+            for(var i = 0; i < data.search.length; i++){
+                var user = new User(data.search[i]);
                 newUsers.push(user);
             }
             def.resolve(newUsers);
