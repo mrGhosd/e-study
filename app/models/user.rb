@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   has_one :image, as: :imageable, dependent: :destroy
   has_many :authorizations
 
+  has_many :user_chats
+  has_many :chats, through: :user_chats
+
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'true' do
       indexes :surname, type: :string
