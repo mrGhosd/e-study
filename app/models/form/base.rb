@@ -20,8 +20,8 @@ class Form::Base
     @object.assign_attributes(attributes)
     ActiveRecord::Base.with_advisory_lock(@object.class.to_s) do
       ActiveRecord::Base.transaction do
-        @object.save!
         block.call if block_given?
+        @object.save!
       end
     end
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150927152545) do
+ActiveRecord::Schema.define(version: 20150927165750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,10 +29,11 @@ ActiveRecord::Schema.define(version: 20150927152545) do
   add_index "authorizations", ["user_id"], name: "index_authorizations_on_user_id", using: :btree
 
   create_table "chats", force: :cascade do |t|
-    t.integer  "owner_id",   null: false
+    t.integer  "owner_id",                  null: false
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "private",    default: true
   end
 
   add_index "chats", ["name"], name: "index_chats_on_name", using: :btree
@@ -48,6 +49,17 @@ ActiveRecord::Schema.define(version: 20150927152545) do
 
   add_index "images", ["imageable_id"], name: "index_images_on_imageable_id", using: :btree
   add_index "images", ["imageable_type"], name: "index_images_on_imageable_type", using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "chat_id",    null: false
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["chat_id"], name: "index_messages_on_chat_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "user_chats", force: :cascade do |t|
     t.integer  "user_id"

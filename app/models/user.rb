@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :user_chats
   has_many :chats, through: :user_chats
 
+  has_many :messages
+
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'true' do
       indexes :surname, type: :string
