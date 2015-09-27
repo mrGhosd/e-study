@@ -28,4 +28,17 @@ angular.module('ChatsRouter',
                     requestType: function(){ return "POST"; }
                 }
             })
+            .state('chat', {
+                url: '/chats/:id',
+                templateUrl: 'chats/_chat.html',
+                controller: 'ChatCtrl',
+                resolve: {
+                    chat: ['chats', '$stateParams', function(chats, $stateParams){
+                        return chats.get($stateParams.id);
+                    }],
+                    currentUser: ['Auth', function(Auth){
+                       return Auth.currentUser();
+                    }]
+                }
+            })
     });

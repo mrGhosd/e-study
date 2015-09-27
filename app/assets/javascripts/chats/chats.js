@@ -22,5 +22,13 @@ angular.module('estudy').factory('chats', [ '$http', '$q', function($http, $q){
             object.chats.push(data.chat);
         });
     };
+
+    object.get = function(id){
+        var def = $q.defer();
+        $http.get('/chats/' + id + '.json').then(function(res){
+            def.resolve(new Chat(res.data.chat));
+        });
+        return def.promise;
+    };
     return object;
 }]);
