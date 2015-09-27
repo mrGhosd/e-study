@@ -58,5 +58,11 @@ angular.module('estudy').factory('users', [ '$http', '$q', function($http, $q){
         return def.promise;
     };
 
+    object.changePassword = function(params){
+        return $http.post('/users/reset_password.json', params).success(function(res){
+           return res.data;
+        });
+    };
+
     return object;
 }]);

@@ -27,7 +27,15 @@ class UsersController < ApplicationController
     else
       render json: {success: false}.as_json, status: :unprocessable_entity
     end
+  end
 
+  def reset_password
+    user = User.reset_password_by_token(params[:user])
+    if user.errors.blank?
+      render json: user.as_json, status: :ok
+    else
+      render json: user.errors.as_json, status: :unprocessable_entity
+    end
   end
 
   private

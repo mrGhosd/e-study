@@ -10,3 +10,5 @@ en:
   sign_out: "Sign out"
   add_email: "Insert email"
   send: "Send"
+  cancel: "Cancel"
+  change_password: "Change password"

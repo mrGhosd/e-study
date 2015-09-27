@@ -1,6 +1,6 @@
 ru:
   auth:
-    sign_in: "Логин"
+    sign_in: "Войти"
     sign_up: "Регистрация"
     email: "Электронная почта"
     password: "Пароль"
@@ -9,3 +9,5 @@ ru:
     sign_out: "Выйти"
     add_email: "Введите электронную почту"
     send: "Отправить"
+    cancel: "Отмена"
+    change_password: "Изменить пароль"

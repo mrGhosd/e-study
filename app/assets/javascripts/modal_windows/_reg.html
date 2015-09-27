@@ -36,8 +36,8 @@
             </div>
         </div>
         <div class="form-actions pull-right col-md-5">
-            <input type="submit" class="btn btn-primary" value="Sign up" ng-disabled="!modalView.regForm.$valid">
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+            <input type="submit" class="btn btn-primary" value="{{'auth.sign_up' | translate}}" ng-disabled="!modalView.regForm.$valid">
+            <button class="btn btn-warning" type="button" ng-click="cancel()">{{'auth.cancel' | translate}}</button>
         </div>
     </fieldset>
 </form>

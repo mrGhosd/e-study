@@ -13,8 +13,8 @@
             </div>
         </div>
         <div class="form-actions pull-right col-md-5">
-            <input type="submit" class="btn btn-primary" value="Sign in" ng-disabled="!modalView.authForm.$valid">
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+            <input type="submit" class="btn btn-primary" value="{{'auth.sign_in' | translate}}" ng-disabled="!modalView.authForm.$valid">
+            <button class="btn btn-warning" type="button" ng-click="cancel()">{{'auth.cancel' | translate}}</button>
         </div>
 
         <div ng-if="modalView.authForm.$submitted && modalView.authForm.$errors" class="pull-right error">

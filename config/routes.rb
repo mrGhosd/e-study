@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   get '/search', to: 'search#search'
   root to: "application#main"
   resources :users do
-    post :generate_new_password_email, on: :collection
+    collection do
+      post :generate_new_password_email
+      post :reset_password
+    end
   end
   resources :images, only: :create
 end
