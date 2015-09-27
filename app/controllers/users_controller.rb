@@ -32,19 +32,14 @@ class UsersController < ApplicationController
   def reset_password
     user = User.reset_password_by_token(params[:user])
     if user.errors.blank?
-      render json: user.as_json, status: :ok
+      render json: user, status: :ok
     else
-      render json: user.errors.as_json, status: :unprocessable_entity
+      render json: user.errors, status: :unprocessable_entity
     end
   end
 
   private
   def load_user
     @user = User.find(params[:id])
-  end
-
-  def user_params
-    params.require(:user).permit(:surname, :name, :email, :secondname,
-    :date_of_birth, image_attributes: [:id, :imageable_id, :imageable_type])
   end
 end
