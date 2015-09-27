@@ -17,4 +17,15 @@ angular.module('ChatsRouter',
                     }]
                 }
             })
+            .state('create_chat', {
+                url: '/chats/new',
+                templateUrl: 'chats/_form.html',
+                controller: 'ChatsFormCtrl',
+                resolve: {
+                    chatOwner: ['Auth', function(Auth){
+                        return Auth.currentUser();
+                    }],
+                    requestType: function(){ return "POST"; }
+                }
+            })
     });
