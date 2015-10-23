@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::V0::UsersController < ApiController
   before_action :load_user, only: [:update, :show]
 
   def index
