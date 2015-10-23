@@ -1,6 +1,5 @@
 Rails.application.routes.default_url_options[:host] = 'http://localhost:3000' if Rails.env == "development"
 Rails.application.routes.draw do
-  devise_for :users, controllers: {omniauth_callbacks: 'omniauth_callbacks'}
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

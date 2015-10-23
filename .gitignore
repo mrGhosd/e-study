@@ -13,3 +13,4 @@
 /tmp
 /.idea
 /public/uploads
+/db/schema.rb

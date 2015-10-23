@@ -43,7 +43,6 @@ GEM
     angular_rails_csrf (1.0.3)
       rails (>= 3, < 5)
     arel (6.0.2)
-    bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -64,13 +63,6 @@ GEM
     coffee-script-source (1.9.1.1)
     columnize (0.9.0)
     debug_inspector (0.0.2)
-    devise (3.4.1)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
-      responders
-      thread_safe (~> 0.1)
-      warden (~> 1.2.3)
     elasticsearch (1.0.12)
       elasticsearch-api (= 1.0.12)
       elasticsearch-transport (= 1.0.12)
@@ -159,7 +151,6 @@ GEM
       multi_json
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.1)
-    orm_adapter (0.5.0)
     pg (0.18.2)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -232,8 +223,6 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    warden (1.2.3)
-      rack (>= 1.0)
     web-console (2.2.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -253,7 +242,6 @@ DEPENDENCIES
   byebug
   carrierwave
   coffee-rails (~> 4.1.0)
-  devise (~> 3.4.0)
   elasticsearch-model
   elasticsearch-rails
   font-awesome-sass
