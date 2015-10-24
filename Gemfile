@@ -15,7 +15,7 @@ gem 'angular_rails_csrf'
 gem 'pry-rails'
 gem 'with_advisory_lock'
 gem 'tainbox'
-gem 'font-awesome-sass'
+gem 'bcrypt-ruby'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem "i18n-js", ">= 3.0.0.rc8"
@@ -36,6 +36,16 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+  gem 'faker', '~> 1.1.2'
+  gem 'launchy'
+  gem 'database_cleaner', '~> 1.0.1'
+  gem 'json_spec'
 end
 
 source 'https://rails-assets.org' do

@@ -1,9 +1,6 @@
 require 'elasticsearch/model'
 
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
-         omniauth_providers: [:facebook, :twitter, :vkontakte, :instagram]
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
@@ -15,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :chats, through: :user_chats
 
   has_many :messages
+
+  has_secure_password
 
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'true' do

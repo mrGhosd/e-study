@@ -6,6 +6,15 @@ class Api::V0::UsersController < ApiController
     render json: users
   end
 
+  def create
+    form = Form::Registration.new(User.new, params[:user])
+    if form.submit
+      render json: form.object
+    else
+      render json: form.errors
+    end
+  end
+
   def show
     render json: @user
   end
