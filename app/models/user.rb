@@ -54,10 +54,6 @@ class User < ActiveRecord::Base
     self.image = Image.find(attrs["imageable_id"]) if attrs["imageable_id"].present?
   end
 
-  def as_json(params = {})
-    super({methods: [:image]}.merge(params))
-  end
-
   def create_authorization(auth)
     self.authorizations.create(provider: auth.provider, uid: auth.uid.to_s)
   end
