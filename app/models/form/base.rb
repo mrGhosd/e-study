@@ -1,6 +1,8 @@
 class Form::Base
   include Tainbox
   include ActiveModel::Validations
+  include ActiveModel::Conversion
+  extend ActiveModel::Naming
   attr_reader :object
 
   delegate :persisted?, to: :object
