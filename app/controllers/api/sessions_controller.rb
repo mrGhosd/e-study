@@ -4,13 +4,24 @@ class Api::SessionsController < Api::ApiController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       sign_in user
-      render json: user
+      render json: { user: user, remember_token: user.remember_token }
     else
       render json: user.errors
     end
   end
 
-  def destroy
+  def current
+    user = User.find_by(remember_token: params[:session])
+    if user
+      render json: user
+    else
+      render nothing: true, status: :unauthorized
+    end
 
+  end
+
+  def destroy
+    sign_out
+    render nothing: true, status: :ok
   end
 end
