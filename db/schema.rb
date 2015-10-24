@@ -77,11 +77,14 @@ ActiveRecord::Schema.define(version: 20150927165750) do
     t.string   "last_name"
     t.string   "middle_name"
     t.string   "password_digest", null: false
+    t.datetime "date_of_birth"
+    t.text     "description"
     t.string   "remember_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "users", ["date_of_birth"], name: "index_users_on_date_of_birth", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["password_digest"], name: "index_users_on_password_digest", using: :btree
 

@@ -6,6 +6,8 @@ class AddDataToUser < ActiveRecord::Migration
       t.string :last_name
       t.string :middle_name
       t.string :password_digest, index: true, null: false
+      t.datetime :date_of_birth, index: true
+      t.text :description
       t.string :remember_token
       t.timestamps
     end

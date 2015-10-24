@@ -9,6 +9,11 @@ class Form::Registration < Form::Base
   validates_confirmation_of :password, if: lambda { |m| m.password.present? }
 
   def submit
-    super
+    begin
+      super
+    rescue ActiveRecord::RecordNotUnique
+      errors.add(:email, 'person with this email already exists')
+      false
+    end
   end
 end
