@@ -6,7 +6,7 @@ class Api::SessionsController < Api::ApiController
       sign_in user
       render json: { user: user, remember_token: user.remember_token }
     else
-      render json: user.errors
+      render json: {email: 'There is no such user'}, status: :unauthorized
     end
   end
 
