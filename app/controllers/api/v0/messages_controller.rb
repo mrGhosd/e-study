@@ -1,4 +1,4 @@
-class Api::V0::MessagesController < ApiController
+class Api::V0::MessagesController < Api::ApiController
   def create
     form = Form::Message.new(Message.new, params[:message])
     if form.submit
