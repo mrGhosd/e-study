@@ -1,4 +1,4 @@
-class Api::V0::ImagesController < ApiController
+class Api::V0::ImagesController < Api::ApiController
   def create
     image = Image.new(image_params)
     if image.save

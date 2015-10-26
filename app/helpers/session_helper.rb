@@ -6,12 +6,20 @@ module SessionHelper
     self.current_user = user
   end
 
+  def auth_token=(token)
+    @auth_token = token
+  end
+
+  def auth_token
+    @auth_token = request.headers['estudyauthtoken']
+  end
+
   def current_user=(user)
     @current_user = user
   end
 
   def current_user
-    @current_user ||= User.find_by(remember_token: params[:remember_token])
+    @current_user ||= User.find_by(remember_token: auth_token)
   end
 
   def signed_in?

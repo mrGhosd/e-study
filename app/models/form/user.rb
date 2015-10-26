@@ -1,13 +1,13 @@
 class Form::User < Form::Base
   attribute :email, String
-  attribute :surname, String
-  attribute :name, String
-  attribute :secondname, String
+  attribute :last_name, String
+  attribute :first_name, String
+  attribute :middle_name, String
   attribute :date_of_birth, Time
   attribute :description, String
   attribute :image
 
-  validates :surname, :name, :secondname, :date_of_birth, presence: true
+  validates :last_name, :first_name, :middle_name, :date_of_birth, presence: true
   validates_format_of :email, with: /.+@.+\..+/
 
   def image=(image)
