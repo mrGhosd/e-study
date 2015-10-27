@@ -15,7 +15,7 @@ class Api::SessionsController < Api::ApiController
     if user
       render json: user
     else
-      render nothing: true, status: :unauthorized
+      render json: {user: nil}, status: :unauthorized
     end
 
   end
