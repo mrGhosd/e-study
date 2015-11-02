@@ -10,6 +10,7 @@ class Api::SessionsController < Api::ApiController
     end
   end
 
+
   def current
     user = User.find_by(remember_token: auth_token)
     if user

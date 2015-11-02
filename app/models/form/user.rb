@@ -7,7 +7,7 @@ class Form::User < Form::Base
   attribute :description, String
   attribute :image
 
-  validates :last_name, :first_name, :middle_name, :date_of_birth, presence: true
+  validates :last_name, :first_name, :middle_name, :date_of_birth, :email, presence: true
   validates_format_of :email, with: /.+@.+\..+/
 
   def image=(image)
