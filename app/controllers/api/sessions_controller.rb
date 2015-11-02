@@ -1,10 +1,12 @@
 class Api::SessionsController < Api::ApiController
+  before_action :validate_token, only: [:current, :destroy]
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      sign_in user
-      render json: { user: user, remember_token: user.remember_token }
+      token = create_token(user)
+      sign_in user, token
+      render json: { remember_token: create_token(user) }
     else
       render json: {email: 'There is no such user'}, status: :unauthorized
     end
@@ -12,9 +14,8 @@ class Api::SessionsController < Api::ApiController
 
 
   def current
-    user = User.find_by(remember_token: auth_token)
-    if user
-      render json: user
+    if current_user
+      render json: current_user
     else
       render json: {user: nil}, status: :unauthorized
     end
@@ -24,5 +25,12 @@ class Api::SessionsController < Api::ApiController
   def destroy
     sign_out
     render nothing: true, status: :ok
+  end
+
+  private
+
+  def create_token(user)
+    secret = 'secret'
+    JWT.encode(user, secret)
   end
 end

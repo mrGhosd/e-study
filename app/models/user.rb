@@ -66,6 +66,10 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def self.find_by_jwt_token(token)
+    find(JWT.decode(token, 'secret').first["id"]) if token
+  end
+
   private
 
   def create_remember_token
