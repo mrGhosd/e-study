@@ -32,17 +32,18 @@ gem "letter_opener"
 gem 'letter_opener_web'
 gem 'active_model_serializers'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'spring-commands-rspec', group: :development
 
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
-end
-
-group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+end
+
+group :test do
   gem 'faker', '~> 1.1.2'
   gem 'launchy'
   gem 'database_cleaner', '~> 1.0.1'
