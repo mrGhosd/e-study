@@ -1,5 +1,6 @@
 class Api::V0::UsersController < Api::ApiController
   before_action :load_user, only: [:update, :show]
+  before_action :validate_token, only: [:update]
 
   def index
     users = User.all

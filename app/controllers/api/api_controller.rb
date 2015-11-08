@@ -8,7 +8,7 @@ class Api::ApiController < ApplicationController
     begin
       JWT.decode(auth_token, secret)
       current_user = User.find_by_jwt_token(auth_token)
-    rescue JWT::DecodeError
+    rescue
       head :unauthorized
     end
   end

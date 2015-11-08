@@ -31,6 +31,6 @@ class Api::SessionsController < Api::ApiController
 
   def create_token(user)
     secret = 'secret'
-    JWT.encode(user, secret)
+    JWT.encode(user.attributes, secret)
   end
 end
