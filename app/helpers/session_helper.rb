@@ -1,10 +1,4 @@
 module SessionHelper
-  def sign_in(user, token)
-    remember_token = User.new_remember_token
-    cookies.permanent[:remember_token] = token
-    user.update_attribute(:remember_token, token)
-    self.current_user = user
-  end
 
   def auth_token=(token)
     @auth_token = token
@@ -27,8 +21,12 @@ module SessionHelper
   end
 
   def sign_out
-    current_user.update_attribute(:remember_token, User.encrypt(User.new_remember_token))
-    cookies.delete(:remember_token)
     self.current_user = nil
+  end
+
+  def create_token(user)
+    secret = 'secret'
+    self.current_user = user
+    JWT.encode(user.attributes, secret)
   end
 end
