@@ -2,8 +2,9 @@ require 'rails_helper'
 
 describe Api::SessionsController, type: :controller do
   describe "POST #create" do
+    let!(:user) { create :user }
+
     context "with valid attributes" do
-      let!(:user) { create :user }
       let!(:access_token) { Digest::SHA1.hexdigest(SecureRandom.urlsafe_base64) }
 
       context "check remember token" do
@@ -30,10 +31,24 @@ describe Api::SessionsController, type: :controller do
           expect(cypher_user["id"]).to eq(user.id)
         end
       end
+
+      context "current user" do
+        before { post :create, session: {email: user.email, password: user.password }, format: :json }
+      end
     end
 
     context "wtih invalid attributes" do
+      context "remember token decoding failed" do
+        before do
+          allow(JWT).to receive(:encode).and_raise("unauthorized error")
+        end
 
+        it "return 401 status" do
+          expect {
+            post :create, session: {email: user.email, password: user.password }, format: :json
+          }.to raise_error("unauthorized error")
+        end
+      end
     end
   end
 end

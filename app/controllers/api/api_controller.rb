@@ -7,7 +7,7 @@ class Api::ApiController < ApplicationController
     secret = 'secret'
     begin
       JWT.decode(auth_token, secret)
-      current_user = User.find_by_jwt_token(auth_token)
+      current_user = User.find_by_jwt_token(auth_token) if current_user.blank?
     rescue
       head :unauthorized
     end
