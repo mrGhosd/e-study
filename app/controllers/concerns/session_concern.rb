@@ -1,5 +1,4 @@
-module SessionHelper
-
+module SessionConcern
   def auth_token=(token)
     @auth_token = token
   end
@@ -22,11 +21,5 @@ module SessionHelper
 
   def sign_out
     self.current_user = nil
-  end
-
-  def create_token(user)
-    secret = 'secret'
-    self.current_user = user
-    JWT.encode(user.attributes, secret)
   end
 end

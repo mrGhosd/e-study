@@ -27,7 +27,7 @@ describe Api::SessionsController, type: :controller do
 
         it "cypher user data in token" do
           token = JSON.parse(response.body)["remember_token"]
-          cypher_user = JWT.decode(token, 'secret').first
+          cypher_user = JWT.decode(token, Rails.application.secrets.jwt_secret).first
           expect(cypher_user["id"]).to eq(user.id)
         end
       end

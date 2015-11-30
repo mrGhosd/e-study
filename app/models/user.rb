@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_by_jwt_token(token)
-    find(JWT.decode(token, 'secret').first["id"]) if token
+    find(JWT.decode(token, nil, false).first["id"]) if token
   end
 
   private

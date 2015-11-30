@@ -4,7 +4,7 @@ class Api::SessionsController < Api::ApiController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      render json: { remember_token: create_token(user) }
+      render json: { remember_token: generate_token_for_user(user) }
     else
       render json: {email: 'There is no such user'}, status: :unauthorized
     end

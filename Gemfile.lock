@@ -106,8 +106,6 @@ GEM
       multi_json (~> 1.0)
       rspec (>= 2.0, < 4.0)
     jwt (1.5.1)
-    jwt-rb (0.0.2)
-      hashie
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.4.1)
@@ -277,7 +275,7 @@ DEPENDENCIES
   instagram
   jbuilder (~> 2.0)
   json_spec
-  jwt-rb
+  jwt
   launchy
   letter_opener
   letter_opener_web
