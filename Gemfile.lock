@@ -40,8 +40,6 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
-    angular_rails_csrf (1.0.3)
-      rails (>= 3, < 5)
     arel (6.0.2)
     bcrypt (3.1.10)
     bcrypt-ruby (3.1.5)
@@ -266,7 +264,6 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
-  angular_rails_csrf
   bcrypt-ruby
   bundler
   carrierwave
