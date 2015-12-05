@@ -8,8 +8,6 @@ class Form::Registration < Form::Base
   validates :password, length: { minimum: 6 }
   validates_confirmation_of :password, if: lambda { |m| m.password.present? }
 
-  include SessionHelper
-
   def email=(attr)
     super(attr.downcase)
   end
