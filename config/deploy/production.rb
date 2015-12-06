@@ -14,7 +14,8 @@ server '188.226.234.24', user: 'deploy', roles: %w{web app db}
 set :ssh_options, {
    keys: %w(/Users/vsokoltsov/.ssh/id_rsa),
    forward_agent: true,
-   auth_methods: %w(public_key password)
+   auth_methods: %w(public_key password),
+   port: 4321
  }
 # role-based syntax
 # ==================
