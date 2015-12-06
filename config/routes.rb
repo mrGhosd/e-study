@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
+  root to: "application#main"
+
   namespace :api do
     resources :registrations, only: :create
     resource :sessions, only: [:create, :destroy] do

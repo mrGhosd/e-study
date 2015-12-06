@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   # before_filter :authenticate_user!
 
   def main
-    render 'layouts/application'
+    render 'application/main'
   end
 
   private
