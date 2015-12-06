@@ -32,6 +32,8 @@ gem 'letter_opener_web'
 gem 'active_model_serializers'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'spring-commands-rspec', group: :development
+gem 'dotenv'
+gem 'dotenv-deployment', require: 'dotenv/deployment'
 
 group :development, :test do
   gem 'rspec-rails'

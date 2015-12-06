@@ -73,6 +73,9 @@ GEM
     colorize (0.7.7)
     database_cleaner (1.0.1)
     diff-lcs (1.2.5)
+    dotenv (1.0.2)
+    dotenv-deployment (0.3.0)
+      dotenv (~> 1.0)
     elasticsearch (1.0.12)
       elasticsearch-api (= 1.0.12)
       elasticsearch-transport (= 1.0.12)
@@ -290,6 +293,8 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.1.0)
   database_cleaner (~> 1.0.1)
+  dotenv
+  dotenv-deployment
   elasticsearch-model
   elasticsearch-rails
   factory_girl_rails
