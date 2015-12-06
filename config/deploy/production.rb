@@ -3,8 +3,8 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-role :app, %w{deploy@188.226.234.24}, my_property: :my_value
-role :web, %w{deploy@188.226.234.24}, other_property: :other_value
+role :app, %w{deploy@188.226.234.24}
+role :web, %w{deploy@188.226.234.24}
 role :db,  %w{deploy@188.226.234.24}
 
 set :rails_env, :production
@@ -12,7 +12,7 @@ set :rails_env, :production
 server '188.226.234.24', user: 'deploy', roles: %w{web app db}
 
 set :ssh_options, {
-   keys: %w(/Users/vsokoltsov/.ssh/id_rsa),
+   keys: %w(/Users/vsokoltsov/.ssh/id_rsa.pub),
    forward_agent: true,
    auth_methods: %w(public_key password),
    port: 4321
