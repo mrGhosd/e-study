@@ -34,6 +34,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'spring-commands-rspec', group: :development
 gem 'dotenv'
 gem 'dotenv-deployment', require: 'dotenv/deployment'
+gem 'therubyracer'
 
 group :development, :test do
   gem 'rspec-rails'
