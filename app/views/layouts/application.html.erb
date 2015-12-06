@@ -4,22 +4,19 @@
   <title>Estudy</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
   <%= csrf_meta_tags %>
   <script>
       I18n.defaultLocale = "<%= I18n.default_locale %>";
       I18n.locale = "<%= I18n.locale %>";
   </script>
 </head>
-<body ng-app="estudy">
-    <div ng-include="'application/_header.html'"></div>
-    <div class="container-fluid main-content">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar" ng-include="'navigation/_nav.html'"></div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <ui-view></ui-view>
-        </div>
+<body>
+  <div class="container-fluid main-content">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar" ng-include="'navigation/_nav.html'"></div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
       </div>
     </div>
+  </div>
 </body>
 </html>

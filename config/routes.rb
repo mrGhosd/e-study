@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     namespace :v0 do
 
       get '/search', to: 'search#search'
-      root to: "application#main"
       resources :users do
         collection do
           post :generate_new_password_email
