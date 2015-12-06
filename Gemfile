@@ -46,6 +46,9 @@ group :test do
   gem 'json_spec'
 end
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-kube-framework'
+group :development do
+  gem 'capistrano', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rvm', require: false
 end
