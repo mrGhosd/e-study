@@ -1,4 +1,4 @@
-class Api::V0::ChatsController < ApiController
+class Api::V0::ChatsController < Api::ApiController
   def index
     chats = Chat.all
     render json: chats
