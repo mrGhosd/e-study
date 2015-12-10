@@ -18,9 +18,13 @@ Rails.application.routes.draw do
           post :generate_new_password_email
           post :reset_password
         end
+
+        member do
+          resources :chats
+        end
       end
       resources :images, only: :create
-      resources :chats
+
       resources :messages, only: :create
 
     end
