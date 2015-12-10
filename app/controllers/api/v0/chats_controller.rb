@@ -1,8 +1,8 @@
 class Api::V0::ChatsController < Api::ApiController
-  before_action :load_user
+  before_action :validate_token
 
   def index
-    chats = Chat.all
+    chats = current_user.chats
     render json: chats
   end
 
