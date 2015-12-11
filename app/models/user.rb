@@ -3,8 +3,6 @@ require 'elasticsearch/model'
 class User < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
-
-  has_many :chats, foreign_key: :owner_id
   has_one :image, as: :imageable, dependent: :destroy
   has_many :authorizations
 

@@ -1,12 +1,16 @@
 class Form::Chat < Form::Base
-  attribute :name
-  attribute :owner_id
+  attr_accessor :users
 
-  validates :owner_id, presence: true
+  def attributes=(attrs)
+    super(attrs)
+    @users = attrs["users"]
+  end
 
   def submit
     super do
-      @object.user_chats.create!(user_id: @owner_id)
+      @users.each do |user|
+        self.object.users << User.find(user)
+      end
     end
   end
 end
