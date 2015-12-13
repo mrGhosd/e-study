@@ -9,7 +9,7 @@ class Api::V0::ChatsController < Api::ApiController
 
   def show
     chat = current_user.chats.find(params[:id])
-    render json: chat
+    render json: chat, serializer: ChatsSerializer
   end
 
   def create

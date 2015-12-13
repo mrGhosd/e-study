@@ -1,7 +1,6 @@
 class ChatsSerializer < ActiveModel::Serializer
-  attributes :id, :created_at, :users, :updated_at
+  attributes :id, :created_at, :updated_at
 
-  def users
-    object.users.as_json(methods: :image)
-  end
+  has_many :users
+  has_many :messages
 end
