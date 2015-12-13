@@ -8,6 +8,8 @@ class Form::Message < Form::Base
   end
 
   def submit
-    super
+    super do
+      $redis.publish 'rtchange', MessageSerializer.new(@object).serializable_hash.to_json
+    end
   end
 end

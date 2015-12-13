@@ -35,6 +35,7 @@ gem 'spring-commands-rspec', group: :development
 gem 'dotenv'
 gem 'dotenv-deployment', require: 'dotenv/deployment'
 gem 'therubyracer'
+gem 'redis'
 
 group :development, :test do
   gem 'rspec-rails'
