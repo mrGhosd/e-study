@@ -3,4 +3,8 @@ class ChatsSerializer < ActiveModel::Serializer
 
   has_many :users
   has_many :messages
+
+  def messages
+    object.messages.last(20)
+  end
 end
