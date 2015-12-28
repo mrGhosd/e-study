@@ -20,6 +20,7 @@ Rails.application.routes.draw do
         end
       end
       resources :images, only: :create
+      resources :attaches, only: :create
       resources :chats
       resources :messages, only: :create
 
