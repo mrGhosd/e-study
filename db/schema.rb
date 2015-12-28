@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212114820) do
+ActiveRecord::Schema.define(version: 20151228174421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,16 +33,17 @@ ActiveRecord::Schema.define(version: 20151212114820) do
     t.datetime "updated_at"
   end
 
-  create_table "images", force: :cascade do |t|
-    t.integer  "imageable_id"
-    t.string   "imageable_type"
+  create_table "files", force: :cascade do |t|
+    t.integer  "fileable_id"
+    t.string   "fileable_type"
     t.string   "file"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
   end
 
-  add_index "images", ["imageable_id"], name: "index_images_on_imageable_id", using: :btree
-  add_index "images", ["imageable_type"], name: "index_images_on_imageable_type", using: :btree
+  add_index "files", ["fileable_id"], name: "index_files_on_fileable_id", using: :btree
+  add_index "files", ["fileable_type"], name: "index_files_on_fileable_type", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.integer  "user_id",    null: false
