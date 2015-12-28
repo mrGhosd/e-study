@@ -23,7 +23,7 @@ class Form::Base
     ActiveRecord::Base.with_advisory_lock(@object.class.to_s) do
       ActiveRecord::Base.transaction do
         @object.save!
-        block.call if block_given?
+        block_given? ? block.call : true
       end
     end
   end

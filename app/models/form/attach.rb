@@ -4,8 +4,10 @@ class Form::Attach < Form::Base
   attribute :attachable_type
   attribute :file
 
+  validates :type, :attachable_type, :file, presence: true
+
   def initialize(object, params = nil)
-    @object = object.constantize
+    @object = object.constantize.new
     self.attributes = params || @object.attributes
   end
 end

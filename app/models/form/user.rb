@@ -11,6 +11,6 @@ class Form::User < Form::Base
   validates_format_of :email, with: /.+@.+\..+/
 
   def image=(image)
-    super(Image.find_by(id: image["id"], imageable_type: @object.class.to_s))
+    super(Image.find_by(id: image["id"], attachable_type: @object.class.to_s))
   end
 end
