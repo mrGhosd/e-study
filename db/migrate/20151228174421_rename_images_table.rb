@@ -1,8 +1,8 @@
 class RenameImagesTable < ActiveRecord::Migration
   def change
-    rename_table :images, :files
-    add_column :files, :type, :string
-    rename_column :files, :imageable_id, :fileable_id
-    rename_column :files, :imageable_type, :fileable_type
+    rename_table :images, :attaches
+    add_column :attaches, :type, :string
+    rename_column :attaches, :imageable_id, :attachable_id
+    rename_column :attaches, :imageable_type, :attachable_type
   end
 end

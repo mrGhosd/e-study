@@ -3,7 +3,7 @@ require 'elasticsearch/model'
 class User < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
-  has_one :image, as: :imageable, dependent: :destroy
+  has_one :image, as: :attachable, dependent: :destroy
   has_many :authorizations
 
   has_many :user_chats

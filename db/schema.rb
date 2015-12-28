@@ -16,6 +16,18 @@ ActiveRecord::Schema.define(version: 20151228174421) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "attaches", force: :cascade do |t|
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+    t.string   "file"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "type"
+  end
+
+  add_index "attaches", ["attachable_id"], name: "index_attaches_on_attachable_id", using: :btree
+  add_index "attaches", ["attachable_type"], name: "index_attaches_on_attachable_type", using: :btree
+
   create_table "authorizations", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "provider"
@@ -32,18 +44,6 @@ ActiveRecord::Schema.define(version: 20151228174421) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "files", force: :cascade do |t|
-    t.integer  "fileable_id"
-    t.string   "fileable_type"
-    t.string   "file"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "type"
-  end
-
-  add_index "files", ["fileable_id"], name: "index_files_on_fileable_id", using: :btree
-  add_index "files", ["fileable_type"], name: "index_files_on_fileable_type", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.integer  "user_id",    null: false
