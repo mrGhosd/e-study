@@ -10,4 +10,8 @@ class Form::Attach < Form::Base
     @object = object.constantize.new
     self.attributes = params || @object.attributes
   end
+
+  def attributes=(attrs)
+    super(attrs)
+  end
 end

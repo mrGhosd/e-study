@@ -3,5 +3,5 @@ class MessageSerializer < ActiveModel::Serializer
 
   has_one :user
   has_one :chat
-  has_many :attaches
+  has_many :attaches, serializer: AttachesSerializer
 end

@@ -15,7 +15,7 @@ class Form::Message < Form::Base
     super do
       attaches.each do |attach|
         Attach.find_by(id: attach["data"]["id"], attachable_type: attach["data"]["attachable_type"])
-              .update(attachable_id: attach["data"]["id"])
+              .update(attachable_id: @object.id)
       end
       $redis.publish 'rtchange', MessageSerializer.new(@object).serializable_hash.to_json
     end
