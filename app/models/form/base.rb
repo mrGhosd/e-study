@@ -18,7 +18,6 @@ class Form::Base
 
   def submit(&block)
     return unless valid?
-
     @object.assign_attributes(attributes)
     ActiveRecord::Base.with_advisory_lock(@object.class.to_s) do
       ActiveRecord::Base.transaction do

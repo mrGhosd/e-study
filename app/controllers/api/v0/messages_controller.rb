@@ -7,7 +7,7 @@ class Api::V0::MessagesController < Api::ApiController
     if form.submit
       render json: form.object, serializer: MessageSerializer
     else
-      render json: form.object.errors.as_json
+      render json: form.object.errors.as_json, status: :unprocessable_entity
     end
   end
 
