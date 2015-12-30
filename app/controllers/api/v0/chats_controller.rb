@@ -21,6 +21,14 @@ class Api::V0::ChatsController < Api::ApiController
     end
   end
 
+  def destroy
+    if current_user.user_chats.find_by(chat_id: params[:id]).destroy
+      render json: {success: true}
+    else
+      render json: {success: false}
+    end
+  end
+
   private
 
   def add_current_user_to_chat
