@@ -1,14 +1,13 @@
 class Api::V0::ChatsController < Api::ApiController
   before_action :validate_token
-  before_action :add_current_user_to_chat, only: :create
 
   def index
-    chats = current_user.chats
+    chats = current_user.chats.active
     render json: chats, each_serializer: ChatsSerializer
   end
 
   def show
-    chat = current_user.chats.find(params[:id])
+    chat = current_user.chats.active.find(params[:id])
     render json: chat, serializer: ChatsSerializer
   end
 
@@ -22,16 +21,11 @@ class Api::V0::ChatsController < Api::ApiController
   end
 
   def destroy
-    if current_user.user_chats.find_by(chat_id: params[:id]).destroy
-      render json: {success: true}
+    user_chat = current_user.user_chats.find_by(chat_id: params[:id])
+    if user_chat.update(active: false)
+      render json: {user_chat: user_chat}
     else
-      render json: {success: false}
+      render json: {user_chat: user_chat.errors}
     end
-  end
-
-  private
-
-  def add_current_user_to_chat
-    params[:chat][:users] << current_user.id
   end
 end
