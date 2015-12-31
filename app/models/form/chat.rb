@@ -1,13 +1,12 @@
 class Form::Chat < Form::Base
-  attr_accessor :users
+  attr_accessor :users, :message
 
-  def initialize(object, params = nil)
-    super(object, params)
-  end
+  validate :message_exists?
 
   def attributes=(attrs)
     super(attrs)
     @users = attrs["users"]
+    @message = attrs["message"]
     user_chat = UserChat.where(user_id: attrs["users"], active: false).first
     if user_chat
       user_chat.update(active: true)
@@ -21,6 +20,16 @@ class Form::Chat < Form::Base
         user_chat = UserChat.find_by(chat_id: @object.id, user_id: user)
         self.object.users << User.find(user) if user_chat.blank?
       end
+      Message.create!(chat_id: @object.id, user_id: @users.last, text: @message)
+    end
+  end
+
+  private
+
+  def message_exists?
+    if @message.blank?
+      errors.add(:message, "Message text can't be empty")
+      false
     end
   end
 end
