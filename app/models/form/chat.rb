@@ -11,7 +11,7 @@ class Form::Chat < Form::Base
     user_chat = UserChat.where(user_id: attrs["users"], active: false).first
     if user_chat
       user_chat.update(active: true)
-      @object = @user_chat.chat
+      @object = user_chat.chat
     end
   end
 
