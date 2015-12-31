@@ -14,7 +14,7 @@ class Api::V0::ChatsController < Api::ApiController
   def create
     form = Form::Chat.new(Chat.new, params[:chat])
     if form.submit
-      render json: form.object
+      render json: form.object, serializer: ChatsSerializer
     else
       render json: form.errors, status: :unprocessable_entity
     end
