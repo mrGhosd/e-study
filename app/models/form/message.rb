@@ -14,10 +14,10 @@ class Form::Message < Form::Base
 
   def submit
     super do
-      attaches.each do |attach|
-        Attach.find_by(id: attach["data"]["id"], attachable_type: attach["data"]["attachable_type"])
+      @attaches.each do |attach|
+        Attach.find_by(id: attach["id"], attachable_type: attach["attachable_type"])
               .update(attachable_id: @object.id)
-      end if attaches.present?
+      end if @attaches.present?
       write_message_to_redis
     end
   end
