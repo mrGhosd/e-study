@@ -18,9 +18,11 @@ class Form::Message < Form::Base
         Attach.find_by(id: attach["data"]["id"], attachable_type: attach["data"]["attachable_type"])
               .update(attachable_id: @object.id)
       end if attaches.present?
-      $redis.publish 'rtchange', {id: @object.chat.id, obj: MessageSerializer.new(@object).serializable_hash.to_json }.to_json
+      write_message_to_redis
     end
   end
+
+  private
 
   def is_text_empty?
     if @attaches.blank? && text.blank?
@@ -40,5 +42,13 @@ class Form::Message < Form::Base
       chat_id = chat.id
     end
     self.chat_id = chat_id
+  end
+
+  def write_message_to_redis
+    chat_id = @object.chat.id
+    message = MessageSerializer.new(@object).serializable_hash.to_json
+    user_in_chat = @object.chat.users.map { |u| u.id }
+    $redis.publish 'rtchange', { chat_id: chat_id, action: 'chatmessage',
+      obj: message, chat_users: user_in_chat }.to_json
   end
 end
