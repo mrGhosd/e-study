@@ -5,12 +5,13 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    resources :registrations, only: :create
-    resource :sessions, only: [:create, :destroy] do
-      get :current
-    end
 
     namespace :v0 do
+
+      resources :registrations, only: :create
+      resource :sessions, only: [:create, :destroy] do
+        get :current
+      end
 
       get '/search', to: 'search#search'
       resources :users do

@@ -1,4 +1,4 @@
-class Api::SessionsController < Api::ApiController
+class Api::V0::SessionsController < Api::ApiController
   before_action :validate_token, only: [:current, :destroy]
 
   def create
