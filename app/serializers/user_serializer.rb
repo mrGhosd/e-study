@@ -3,5 +3,5 @@ class UserSerializer < ActiveModel::Serializer
   :email, :middle_name, :date_of_birth, :description,
   :created_at
 
-  has_one :image
+  has_one :image, serializer: AttachSerializer
 end
