@@ -20,7 +20,7 @@ class Form::Chat < Form::Base
         user_chat = UserChat.find_by(chat_id: @object.id, user_id: user)
         self.object.users << User.find(user) if user_chat.blank?
       end
-      Message.create!(chat_id: @object.id, user_id: @users.last, text: @message)
+      ::Message.create(chat_id: @object.id, user_id: @users.last, text: @message)
     end
   end
 
