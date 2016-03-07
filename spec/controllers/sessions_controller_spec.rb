@@ -1,16 +1,17 @@
 require 'rails_helper'
 
 describe Api::V0::SessionsController, type: :controller do
+
   describe "POST #create" do
     let!(:user) { create :user }
 
     context "with valid attributes" do
-      let!(:access_token) { Digest::SHA1.hexdigest(SecureRandom.urlsafe_base64) }
+      let!(:access_token) { generate_token_for_user(user) }
 
       context "check remember token" do
         before do
           allow(JWT).to receive(:encode).and_return(access_token)
-          post :create, session: {email: user.email, password: user.password }, format: :json
+          post :create, session: { email: user.email, password: user.password }, format: :json
         end
 
         it "response have a jwt token" do

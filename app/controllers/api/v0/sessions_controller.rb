@@ -2,14 +2,13 @@ class Api::V0::SessionsController < Api::ApiController
   before_action :validate_token, only: [:current, :destroy]
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      render json: { remember_token: generate_token_for_user(user) }
+    form = Form::Session.new(nil, params[:session])
+    if form.submit
+      render json: { remember_token: form.token }
     else
-      render json: {email: 'There is no such user'}, status: :unauthorized
+      render json: { email: 'There is no such user' }, status: :unauthorized
     end
   end
-
 
   def current
     if current_user
@@ -17,7 +16,6 @@ class Api::V0::SessionsController < Api::ApiController
     else
       render json: { user: nil }, status: :unauthorized
     end
-
   end
 
   def destroy
