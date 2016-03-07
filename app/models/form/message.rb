@@ -7,7 +7,7 @@ class Form::Message < Form::Base
   validate :is_text_empty?
 
   def attributes=(attrs)
-    super
+    super(attrs)
     find_or_create_chat(attrs) if @object.chat.blank?
     @attaches = attrs["attaches"]
   end
