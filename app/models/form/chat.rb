@@ -27,9 +27,6 @@ class Form::Chat < Form::Base
   private
 
   def message_exists?
-    if @message.blank?
-      errors.add(:message, "Message text can't be empty")
-      false
-    end
+    errors.add(:message, "Message text can't be empty") if @message.blank?
   end
 end
