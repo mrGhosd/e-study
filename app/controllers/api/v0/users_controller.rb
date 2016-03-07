@@ -33,9 +33,9 @@ class Api::V0::UsersController < Api::ApiController
     user = User.find_by(email: params[:email])
     if user
       user.send_reset_password_instructions
-      render json: {success: true}.as_json, status: :ok
+      render json: { success: true }.as_json, status: :ok
     else
-      render json: {success: false}.as_json, status: :unprocessable_entity
+      render json: { success: false }.as_json, status: :unprocessable_entity
     end
   end
 
@@ -49,6 +49,7 @@ class Api::V0::UsersController < Api::ApiController
   end
 
   private
+
   def load_user
     @user = User.find(params[:id])
   end

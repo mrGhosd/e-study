@@ -1,15 +1,11 @@
 module SessionConcern
-  def auth_token=(token)
-    @auth_token = token
-  end
+  attr_writer :auth_token
 
   def auth_token
     @auth_token = request.headers['estudyauthtoken']
   end
 
-  def current_user=(user)
-    @current_user = user
-  end
+  attr_writer :current_user
 
   def current_user
     @current_user ||= User.find_by_jwt_token(auth_token)

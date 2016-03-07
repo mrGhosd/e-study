@@ -23,9 +23,9 @@ class Api::V0::ChatsController < Api::ApiController
   def destroy
     user_chat = current_user.user_chats.find_by(chat_id: params[:id])
     if user_chat.update(active: false)
-      render json: {user_chat: user_chat}
+      render json: { user_chat: user_chat }
     else
-      render json: {user_chat: user_chat.errors}
+      render json: { user_chat: user_chat.errors }
     end
   end
 end

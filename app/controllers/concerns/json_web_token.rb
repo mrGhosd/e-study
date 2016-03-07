@@ -1,14 +1,13 @@
 module JsonWebToken
-
   def validate_token
-    begin
-      decoded_token = JWT.decode auth_token, nil, false
-      current_user = User.find_by_jwt_token(auth_token) if current_user.blank?
-    rescue JWT::DecodeError
-      head :unauthorized
-    rescue JWT::ExpiredSignature
-      head :unauthorized
-    end
+    current_user = User.find_by_jwt_token(auth_token) if current_user.blank?
+    raise ActiveRecord::RecordNotFound if current_user.blank?
+  rescue ActiveRecord::RecordNotFound
+    head :unauthorized
+  rescue JWT::DecodeError
+    head :unauthorized
+  rescue JWT::ExpiredSignature
+    head :unauthorized
   end
 
   def jwt_secret

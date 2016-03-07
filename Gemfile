@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.1'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -17,7 +16,7 @@ gem 'tainbox'
 gem 'bcrypt-ruby'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem "i18n-js", ">= 3.0.0.rc8"
+gem 'i18n-js', '>= 3.0.0.rc8'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'jwt'
@@ -27,10 +26,10 @@ gem 'omniauth-twitter'
 gem 'omniauth-vkontakte'
 gem 'omniauth-instagram'
 gem 'instagram'
-gem "letter_opener"
+gem 'letter_opener'
 gem 'letter_opener_web'
 gem 'active_model_serializers'
-gem 'rack-cors', :require => 'rack/cors'
+gem 'rack-cors', require: 'rack/cors'
 gem 'spring-commands-rspec', group: :development
 gem 'dotenv'
 gem 'dotenv-deployment', require: 'dotenv/deployment'
@@ -55,4 +54,5 @@ group :development do
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-rvm', require: false
+  gem 'rubocop', require: false
 end

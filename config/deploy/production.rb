@@ -3,20 +3,18 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-role :app, %w{deploy@188.226.234.24}
-role :web, %w{deploy@188.226.234.24}
-role :db,  %w{deploy@188.226.234.24}
+role :app, %w(deploy@188.226.234.24)
+role :web, %w(deploy@188.226.234.24)
+role :db,  %w(deploy@188.226.234.24)
 
 set :rails_env, :production
 
-server '188.226.234.24', user: 'deploy', roles: %w{web app db}, primary: true
+server '188.226.234.24', user: 'deploy', roles: %w(web app db), primary: true
 
-set :ssh_options, {
-   keys: %w(/Users/vsokoltsov/.ssh/id_rsa.pub),
-   forward_agent: true,
-   auth_methods: %w(publickey password),
-   port: 4321
- }
+set :ssh_options,    keys: %w(/Users/vsokoltsov/.ssh/id_rsa.pub),
+                     forward_agent: true,
+                     auth_methods: %w(publickey password),
+                     port: 4321
 # role-based syntax
 # ==================
 
@@ -25,7 +23,6 @@ set :ssh_options, {
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-
 # Configuration
 # =============
 # You can set any configuration variable like in config/deploy.rb
@@ -33,8 +30,6 @@ set :ssh_options, {
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
-
-
 
 # Custom SSH Options
 # ==================
