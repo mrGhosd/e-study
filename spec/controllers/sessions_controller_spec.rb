@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Api::SessionsController, type: :controller do
+describe Api::V0::SessionsController, type: :controller do
   describe "POST #create" do
     let!(:user) { create :user }
 

@@ -13,7 +13,7 @@ class Form::Message < Form::Base
   end
 
   def submit
-    super do
+    super @object.user.email do
       @attaches.each do |attach|
         Attach.find_by(id: attach["id"], attachable_type: attach["attachable_type"])
               .update(attachable_id: @object.id)

@@ -28,7 +28,6 @@ class User < ActiveRecord::Base
     return authorization.user if authorization
     email = auth.info.email
     user = User.find_by email: email
-    binding.pry
     if user
       user.create_authorization(auth)
     else

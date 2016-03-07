@@ -16,10 +16,10 @@ class Form::Base
     object
   end
 
-  def submit(&block)
+  def submit(message = nil, &block)
     return unless valid?
     @object.assign_attributes(attributes)
-    ActiveRecord::Base.with_advisory_lock(@object.class.to_s) do
+    ActiveRecord::Base.with_advisory_lock(message ? message : @object.class.to_s) do
       ActiveRecord::Base.transaction do
         @object.save!
         block_given? ? block.call : true
