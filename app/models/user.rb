@@ -23,30 +23,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def image_attributes=(attrs)
-    self.image = Image.find(attrs['imageable_id']) if attrs['imageable_id'].present?
-  end
-
-  def create_authorization(auth)
-    authorizations.create(provider: auth.provider, uid: auth.uid.to_s)
-  end
-
-  def self.new_remember_token
-    SecureRandom.urlsafe_base64
-  end
-
-  def self.encrypt(token)
-    Digest::SHA1.hexdigest(token.to_s)
-  end
-
   def self.find_by_jwt_token(token)
     find(JWT.decode(token, nil, false).first['id']) if token
-  end
-
-  private
-
-  def create_remember_token
-    self.remember_token = User.encrypt(User.new_remember_token)
   end
 end
 # Delete the previous articles index in Elasticsearch
