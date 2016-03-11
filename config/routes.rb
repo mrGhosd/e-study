@@ -21,7 +21,6 @@ Rails.application.routes.draw do
           post :reset_password
         end
       end
-      resources :images, only: :create
       resources :attaches, only: :create
       resources :chats
       resources :messages, only: :create
