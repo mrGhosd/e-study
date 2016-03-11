@@ -12,6 +12,10 @@ class Api::V0::MessagesController < Api::ApiController
   end
 
   def prepare_new_message
-    @new_message = current_user.messages.build(chat_id: params[:message][:chat_id])
+    @new_message = build_message(params[:message]) if params[:message].present?
+  end
+
+  def build_message(message)
+    current_user.messages.build(chat_id: message[:chat_id])
   end
 end
