@@ -1,8 +1,10 @@
 module SessionConcern
+  TOKEN_NAME = 'estudyauthtoken'.freeze
+
   attr_writer :auth_token
 
   def auth_token
-    @auth_token = request.headers['estudyauthtoken']
+    @auth_token = request.headers[TOKEN_NAME]
   end
 
   attr_writer :current_user
