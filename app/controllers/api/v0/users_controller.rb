@@ -16,7 +16,7 @@ class Api::V0::UsersController < Api::ApiController
     if user.submit
       render json: user.object, status: :ok
     else
-      render json: user.object.errors, status: :unprocessable_entity
+      render json: user.errors, status: :unprocessable_entity
     end
   end
 
