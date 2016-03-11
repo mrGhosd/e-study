@@ -7,15 +7,6 @@ class Api::V0::UsersController < Api::ApiController
     render json: users
   end
 
-  def create
-    form = Form::Registration.new(User.new, params[:user])
-    if form.submit
-      render json: form.object
-    else
-      render json: form.errors
-    end
-  end
-
   def show
     render json: @user
   end
@@ -26,25 +17,6 @@ class Api::V0::UsersController < Api::ApiController
       render json: user.object, status: :ok
     else
       render json: user.object.errors, status: :unprocessable_entity
-    end
-  end
-
-  def generate_new_password_email
-    user = User.find_by(email: params[:email])
-    if user
-      user.send_reset_password_instructions
-      render json: { success: true }.as_json, status: :ok
-    else
-      render json: { success: false }.as_json, status: :unprocessable_entity
-    end
-  end
-
-  def reset_password
-    user = User.reset_password_by_token(params[:user])
-    if user.errors.blank?
-      render json: user, status: :ok
-    else
-      render json: user.errors, status: :unprocessable_entity
     end
   end
 
