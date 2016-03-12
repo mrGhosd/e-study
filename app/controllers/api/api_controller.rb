@@ -13,6 +13,6 @@ class Api::ApiController < ApplicationController
   end
 
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    I18n.locale = locale_token || I18n.default_locale
   end
 end
