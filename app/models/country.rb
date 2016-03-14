@@ -3,6 +3,13 @@ require 'elasticsearch/model'
 class Country < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+
+  settings index: { number_of_shards: 1 } do
+    mappings dynamic: 'true' do
+      indexes :name, type: :string
+      indexes :phone_code, type: :string
+    end
+  end
 end
 
 # Delete the previous articles index in Elasticsearch

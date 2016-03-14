@@ -15,10 +15,10 @@ class User < ActiveRecord::Base
 
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'true' do
-      indexes :surname, type: :string
-      indexes :name, type: :string
+      indexes :last_name, type: :string
+      indexes :first_name, type: :string
       indexes :email, type: :string
-      indexes :secondname, type: :string
+      indexes :middle_name, type: :string
       indexes :description, type: :string
     end
   end
