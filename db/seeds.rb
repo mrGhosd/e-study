@@ -1,6 +1,8 @@
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+
+url = URI.parse('https://restcountries.eu/rest/v1/all')
+req = Net::HTTP::Get.new(url.to_s)
+res = Net::HTTP.start(url.host, url.port, use_ssl: true) { |http| http.request(req) }
+countries_json = JSON.parse(res.body)
+countries_json.each do |country|
+  Country.create!(name: country['name'], phone_code: country['callingCodes'].first)
+end
