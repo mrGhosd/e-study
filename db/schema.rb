@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317194636) do
+ActiveRecord::Schema.define(version: 20160317195336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,18 +27,6 @@ ActiveRecord::Schema.define(version: 20160317194636) do
 
   add_index "attaches", ["attachable_id"], name: "index_attaches_on_attachable_id", using: :btree
   add_index "attaches", ["attachable_type"], name: "index_attaches_on_attachable_type", using: :btree
-
-  create_table "authorizations", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "authorizations", ["provider"], name: "index_authorizations_on_provider", using: :btree
-  add_index "authorizations", ["uid"], name: "index_authorizations_on_uid", using: :btree
-  add_index "authorizations", ["user_id"], name: "index_authorizations_on_user_id", using: :btree
 
   create_table "chats", force: :cascade do |t|
     t.datetime "created_at"

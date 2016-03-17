@@ -14,7 +14,7 @@ class Form::PhoneSettings < Form::Base
 
   def submit
     return unless valid?
-    ActiveRecord::Base.with_advisory_lock(phone) do
+    ActiveRecord::Base.with_advisory_lock('Auth') do
       ActiveRecord::Base.transaction do
         user = User.find_or_create_by(phone: phone)
       end
