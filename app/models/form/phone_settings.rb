@@ -20,4 +20,17 @@ class Form::PhoneSettings < Form::Base
       end
     end
   end
+
+  private
+
+  def generate_phone_token
+    account_sid = 'ACe39c6a9666430e68107a6221b6a6aec0'
+    auth_token = 'b58483b49e944e349dfd953149470141'
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client.messages.create(from: '+15054314056', to: '+79214438239', body: 'Hey there!')
+  end
+
+  def secret_code
+    Random.rand(10000..100000)
+  end
 end
