@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :registrations, only: :create
       resource :sessions, only: [:create, :destroy] do
         get :current
+        post :sms_code
       end
 
       get '/search', to: 'search#search'
