@@ -1,4 +1,6 @@
 class Form::PhoneAuth < Form::Base
+  attr_accessor :user
+
   attribute :phone_code
   attribute :country
   attribute :phone
@@ -16,9 +18,9 @@ class Form::PhoneAuth < Form::Base
     return unless valid?
     ActiveRecord::Base.with_advisory_lock('Auth') do
       ActiveRecord::Base.transaction do
-        user = User.find_or_create_by(phone: phone)
+        @user = User.find_or_create_by!(phone: phone)
         sms_code = secret_code
-        user.update(phone_code: sms_code)
+        @user.update(phone_code: sms_code)
         send_sms_with_code(sms_code)
       end
     end

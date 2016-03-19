@@ -11,8 +11,6 @@ class User < ActiveRecord::Base
 
   has_many :messages
 
-  has_secure_password
-
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'true' do
       indexes :last_name, type: :string

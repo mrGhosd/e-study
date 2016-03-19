@@ -21,9 +21,10 @@ class Api::V0::SessionsController < Api::ApiController
   def sms_code
     form = Form::PhoneAuth.new(nil, params[:auth])
     if form.submit
-      render json: { success: true }
+      render json: form.user, serializer: UserSerializer
     else
-      render json: form.errors, status: :unprocessable_entity
+      render json: generate_errors(form.errors),
+             status: :unprocessable_entity
     end
   end
 

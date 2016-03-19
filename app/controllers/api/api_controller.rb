@@ -1,6 +1,7 @@
 class Api::ApiController < ApplicationController
   include JsonWebToken
   include SessionConcern
+  include ErrorsConcern
   respond_to :json
 
   before_action :update_last_sign_in_time, if: -> { current_user.present? }
