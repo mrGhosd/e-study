@@ -19,11 +19,12 @@ class Api::V0::SessionsController < Api::ApiController
   end
 
   def sms_code
-    account_sid = 'ACe39c6a9666430e68107a6221b6a6aec0'
-    auth_token = 'b58483b49e944e349dfd953149470141'
-    @client = Twilio::REST::Client.new account_sid, auth_token
-    @client.messages.create(from: '+15054314056', to: '+79214438239', body: 'Hey there!')
-    render nothing: true
+    form = Form::PhoneAuth.new(nil, params[:auth])
+    if form.submit
+      render json: { success: true }
+    else
+      render json: form.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
