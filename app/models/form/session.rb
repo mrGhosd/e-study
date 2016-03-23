@@ -2,6 +2,7 @@ class Form::Session < Form::Base
   include PasswordValidation
   include EmailValidation
   include JsonWebToken
+  include AuthorizationConcern
 
   attr_accessor :token
   attribute :email
@@ -10,6 +11,7 @@ class Form::Session < Form::Base
   def attributes=(attrs)
     super(attrs)
     @user = User.find_by(email: email)
+    @auth.update(user_id: @user.id)
   end
 
   def submit
