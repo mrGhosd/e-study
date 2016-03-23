@@ -43,12 +43,6 @@ describe Api::V0::SessionsController, type: :controller do
           expect(cypher_user['id']).to eq(auth.id)
         end
       end
-
-      context 'current user' do
-        before do
-          post :create, session: user_attrs, format: :json
-        end
-      end
     end
 
     context 'wtih invalid attributes' do
