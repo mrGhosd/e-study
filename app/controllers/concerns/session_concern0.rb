@@ -13,7 +13,7 @@ module SessionConcern
   end
 
   def current_user
-    current_authorization.try(:user)
+    current_authorization.user
   end
 
   def current_authorization

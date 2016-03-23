@@ -2,10 +2,12 @@ require 'rails_helper'
 
 describe Form::Session do
   let!(:user) { create :user }
+  let!(:authorization) { create :authorization }
   let!(:user_attributes) do
     {
       email: user.email,
-      password: 'example12345'
+      password: 'example12345',
+      authorization: authorization.attributes
     }
   end
 
@@ -20,7 +22,7 @@ describe Form::Session do
 
       it 'encoded token equal to user' do
         form.submit
-        expect(User.find_by_jwt_token(form.token)).to eq(user)
+        expect(Authorization.find_by_jwt_token(form.token)).to eq(authorization)
       end
     end
 
@@ -40,7 +42,8 @@ describe Form::Session do
       let!(:user_attributes) do
         {
           email: user.email,
-          password: 'example'
+          password: 'example',
+          authorization: authorization.attributes
         }
       end
       let!(:form) { ::Form::Session.new(nil, user_attributes) }

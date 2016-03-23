@@ -11,7 +11,7 @@ class Form::Session < Form::Base
   def attributes=(attrs)
     super(attrs)
     @user = User.find_by(email: email)
-    @auth.update(user_id: @user.id)
+    @auth.update(user_id: @user.id) if @auth.present?
   end
 
   def submit
@@ -23,7 +23,7 @@ class Form::Session < Form::Base
 
   def authorization!
     if @user && @user.authenticate(password)
-      @token = generate_token_for_user(@user)
+      @token = generate_token_for_auth(@auth)
     else
       errors.add(:email, 'There is no such user')
     end

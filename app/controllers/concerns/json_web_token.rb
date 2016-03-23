@@ -4,8 +4,8 @@ module JsonWebToken
   TOKEN_EXPIRED = 'Authorization token expired'.freeze
 
   def validate_token
-    current_user = User.find_by_jwt_token(auth_token)
-    raise ActiveRecord::RecordNotFound if current_user.blank?
+    current_authorization = Authorization.find_by_jwt_token(auth_token)
+    raise ActiveRecord::RecordNotFound if current_authorization.blank?
   rescue ActiveRecord::RecordNotFound
     raise Api::Error.new(USER_NOT_FOUND, 404)
   rescue JWT::DecodeError
@@ -19,7 +19,7 @@ module JsonWebToken
   end
 
   def generate_token_for_auth(auth)
-    JWT.encode(auth.id, jwt_secret, 'HS256')
+    JWT.encode({ id: auth.id }, jwt_secret, 'HS256')
   end
 
   def generate_token_for_user(user)
