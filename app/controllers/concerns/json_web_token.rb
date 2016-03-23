@@ -1,13 +1,17 @@
 module JsonWebToken
+  USER_NOT_FOUND = 'User not found'.freeze
+  TOKEN_INVALID = 'Authorization token invalid'.freeze
+  TOKEN_EXPIRED = 'Authorization token expired'.freeze
+
   def validate_token
-    current_user = User.find_by_jwt_token(auth_token) if current_user.blank?
+    current_user = User.find_by_jwt_token(auth_token)
     raise ActiveRecord::RecordNotFound if current_user.blank?
   rescue ActiveRecord::RecordNotFound
-    head :unauthorized
+    raise Api::Error.new(USER_NOT_FOUND, 404)
   rescue JWT::DecodeError
-    head :unauthorized
+    raise Api::Error.new(TOKEN_INVALID, 401)
   rescue JWT::ExpiredSignature
-    head :unauthorized
+    raise Api::Error.new(TOKEN_EXPIRED, 401)
   end
 
   def jwt_secret
