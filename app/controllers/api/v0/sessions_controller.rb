@@ -4,7 +4,7 @@ class Api::V0::SessionsController < Api::ApiController
   def create
     form = Form::Session.new(nil, params[:session])
     if form.submit
-      render json: { remember_token: form.token }
+      render json: { token: form.token }
     else
       render json: { email: 'There is no such user' }, status: :unauthorized
     end
@@ -12,7 +12,7 @@ class Api::V0::SessionsController < Api::ApiController
 
   def current
     if current_user
-      render json: current_user
+      render json: current_user, serializer: UserSerializer
     else
       render json: { user: nil }, status: :unauthorized
     end
