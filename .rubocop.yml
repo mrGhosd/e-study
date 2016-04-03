@@ -48,3 +48,6 @@ Style/GlobalVars:
 
 Style/CommentAnnotation:
   Enabled: false
+
+Style/RescueModifier:
+  Enabled: false
