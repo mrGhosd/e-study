@@ -17,6 +17,9 @@ Rails.application.routes.draw do
       end
 
       get '/search', to: 'search#search'
+      get '/search/chats', to: 'search#chats'
+      get '/search/chats/:id', to: 'search#messages'
+
       resources :users do
         collection do
           post :generate_new_password_email
