@@ -25,10 +25,14 @@ class Chat < ActiveRecord::Base
 
   scope :active, -> { joins(:user_chats).where(user_chats: { active: true }).uniq }
 
-  def as_indexed_json
-    as_json(
-      include: [:users, :messages]
-    )
+  def as_indexed_json(options = {})
+    if options.present?
+      as_json(options.merge(include: [:users, :messages]))
+    else
+      as_json(
+        include: [:users, :messages]
+      )
+    end
   end
 end
 # Delete the previous articles index in Elasticsearch
