@@ -12,5 +12,8 @@ class Api::V0::SearchController < Api::ApiController
   end
 
   def messages
+    chat = Chat.find(params[:id])
+    form = Form::Search.new(chat, params)
+    render json: form.search_messages, each_serializer: MessageSerializer
   end
 end
