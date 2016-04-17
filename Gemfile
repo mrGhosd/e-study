@@ -41,10 +41,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'faker', '~> 1.6.3'
 end
 
 group :test do
-  gem 'faker', '~> 1.1.2'
   gem 'launchy'
   gem 'database_cleaner', '~> 1.0.1'
   gem 'json_spec'

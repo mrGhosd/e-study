@@ -7,7 +7,7 @@ module JsonWebToken
     current_authorization = Authorization.find_by_jwt_token(auth_token)
     raise ActiveRecord::RecordNotFound if current_authorization.blank?
   rescue ActiveRecord::RecordNotFound
-    raise Api::Error.new(USER_NOT_FOUND, 404)
+    raise Api::Error.new(USER_NOT_FOUND, 401)
   rescue JWT::DecodeError
     raise Api::Error.new(TOKEN_INVALID, 401)
   rescue JWT::ExpiredSignature
