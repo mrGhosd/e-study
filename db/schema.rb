@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160319233009) do
+ActiveRecord::Schema.define(version: 20160424161337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,18 @@ ActiveRecord::Schema.define(version: 20160319233009) do
 
   add_index "messages", ["chat_id"], name: "index_messages_on_chat_id", using: :btree
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "notificationable_type"
+    t.integer  "notificationable_id"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notifications", ["active"], name: "index_notifications_on_active", using: :btree
+  add_index "notifications", ["notificationable_id"], name: "index_notifications_on_notificationable_id", using: :btree
 
   create_table "user_chats", force: :cascade do |t|
     t.integer  "user_id"

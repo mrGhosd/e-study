@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   has_one :image, as: :attachable, dependent: :destroy
+  has_many :notifications
   has_many :authorizations
 
   has_many :user_chats

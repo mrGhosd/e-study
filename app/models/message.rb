@@ -5,6 +5,7 @@ class Message < ActiveRecord::Base
   include Elasticsearch::Model::Callbacks
   belongs_to :user
   belongs_to :chat
+  has_many :notifications, as: :notificationable
 
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'true' do

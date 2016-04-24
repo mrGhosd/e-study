@@ -12,7 +12,7 @@ class Api::V0::SessionsController < Api::ApiController
 
   def current
     if current_user
-      render json: current_user, serializer: UserSerializer
+      render json: current_user, serializer: CurrentUserSerializer
     else
       render json: { user: nil }, status: :unauthorized
     end
