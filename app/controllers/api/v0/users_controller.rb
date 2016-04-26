@@ -3,7 +3,7 @@ class Api::V0::UsersController < Api::ApiController
   before_action :validate_token, only: [:update]
 
   def index
-    users = User.all
+    users = User.includes(:image).all
     render json: users
   end
 

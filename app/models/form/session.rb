@@ -10,7 +10,7 @@ class Form::Session < Form::Base
 
   def attributes=(attrs)
     super(attrs)
-    @user = User.find_by(email: email)
+    @user = ::User.find_by(email: email)
     @auth.update(user_id: @user.id) if @auth.present?
   end
 
