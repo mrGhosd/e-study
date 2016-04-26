@@ -36,6 +36,7 @@ gem 'dotenv-deployment', require: 'dotenv/deployment'
 gem 'therubyracer'
 gem 'redis'
 gem 'twilio-ruby'
+gem 'kaminari'
 
 group :development, :test do
   gem 'rspec-rails'
