@@ -2,16 +2,17 @@ module AuthorizationConcern
   extend ActiveSupport::Concern
 
   included do
-    attribute :authorization
+    attr_accessor :auth
+    validates :auth, presence: true
+  end
 
-    validates :authorization, presence: true
-
-    def authorization=(attr)
-      @auth = Authorization.find_by(platform: attr['platform'], app_name: attr['app_name'])
-      @auth = Authorization.new if @auth.blank?
-      @auth.assign_attributes(attr)
-      @auth.save!
-      super(@auth)
+  def authorization(attr)
+    if attr
+      auth = Authorization.find_by(platform: attr['platform'],
+                                   app_name: attr['app_name']) || Authorization.new
+      form = Form::Authorization.new(auth, attr)
+      form.submit
+      @auth = form.object
     end
   end
 end
