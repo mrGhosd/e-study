@@ -11,7 +11,9 @@ class Form::Session < Form::Base
   def attributes=(attrs)
     super(attrs)
     @user = ::User.find_by(email: email)
-    @auth.update(user_id: @user.id) if @auth.present?
+    if @auth.present? && @user.present?
+      @auth.update(user_id: @user.id)
+    end
   end
 
   def submit

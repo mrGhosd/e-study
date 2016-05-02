@@ -6,7 +6,7 @@ class Api::V0::SessionsController < Api::ApiController
     if form.submit
       render json: { token: form.token }
     else
-      render json: { email: 'There is no such user' }, status: :unauthorized
+      render json: { errors: form.errors }, status: :unauthorized
     end
   end
 
