@@ -4,6 +4,7 @@ describe Api::V0::MessagesController do
   describe 'POST #create' do
     let!(:first_user) { create :user }
     let!(:second_user) { create :user }
+    let!(:auth) { create :authorization, user_id: first_user.id }
     let!(:chat) { create :chat }
     let!(:first_user_chat) do
       create :user_chat, user_id: first_user.id, chat_id: chat.id, active: true
@@ -21,12 +22,12 @@ describe Api::V0::MessagesController do
     context 'with valid attributes' do
       it 'create new message' do
         expect do
-          post_with_token first_user, :create, message: message_attributes
+          post_with_token auth, :create, message: message_attributes
         end.to change(Message, :count).by(1)
       end
 
       context 'success response' do
-        before { post_with_token first_user, :create, message: message_attributes }
+        before { post_with_token auth, :create, message: message_attributes }
 
         %w(id text chat_id user chat).each do |attr|
           it "success message respons contains #{attr}" do
@@ -48,12 +49,12 @@ describe Api::V0::MessagesController do
 
       it 'doesn\'t create new message' do
         expect do
-          post_with_token first_user, :create, message: message_attributes
+          post_with_token auth, :create, message: message_attributes
         end.to change(Message, :count).by(0)
       end
 
       context 'failure response' do
-        before { post_with_token first_user, :create, message: message_attributes }
+        before { post_with_token auth, :create, message: message_attributes }
 
         it 'have text key error' do
           expect(JSON.parse(response.body)).to have_key('text')

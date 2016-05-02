@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe Api::V0::UsersController do
   let!(:user) { create :user }
+  let!(:auth) { create :authorization, user_id: user.id }
   let!(:user_attributes) do
     {
       email: user.email,
@@ -29,26 +30,26 @@ describe Api::V0::UsersController do
   describe 'PUT #update' do
     context 'with valid attributes' do
       it 'update user info' do
-        put_with_token user, :update, id: user.id, user: user_attributes
+        put_with_token auth, :update, id: user.id, user: user_attributes
         user.reload
         expect(user.first_name).to eq(user_attributes[:first_name])
       end
 
       it 'render user item' do
-        put_with_token user, :update, id: user.id, user: user_attributes
+        put_with_token auth, :update, id: user.id, user: user_attributes
         expect(JSON.parse(response.body)).to have_key('user')
       end
     end
 
     context 'with invalid attributes' do
       it 'doesn\'t update user data' do
-        put_with_token user, :update, id: user.id, user: {}
+        put_with_token auth, :update, id: user.id, user: {}
         user.reload
         expect(user.first_name).to eq(nil)
       end
 
       context 'failure response' do
-        before { put_with_token user, :update, id: user.id, user: {} }
+        before { put_with_token auth, :update, id: user.id, user: {} }
 
         %w(email first_name last_name middle_name date_of_birth).each do |attr|
           it "failure resposne contain #{attr}" do

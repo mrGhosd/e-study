@@ -19,7 +19,7 @@ describe Api::V0::RegistrationsController do
 
       it 'return remember token' do
         post :create, user: user_attributes
-        user = User.find_by_jwt_token(JSON.parse(response.body)['remember_token'])
+        user = User.find_by_jwt_token(JSON.parse(response.body)['token'])
         expect(user.id).to eq(User.last.id)
       end
     end
@@ -36,7 +36,7 @@ describe Api::V0::RegistrationsController do
 
         %w(email password).each do |attr|
           it "failure response contain #{attr} attribute" do
-            expect(JSON.parse(response.body)).to have_key(attr)
+            expect(JSON.parse(response.body)['errors']).to have_key(attr)
           end
         end
       end
