@@ -27,7 +27,8 @@ class Form::Session < Form::Base
     if @user && @user.authenticate(password)
       @token = generate_token_for_auth(@auth)
     else
-      errors.add(:email, 'There is no such user')
+      errors.add(:email, I18n.t('user.errors.user_doesnt_exist'))
+      false
     end
   end
 end
