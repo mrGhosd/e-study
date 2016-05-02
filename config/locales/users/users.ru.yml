@@ -2,3 +2,4 @@ ru:
   user:
     errors:
       user_doesnt_exist: 'Такого пользователя не существует'
+      user_email_exist: 'Пользователь с таким адресом уже существует'

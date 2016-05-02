@@ -2,3 +2,4 @@ en:
   user:
     errors:
       user_doesnt_exist: 'There is no such user'
+      user_email_exist: 'Person with this email already exists'

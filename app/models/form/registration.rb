@@ -2,7 +2,7 @@ class Form::Registration < Form::Base
   include PasswordValidation
   include EmailValidation
   include JsonWebToken
-  
+
   attr_accessor :token
   attribute :email
   attribute :password
@@ -21,7 +21,7 @@ class Form::Registration < Form::Base
         true
       end
     rescue ActiveRecord::RecordNotUnique
-      errors.add(:email, 'person with this email already exists')
+      errors.add(:email, I18n.t('user.errors.user_email_exist'))
     end
   end
 end
