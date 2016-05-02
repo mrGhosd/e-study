@@ -2,6 +2,7 @@ class Form::Registration < Form::Base
   include PasswordValidation
   include EmailValidation
   include JsonWebToken
+  include AuthorizationConcern
 
   attr_accessor :token
   attribute :email
@@ -10,6 +11,11 @@ class Form::Registration < Form::Base
 
   validates_confirmation_of :password, if: lambda { |m| m.password.present? }
 
+  def attributes=(attrs)
+    super(attrs)
+    authorization(attrs[:authorization])
+  end
+
   def email=(attr)
     super(attr.downcase.strip)
   end
@@ -17,7 +23,10 @@ class Form::Registration < Form::Base
   def submit
     begin
       super do
-        @token = generate_token_for_user(@object)
+        if @auth.present? && @user.present?
+          @auth.update(user_id: @user.id)
+        end
+        @token = generate_token_for_auth(@auth)
         true
       end
     rescue ActiveRecord::RecordNotUnique

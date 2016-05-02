@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 describe Form::Registration do
+  let!(:auth) { create :authorization }
   def user_attributes
     {
       email: 'example@mail.com',
       password: 'password1234',
-      password_confirmation: 'password1234'
+      password_confirmation: 'password1234',
+      authorization: auth.attributes
     }
   end
 
@@ -27,7 +29,7 @@ describe Form::Registration do
         end
 
         it 'decode token equal to user' do
-          expect(User.find_by_jwt_token(form.token)).to eq(User.last)
+          expect(Authorization.find_by_jwt_token(form.token)).to eq(Authorization.last)
         end
       end
     end
@@ -58,7 +60,8 @@ describe Form::Registration do
         {
           email: user.email,
           password: 'password1234',
-          password_confirmation: 'password1234'
+          password_confirmation: 'password1234',
+          authorization: auth.attributes
         }
       end
       let!(:form) { ::Form::Registration.new(::User.new, user_attributes) }
@@ -66,6 +69,24 @@ describe Form::Registration do
       it 'return error with `email`' do
         form.submit
         expect(form.errors.messages).to have_key(:email)
+      end
+    end
+
+    context 'empty authorization' do
+      let!(:user) { create :user }
+      let!(:user_attributes) do
+        {
+          email: user.email,
+          password: 'password1234',
+          password_confirmation: 'password1234'
+        }
+      end
+
+      let!(:form) { ::Form::Registration.new(::User.new, user_attributes) }
+
+      it 'return error with `auth`' do
+        form.submit
+        expect(form.errors.messages).to have_key(:auth)
       end
     end
   end
