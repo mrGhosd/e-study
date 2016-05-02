@@ -1,11 +1,14 @@
 require 'rails_helper'
 
 describe Api::V0::RegistrationsController do
+  let!(:auth) { create :authorization }
+
   def user_attributes
     {
       email: 'example@mail.com',
       password: 'password1234',
-      password_confirmation: 'password1234'
+      password_confirmation: 'password1234',
+      authorization: auth.attributes
     }
   end
 
@@ -17,10 +20,16 @@ describe Api::V0::RegistrationsController do
         end.to change(User, :count).by(1)
       end
 
+      it 'create new authorization' do
+        post :create, user: user_attributes
+        auth.reload
+        expect(auth.user_id).to eq(User.last.id)
+      end
+
       it 'return remember token' do
         post :create, user: user_attributes
-        user = User.find_by_jwt_token(JSON.parse(response.body)['token'])
-        expect(user.id).to eq(User.last.id)
+        auth = Authorization.find_by_jwt_token(JSON.parse(response.body)['token'])
+        expect(auth.id).to eq(Authorization.last.id)
       end
     end
 

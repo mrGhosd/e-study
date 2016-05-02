@@ -23,8 +23,8 @@ class Form::Registration < Form::Base
   def submit
     begin
       super do
-        if @auth.present? && @user.present?
-          @auth.update(user_id: @user.id)
+        if @auth.present? && @object.present?
+          @auth.update(user_id: @object.id)
         end
         @token = generate_token_for_auth(@auth)
         true
