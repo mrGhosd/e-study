@@ -31,6 +31,7 @@ class Form::Registration < Form::Base
       end
     rescue ActiveRecord::RecordNotUnique
       errors.add(:email, I18n.t('user.errors.user_email_exist'))
+      false
     end
   end
 end
