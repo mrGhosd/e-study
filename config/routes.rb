@@ -20,6 +20,8 @@ Rails.application.routes.draw do
       get '/search/chats', to: 'search#chats'
       get '/search/chats/:id', to: 'search#messages'
 
+      post '/oauth/vkontakte', to: 'oauth#vk'
+
       resources :users do
         collection do
           post :generate_new_password_email
