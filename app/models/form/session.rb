@@ -11,7 +11,7 @@ class Form::Session < Form::Base
   def attributes=(attrs)
     super(attrs)
     @user = ::User.find_by(email: email)
-    authorization(attrs[:authorization].merge(user_id: @user.id))
+    authorization(attrs[:authorization].merge(user_id: @user.id)) if @user.present?
     if @auth.present? && @user.present?
       @auth.update(user_id: @user.id)
     end
