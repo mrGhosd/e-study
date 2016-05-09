@@ -20,9 +20,10 @@ module OauthRequest
   def vk_access_token(code)
     app_id = Rails.application.secrets.vk_app_id
     app_secret = Rails.application.secrets.vk_app_secret
-    url = "https://oauth.vk.com/access_token?client_id=#{app_id}
-    &client_secret=#{app_secret}
-    &redirect_uri=http://localhost:9000/oauth/vk&code=#{code}&scope=email"
+    client_url = Rails.application.secrets.client_url
+    url = "https://oauth.vk.com/access_token?client_id=#{app_id}&" \
+    "client_secret=#{app_secret}&" \
+    "redirect_uri=#{client_url}/oauth/vk&code=#{code}&scope=email"
     base_request url
   end
 
