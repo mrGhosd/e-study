@@ -1,0 +1,1 @@
+class BackgroundImage < Attach; end

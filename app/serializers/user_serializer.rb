@@ -4,4 +4,5 @@ class UserSerializer < ActiveModel::Serializer
              :created_at, :last_sign_in_at
 
   has_one :image, serializer: AttachSerializer
+  has_one :background_image, serializer: AttachSerializer
 end
