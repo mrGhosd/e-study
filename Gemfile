@@ -37,6 +37,7 @@ gem 'therubyracer'
 gem 'redis'
 gem 'twilio-ruby'
 gem 'kaminari'
+gem 'carrierwave-aws'
 
 group :development, :test do
   gem 'rspec-rails'
