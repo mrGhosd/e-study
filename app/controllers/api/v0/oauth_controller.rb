@@ -17,6 +17,6 @@ class Api::V0::OauthController < Api::ApiController
   def load_user_info
     @user_data = params[:code].present? ? vk_access_token(params[:code]) : params
     render json: @user_data['error'], status: :unprocessable_entity if @user_data['error'].present?
-    @user_data.merge('auth' => params[:auth]) if @user_data['auth'].blank?
+    @user_data = @user_data.merge('auth' => params[:auth]) if @user_data['auth'].blank?
   end
 end
