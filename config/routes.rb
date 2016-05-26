@@ -29,10 +29,7 @@ Rails.application.routes.draw do
         end
       end
       resources :attaches, only: :create
-      resources :chats
-      resources :messages, only: :create
       resource :notifications, only: :destroy
-
     end
   end
 end
