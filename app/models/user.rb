@@ -8,10 +8,7 @@ class User < ActiveRecord::Base
   has_many :notifications
   has_many :authorizations
 
-  has_many :user_chats
-  has_many :chats, through: :user_chats
-
-  has_many :messages
+  has_many :courses
 
   has_secure_password
 
