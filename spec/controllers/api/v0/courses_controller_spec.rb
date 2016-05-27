@@ -41,6 +41,20 @@ describe Api::V0::CoursesController do
   end
 
   describe 'PUT #update' do
+    context 'with valid attributes' do
+      it 'update a course' do
+        put_with_token auth, :update, id: course.id, course: { title: 'aaa', description: 'bbb' }
+        course.reload
+        expect(course.title).to eq('aaa')
+      end
+    end
 
+    context 'with invalid attributes' do
+      it 'doesn\'t update a course' do
+        put_with_token auth, :update, id: course.id, course: {}
+        course.reload
+        expect(course.title).to eq(course.title)
+      end
+    end
   end
 end
