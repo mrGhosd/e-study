@@ -57,4 +57,12 @@ describe Api::V0::CoursesController do
       end
     end
   end
+
+  describe 'DELETE #destroy' do
+    it 'destroy the course' do
+      expect do
+        delete_with_token auth, :destroy, id: course.id
+      end.to change(Course, :count).by(-1)
+    end
+  end
 end

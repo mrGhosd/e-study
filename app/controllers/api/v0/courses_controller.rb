@@ -29,4 +29,13 @@ class Api::V0::CoursesController < Api::ApiController
       render json: { errors: form.errors }, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    course = current_user.courses.find(params[:id])
+    if course.destroy
+      render json: { deleted: course }
+    else
+      render json: course.errors, status: :unprocessable_entity
+    end
+  end
 end
