@@ -5,5 +5,6 @@ FactoryGirl.define do
     app_name 'Chrome'
     app_version '49.0.2623.87'
     provider 'Estudy'
+    user { create(:user) }
   end
 end

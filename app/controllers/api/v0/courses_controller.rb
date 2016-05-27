@@ -9,7 +9,7 @@ class Api::V0::CoursesController < Api::ApiController
   def create
     form = Form::Course.new(current_user.courses.build, params[:course])
     if form.submit
-      render json: form.object
+      render json: { course: form.object }
     else
       render json: { errors: form.errors }, status: :unprocessable_entity
     end
