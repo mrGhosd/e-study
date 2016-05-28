@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   has_many :courses
 
+  has_many :homeworks
+
   has_secure_password
 
   settings index: { number_of_shards: 1 } do
