@@ -3,18 +3,20 @@ require 'rails_helper'
 describe Form::Homework do
   let!(:user) { create :user }
   let!(:course) { create :course, user_id: user.id }
-  let!(:homework) { create :homework, user_id: user.id, course_id: course.id }
+  let!(:lesson) { create :lesson, course_id: course.id, user_id: user.id }
+  let!(:homework) { create :homework, lesson_id: lesson.id, user_id: course.user_id }
+  let!(:builded_homework) do
+    course.lessons.find(lesson.id).homeworks.build(user_id: user.id)
+  end
   let!(:homework_attrs) do
     {
-      text: 'Homework text',
-      user_id: user.id,
-      course_id: course.id
+      text: 'Homework text'
     }
   end
 
   describe '#submit' do
     context 'with valid attributes' do
-      let!(:form) { Form::Homework.new(Homework.new, homework_attrs) }
+      let!(:form) { Form::Homework.new(builded_homework, homework_attrs) }
 
       it 'create new homework' do
         expect do
@@ -29,7 +31,7 @@ describe Form::Homework do
     end
 
     context 'with invalid attributes' do
-      let!(:form) { Form::Homework.new(Homework.new, {}) }
+      let!(:form) { Form::Homework.new(builded_homework, {}) }
 
       it 'doesn\'t create a new homework' do
         expect do
@@ -40,7 +42,7 @@ describe Form::Homework do
       context 'errors' do
         before { form.submit }
 
-        %w(text user_id course_id).each do |attr|
+        %w(text).each do |attr|
           it "form contain #{attr} errors" do
             expect(form.errors.messages).to have_key(attr.to_sym)
           end

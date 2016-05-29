@@ -33,6 +33,7 @@ class Api::V0::HomeworksController < Api::ApiController
 
   def build_homework
     @new_homework = Course.find(params[:course_id])
+                          .lessons.find(params[:lesson_id])
                           .homeworks.build(user_id: current_user.id)
   end
 

@@ -3,19 +3,23 @@ require 'rails_helper'
 describe Api::V0::HomeworksController do
   let!(:auth) { create :authorization }
   let!(:course) { create :course, user_id: auth.user.id }
-  let!(:homework) { create :homework, course_id: course.id, user_id: course.user_id }
+  let!(:lesson) { create :lesson, course_id: course.id, user_id: auth.user.id }
+  let!(:homework) { create :homework, lesson_id: lesson.id, user_id: course.user_id }
 
   describe 'POST #create' do
     context 'with valid attributes' do
       it 'create new homework' do
         expect do
-          post_with_token auth, :create, course_id: course.id, homework: homework.attributes
+          post_with_token auth, :create, course_id: course.id,
+                                         lesson_id: lesson.id,
+                                         homework: homework.attributes
         end.to change(Homework, :count).by(1)
       end
 
       context 'response' do
         before do
           post_with_token auth, :create, course_id: course.id,
+                                         lesson_id: lesson.id,
                                          homework: homework.attributes
         end
         %w(text).each do |attr|
@@ -28,8 +32,8 @@ describe Api::V0::HomeworksController do
           expect(Homework.last.user).to eq(auth.user)
         end
 
-        it 'belongs_to created course' do
-          expect(Homework.last.course).to eq(course)
+        it 'belongs_to created lesson' do
+          expect(Homework.last.lesson).to eq(lesson)
         end
       end
     end
@@ -37,13 +41,15 @@ describe Api::V0::HomeworksController do
     context 'with invalid attributes' do
       it 'doesn\'t create new homework' do
         expect do
-          post_with_token auth, :create, course_id: course.id, homework: {}
+          post_with_token auth, :create, course_id: course.id,
+                                         lesson_id: lesson.id, homework: {}
         end.to change(Homework, :count).by(0)
       end
 
       context 'error' do
         before do
           post_with_token auth, :create, course_id: course.id,
+                                         lesson_id: lesson.id,
                                          homework: {}
         end
         %w(text).each do |attr|
@@ -59,6 +65,7 @@ describe Api::V0::HomeworksController do
     context 'with valid attributes' do
       it 'updates homework' do
         put_with_token auth, :update, course_id: course.id,
+                                      lesson_id: lesson.id,
                                       id: homework.id, homework: { text: '111' }
         homework.reload
         expect(homework.text).to eq('111')
@@ -66,8 +73,10 @@ describe Api::V0::HomeworksController do
 
       context 'response' do
         before do
-          put_with_token auth, :update, course_id: course.id, id:
-                               homework.id, homework: { text: '111' }
+          put_with_token auth, :update, course_id: course.id,
+                                        lesson_id: lesson.id,
+                                        id: homework.id,
+                                        homework: { text: '111' }
         end
 
         %w(text).each do |attr|
@@ -80,15 +89,18 @@ describe Api::V0::HomeworksController do
 
     context 'with invalid attributes' do
       it 'doesn\'t update homework' do
-        put_with_token auth, :update, course_id: course.id, id: homework.id, homework: {}
+        put_with_token auth, :update, course_id: course.id,
+                                      lesson_id: lesson.id,
+                                      id: homework.id, homework: {}
         homework.reload
         expect(homework.text).to eq(homework.text)
       end
 
       context 'error' do
         before do
-          put_with_token auth, :update, course_id: course.id, id:
-                               homework.id, homework: {}
+          put_with_token auth, :update, course_id: course.id,
+                                        lesson_id: lesson.id,
+                                        id: homework.id, homework: {}
         end
 
         %w(text).each do |attr|
@@ -103,7 +115,9 @@ describe Api::V0::HomeworksController do
   describe 'DELETE #destroy' do
     it 'destroy the homework' do
       expect do
-        delete_with_token auth, :destroy, course_id: course.id, id: homework.id
+        delete_with_token auth, :destroy, course_id: course.id,
+                                          lesson_id: lesson.id,
+                                          id: homework.id
       end.to change(Homework, :count).by(-1)
     end
   end
