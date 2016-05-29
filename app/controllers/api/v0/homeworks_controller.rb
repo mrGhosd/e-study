@@ -6,7 +6,7 @@ class Api::V0::HomeworksController < Api::ApiController
   def create
     form = Form::Homework.new(@new_homework, params[:homework])
     if form.submit
-      render json: { homework: homework }
+      render json: { homework: form.object }
     else
       render json: { errors: form.errors }, status: :unprocessable_entity
     end
@@ -15,7 +15,7 @@ class Api::V0::HomeworksController < Api::ApiController
   def update
     form = Form::Homework.new(@homework, params[:homework])
     if form.submit
-      render json: { homework: homework }
+      render json: { homework: form.object }
     else
       render json: { errors: form.errors }, status: :unprocessable_entity
     end
