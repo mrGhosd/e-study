@@ -28,7 +28,8 @@ class Api::V0::HomeworksController < Api::ApiController
   private
 
   def build_homework
-    @new_homework = current_user.courses.find(params[:course_id]).homeworks.build
+    @new_homework = Course.find(params[:course_id])
+                          .homeworks.build(user_id: current_user.id)
   end
 
   def find_homework
