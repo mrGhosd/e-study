@@ -101,6 +101,10 @@ describe Api::V0::HomeworksController do
   end
 
   describe 'DELETE #destroy' do
-
+    it 'destroy the homework' do
+      expect do
+        delete_with_token auth, :destroy, course_id: course.id, id: homework.id
+      end.to change(Homework, :count).by(-1)
+    end
   end
 end
