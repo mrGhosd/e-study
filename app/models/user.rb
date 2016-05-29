@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :courses
 
   has_many :homeworks
+  has_many :lessons
 
   has_secure_password
 
