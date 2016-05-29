@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     namespace :v0 do
 
       resources :courses do
-        resources :homeworks
+        resources :lessons do
+          resources :homeworks
+        end
       end
       resources :countries, only: :index
       resources :registrations, only: :create
