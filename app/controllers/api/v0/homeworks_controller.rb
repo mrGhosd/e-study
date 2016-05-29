@@ -1,7 +1,7 @@
 class Api::V0::HomeworksController < Api::ApiController
   before_action :validate_token
   before_action :build_homework, only: :create
-  before_action :find_homework, only: [:update, :destroy]
+  before_action :find_homework, only: [:show, :update, :destroy]
 
   def create
     form = Form::Homework.new(@new_homework, params[:homework])
@@ -10,6 +10,10 @@ class Api::V0::HomeworksController < Api::ApiController
     else
       render json: { errors: form.errors }, status: :unprocessable_entity
     end
+  end
+
+  def show
+    render json: { homework: @homework }
   end
 
   def update
