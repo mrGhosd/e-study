@@ -23,6 +23,14 @@ describe Api::V0::HomeworksController do
             expect(JSON.parse(response.body)['homework']).to have_key(attr)
           end
         end
+
+        it 'belongs_to created user' do
+          expect(Homework.last.user).to eq(auth.user)
+        end
+
+        it 'belongs_to created course' do
+          expect(Homework.last.course).to eq(course)
+        end
       end
     end
 
