@@ -3,13 +3,13 @@ class Api::V0::CoursesController < Api::ApiController
 
   def index
     courses = current_user.courses
-    render json: courses
+    render json: courses, each_serializer: CoursesSerializer
   end
 
   def create
     form = Form::Course.new(current_user.courses.build, params[:course])
     if form.submit
-      render json: { course: form.object }
+      render json: { course: form.object }, serializer: CoursesSerializer
     else
       render json: { errors: form.errors }, status: :unprocessable_entity
     end
@@ -17,14 +17,14 @@ class Api::V0::CoursesController < Api::ApiController
 
   def show
     course = current_user.courses.find(params[:id])
-    render json: { course: course }
+    render json: { course: course }, serializer: CoursesSerializer
   end
 
   def update
     course = current_user.courses.find(params[:id])
     form = Form::Course.new(course, params[:course])
     if form.submit
-      render json: { course: form.object }
+      render json: { course: form.object }, serializer: CoursesSerializer
     else
       render json: { errors: form.errors }, status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class Api::V0::CoursesController < Api::ApiController
   def destroy
     course = current_user.courses.find(params[:id])
     if course.destroy
-      render json: { deleted: course }
+      render json: { deleted: course }, serializer: CoursesSerializer
     else
       render json: course.errors, status: :unprocessable_entity
     end
