@@ -20,7 +20,7 @@ class Form::Course < Form::Base
         errors.blank?
       end
     rescue ActiveRecord::RecordNotUnique, ActiveRecord::StatementInvalid
-      errors.add(:email, I18n.t('course.slug_is_not_unique'))
+      errors.add(:slug, I18n.t('course.slug_is_not_unique'))
       false
     end
   end
