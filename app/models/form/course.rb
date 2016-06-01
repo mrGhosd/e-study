@@ -6,7 +6,7 @@ class Form::Course < Form::Base
   attribute :slug
 
   validates :title, :description, :slug, presence: true
-  validates :lessons, length: { minimum: 1 }
+  validates :lessons, presence: true
 
   def attributes=(attributes)
     super(attributes)
@@ -19,7 +19,7 @@ class Form::Course < Form::Base
         create_lessons!
         errors.blank?
       end
-    rescue ActiveRecord::RecordNotUnique
+    rescue ActiveRecord::RecordNotUnique, ActiveRecord::StatementInvalid
       errors.add(:email, I18n.t('course.slug_is_not_unique'))
       false
     end
