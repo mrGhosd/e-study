@@ -38,6 +38,7 @@ gem 'redis'
 gem 'twilio-ruby'
 gem 'kaminari'
 gem 'carrierwave-aws'
+gem 'friendly_id'
 
 group :development, :test do
   gem 'rspec-rails'
