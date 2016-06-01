@@ -1,0 +1,3 @@
+ru:
+ course:
+  slug_is_not_unique: 'Слаг для этого курса не уникален'

@@ -3,17 +3,35 @@ require 'rails_helper'
 describe Api::V0::CoursesController do
   let!(:auth) { create :authorization }
   let!(:course) { create :course, user_id: auth.user.id }
+  let!(:lesson) { create :lesson, user_id: auth.user.id, course_id: course.id }
+
+  let!(:lesson_attrs) do
+    {
+      title: 'lesson title',
+      description: 'Lesson description',
+      slug: 'another-lesson-title'
+    }
+  end
+
+  let!(:course_attrs) do
+    {
+      title: 'Super title',
+      description: 'Desc',
+      slug: 'super-slug',
+      lessons: [lesson_attrs]
+    }
+  end
 
   describe 'POST #create' do
     context 'with valid attributes' do
       it 'create new course' do
         expect do
-          post_with_token auth, :create, course: course.attributes
+          post_with_token auth, :create, course: course_attrs
         end.to change(Course, :count).by(1)
       end
 
       it 'receive new course' do
-        post_with_token auth, :create, course: course.attributes
+        post_with_token auth, :create, course: course_attrs
         json = JSON.parse(response.body)['course']['title']
         expect(json).to eq(Course.last.title)
       end
@@ -42,8 +60,17 @@ describe Api::V0::CoursesController do
 
   describe 'PUT #update' do
     context 'with valid attributes' do
+      def course_attributes
+        {
+          title: 'aaa',
+          description: 'bbb',
+          slug: 'aaa',
+          lessons: [lesson_attrs]
+        }
+      end
+
       it 'update a course' do
-        put_with_token auth, :update, id: course.id, course: { title: 'aaa', description: 'bbb' }
+        put_with_token auth, :update, id: course.id, course: course_attributes
         course.reload
         expect(course.title).to eq('aaa')
       end

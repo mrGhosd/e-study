@@ -3,30 +3,40 @@ class Form::Course < Form::Base
 
   attribute :title
   attribute :description
+  attribute :slug
 
-  validates :title, :description, presence: true
+  validates :title, :description, :slug, presence: true
   validates :lessons, length: { minimum: 1 }
 
   def attributes=(attributes)
     super(attributes)
-    @lessons = attributes['lessons']
+    @lessons = attributes.symbolize_keys[:lessons]
   end
 
   def submit
-    super do
-      @lessons.each_with_index do |attr, index|
-        lesson = attr.has_key?('id') ? find_lesson(attr['id']) : build_new_lesson
-        form = Form::Lesson.new(lesson, attr)
-        unless form.submit
-          add_errors(form.errors, index)
-          false
-        end
-      end if @lessons.present?
-      errors.blank?
+    begin
+      super do
+        create_lessons!
+        errors.blank?
+      end
+    rescue ActiveRecord::RecordNotUnique
+      errors.add(:email, I18n.t('course.slug_is_not_unique'))
+      false
     end
   end
 
   private
+
+  def create_lessons!
+    @lessons.each_with_index do |attr, index|
+      lesson = attr.has_key?('id') ? find_lesson(attr['id']) : build_new_lesson
+      form = Form::Lesson.new(lesson, attr)
+      unless form.submit
+        add_errors(form.errors, index)
+        false
+      end
+    end if @lessons.present?
+  end
 
   def build_new_lesson
     @object.lessons.build(user_id: @object.user_id)

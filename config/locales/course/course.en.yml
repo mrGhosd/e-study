@@ -1,0 +1,3 @@
+en:
+ course:
+  slug_is_not_unique: 'Slug for course is not uniq'
