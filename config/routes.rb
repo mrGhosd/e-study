@@ -14,6 +14,8 @@ Rails.application.routes.draw do
           resources :homeworks
         end
       end
+
+      resources :comments
       resources :countries, only: :index
       resources :registrations, only: :create
       resource :sessions, only: [:create, :destroy] do

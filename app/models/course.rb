@@ -5,7 +5,7 @@ class Course < ActiveRecord::Base
   has_many :homeworks
   has_many :lessons
 
-  has_many :comments, as: :attachable
+  has_many :comments, as: :commentable
 
   friendly_id :slug, use: :finders
 end
