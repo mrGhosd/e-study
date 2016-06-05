@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 module JsonWebToken
-  USER_NOT_FOUND = 'User not found'.freeze
-  TOKEN_INVALID = 'Authorization token invalid'.freeze
-  TOKEN_EXPIRED = 'Authorization token expired'.freeze
+  USER_NOT_FOUND = 'User not found'
+  TOKEN_INVALID = 'Authorization token invalid'
+  TOKEN_EXPIRED = 'Authorization token expired'
 
   def validate_token
     current_authorization = Authorization.find_by_jwt_token(auth_token)

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Api::V0::NotificationsController < Api::ApiController
   def destroy
     notify = Notification.where(id: params[:notifications])

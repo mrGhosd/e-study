@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class RenameImagesTable < ActiveRecord::Migration
   def change
     rename_table :images, :attaches

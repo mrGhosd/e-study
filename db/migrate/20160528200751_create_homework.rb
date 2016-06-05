@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateHomework < ActiveRecord::Migration
   def change
     create_table :homeworks do |t|

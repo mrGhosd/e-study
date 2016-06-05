@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Api::ApiController < ApplicationController
   include JsonWebToken
   include SessionConcern

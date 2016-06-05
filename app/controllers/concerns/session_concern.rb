@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 module SessionConcern
-  TOKEN_NAME = 'estudyauthtoken'.freeze
-  LOCALE_NAME = 'locale'.freeze
+  TOKEN_NAME = 'estudyauthtoken'
+  LOCALE_NAME = 'locale'
 
   attr_writer :auth_token, :current_user, :current_authorization
 

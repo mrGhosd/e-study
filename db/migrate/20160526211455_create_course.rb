@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateCourse < ActiveRecord::Migration
   def change
     create_table :courses do |t|

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Api::V0::HomeworksController < Api::ApiController
   before_action :validate_token
   before_action :build_homework, only: :create

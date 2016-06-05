@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Api::V0::RegistrationsController < Api::ApiController
   def create
     form = Form::Registration.new(User.new, params[:user])

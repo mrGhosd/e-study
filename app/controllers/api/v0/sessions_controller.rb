@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Api::V0::SessionsController < Api::ApiController
   before_action :validate_token, only: [:current, :destroy]
 

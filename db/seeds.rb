@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #
 # url = URI.parse('https://restcountries.eu/rest/v1/all')
 # req = Net::HTTP::Get.new(url.to_s)

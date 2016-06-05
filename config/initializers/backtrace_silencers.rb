@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Be sure to restart your server when you modify this file.
 
 # Rails.backtrace_cleaner.add_silencer { |line| line =~ /my_noisy_library/ }

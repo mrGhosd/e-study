@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddDataToUser < ActiveRecord::Migration
   def change
     create_table :users do |t|

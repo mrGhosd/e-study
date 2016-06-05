@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 CarrierWave.configure do |config|
   config.storage = :aws
   config.aws_bucket = ENV['S3_BUCKET']

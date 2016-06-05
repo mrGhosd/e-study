@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Api::V0::AttachesController < Api::ApiController
   def create
     form = Form::Attach.new(params[:type], params)
