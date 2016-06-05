@@ -47,5 +47,54 @@ describe Api::V0::CommentsController do
         end
       end
     end
+
+    describe 'PUT #update' do
+      let!(:comment) do
+        create :comment, user_id: auth.user.id,
+                         commentable_id: course.id,
+                         commentable_type: course.class.to_s
+      end
+
+      let!(:comment_atts) do
+        {
+          text: 'aaa',
+          id: course.id,
+          type: 'comment'
+        }
+      end
+
+      context 'with valid attributes' do
+
+        it 'update comment' do
+          put_with_token auth, :update, id: comment.id, comment: comment_attrs
+          comment.reload
+          expect(comment.text).to eq(comment_attrs[:text])
+        end
+
+        it 'return updated comment' do
+          put_with_token auth, :update, id: comment.id, comment: comment_attrs
+          comment.reload
+          expect(JSON.parse(response.body)['comment']['id']).to eq(comment.id)
+        end
+      end
+
+      context 'with invalid attributes' do
+        it 'doesn\'t update comment' do
+          put_with_token auth, :update, id: comment.id, comment: {}
+          comment.reload
+          expect(comment.text).to eq(comment.text)
+        end
+
+        context 'error response' do
+          before { put_with_token auth, :update, id: comment.id, comment: {} }
+
+          %w(text).each do |attr|
+            it "error response contain #{attr}" do
+              expect(JSON.parse(response.body)['errors']).to have_key(attr)
+            end
+          end
+        end
+      end
+    end
   end
 end
