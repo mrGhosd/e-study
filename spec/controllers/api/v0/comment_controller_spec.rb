@@ -96,5 +96,19 @@ describe Api::V0::CommentsController do
         end
       end
     end
+
+    describe 'DELETE #destroy' do
+      let!(:comment) do
+        create :comment, commentable_id: course.id,
+                         commentable_type: course.class.to_s,
+                         user_id: auth.user.id
+      end
+
+      it 'delete the comment' do
+        expect do
+          delete_with_token auth, :destroy, id: comment.id
+        end.to change(Comment, :count).by(-1)
+      end
+    end
   end
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class Api::V0::CommentsController < Api::ApiController
   before_action :validate_token
-  before_action :define_object
+  before_action :define_object, only: [:create, :update]
   before_action :new_object, only: :create
   before_action :edit_object, only: :update
 
@@ -21,6 +21,11 @@ class Api::V0::CommentsController < Api::ApiController
     else
       render json: { errors: form.errors }, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    comment = Comment.find(params[:id])
+    render json: { deleted: comment } if comment.destroy
   end
 
   private
