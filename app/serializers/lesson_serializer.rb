@@ -4,4 +4,5 @@ class LessonSerializer < ActiveModel::Serializer
   attributes :id, :title, :description, :slug, :created_at, :course_id, :user_id
 
   has_many :comments
+  has_many :homeworks
 end
