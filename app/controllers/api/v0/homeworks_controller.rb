@@ -14,7 +14,7 @@ class Api::V0::HomeworksController < Api::ApiController
   end
 
   def show
-    render json: { homework: @homework }
+    render json: @homework, serializer: HomeworkSerializer
   end
 
   def update
