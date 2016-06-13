@@ -18,6 +18,7 @@ describe Form::Course do
       title: 'New title',
       description: 'New description',
       slug: 'another-title',
+      short_description: 'Short description',
       lessons: [lesson_attrs]
     }
   end

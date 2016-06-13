@@ -19,6 +19,7 @@ describe Api::V0::CoursesController do
       title: 'Super title',
       description: 'Desc',
       slug: 'super-slug',
+      short_description: 'Short description',
       lessons: [lesson_attrs]
     }
   end
@@ -66,6 +67,7 @@ describe Api::V0::CoursesController do
           title: 'aaa',
           description: 'bbb',
           slug: 'aaa',
+          short_description: 'Short description',
           lessons: [lesson_attrs]
         }
       end

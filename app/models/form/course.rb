@@ -4,8 +4,9 @@ class Form::Course < Form::Base
   attribute :title
   attribute :description
   attribute :slug
+  attribute :short_description
 
-  validates :title, :description, :slug, presence: true
+  validates :title, :description, :short_description, :slug, presence: true
   validates :lessons, presence: true
 
   def attributes=(attributes)

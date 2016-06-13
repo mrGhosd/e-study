@@ -4,5 +4,6 @@ FactoryGirl.define do
     title 'Title'
     description 'Description'
     slug 'title'
+    short_description 'Short Description'
   end
 end
