@@ -7,6 +7,6 @@ FactoryGirl.define do
     short_description 'Short Description'
     begin_date Time.zone.now
     end_date Time.zone.now + 1.month
-    difficult 1
+    difficult 'easy'
   end
 end

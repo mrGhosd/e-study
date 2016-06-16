@@ -19,7 +19,10 @@ describe Form::Course do
       description: 'New description',
       slug: 'another-title',
       short_description: 'Short description',
-      lessons: [lesson_attrs]
+      lessons: [lesson_attrs],
+      difficult: 'easy',
+      begin_date: Time.zone.now,
+      end_date: Time.zone.now
     }
   end
 

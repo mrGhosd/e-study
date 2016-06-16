@@ -10,5 +10,5 @@ class Course < ActiveRecord::Base
 
   friendly_id :slug, use: :finders
 
-  enum difficult: [:easy, :medium, :hard]
+  enum difficult: { easy: 0, medium: 1, hard: 2 }
 end

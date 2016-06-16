@@ -21,7 +21,7 @@ describe Api::V0::CoursesController do
       slug: 'super-slug',
       short_description: 'Short description',
       lessons: [lesson_attrs],
-      difficult: 1,
+      difficult: 'easy',
       begin_date: Time.zone.now,
       end_date: Time.zone.now
     }
