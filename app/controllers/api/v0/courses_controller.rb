@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Api::V0::CoursesController < Api::ApiController
-  before_action :validate_token
+  before_action :validate_token, only: [:create, :update, :destroy]
 
   def index
     courses = Course.all
