@@ -9,4 +9,6 @@ class Course < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   friendly_id :slug, use: :finders
+
+  enum difficult: [:easy, :medium, :hard]
 end

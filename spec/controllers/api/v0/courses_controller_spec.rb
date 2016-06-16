@@ -20,7 +20,10 @@ describe Api::V0::CoursesController do
       description: 'Desc',
       slug: 'super-slug',
       short_description: 'Short description',
-      lessons: [lesson_attrs]
+      lessons: [lesson_attrs],
+      difficult: 1,
+      begin_date: Time.zone.now,
+      end_date: Time.zone.now
     }
   end
 
@@ -62,20 +65,11 @@ describe Api::V0::CoursesController do
 
   describe 'PUT #update' do
     context 'with valid attributes' do
-      def course_attributes
-        {
-          title: 'aaa',
-          description: 'bbb',
-          slug: 'aaa',
-          short_description: 'Short description',
-          lessons: [lesson_attrs]
-        }
-      end
 
       it 'update a course' do
-        put_with_token auth, :update, id: course.id, course: course_attributes
+        put_with_token auth, :update, id: course.id, course: course_attrs
         course.reload
-        expect(course.title).to eq('aaa')
+        expect(course.title).to eq(course_attrs[:title])
       end
     end
 
