@@ -3,7 +3,7 @@ class Api::V0::CoursesController < Api::ApiController
   before_action :validate_token
 
   def index
-    courses = current_user.courses
+    courses = Course.all
     render json: courses, each_serializer: CoursesSerializer
   end
 
@@ -17,12 +17,12 @@ class Api::V0::CoursesController < Api::ApiController
   end
 
   def show
-    course = current_user.courses.find(params[:id])
+    course = Course.find(params[:id])
     render json: course, serializer: CourseSerializer
   end
 
   def update
-    course = current_user.courses.find(params[:id])
+    course = Course.find(params[:id])
     form = Form::Course.new(course, params[:course])
     if form.submit
       render json: form.object, serializer: CourseSerializer
