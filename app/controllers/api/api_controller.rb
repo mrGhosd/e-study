@@ -12,6 +12,12 @@ class Api::ApiController < ApplicationController
     error_response e, e.status, e.addition
   end
 
+  rescue_from ::Pundit::NotAuthorizedError do |e|
+    error = e.exception 'Not authorized for this action'
+    error.set_backtrace e.backtrace
+    error_response error, current_user.present? ? 403 : 401
+  end
+
   private
 
   def error_response(exception, code, addition = false)

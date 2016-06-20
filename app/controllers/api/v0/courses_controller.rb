@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 class Api::V0::CoursesController < Api::ApiController
   before_action :validate_token, only: [:create, :update, :destroy]
+  before_action :find_course, only: [:show, :update]
+  before_action :can_update?, only: :update
 
   def index
     courses = Course.all
@@ -17,13 +19,11 @@ class Api::V0::CoursesController < Api::ApiController
   end
 
   def show
-    course = Course.find(params[:id])
-    render json: course, serializer: CourseSerializer
+    render json: @course, serializer: CourseSerializer
   end
 
   def update
-    course = Course.find(params[:id])
-    form = Form::Course.new(course, params[:course])
+    form = Form::Course.new(@course, params[:course])
     if form.submit
       render json: form.object, serializer: CourseSerializer
     else
@@ -38,5 +38,19 @@ class Api::V0::CoursesController < Api::ApiController
     else
       render json: course.errors, status: :unprocessable_entity
     end
+  end
+
+  private
+
+  def find_course
+    @course = Course.find(params[:id])
+  end
+
+  def can_update?
+    authorize @course, :update? if current_user.present?
+  end
+
+  def can_destroy?
+    authorize @course, :destroy? if current_user.present?
   end
 end
