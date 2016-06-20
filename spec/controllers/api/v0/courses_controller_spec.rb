@@ -104,5 +104,21 @@ describe Api::V0::CoursesController do
         delete_with_token auth, :destroy, id: course.id
       end.to change(Course, :count).by(-1)
     end
+
+    context 'different user try to update course' do
+      let!(:another_auth) { create :authorization }
+
+      before do
+        delete_with_token another_auth, :destroy, id: course.id
+      end
+
+      it 'return error status' do
+        expect(response.forbidden?).to be_truthy
+      end
+
+      it 'have an error key' do
+        expect(JSON.parse(response.body)).to have_key('error')
+      end
+    end
   end
 end

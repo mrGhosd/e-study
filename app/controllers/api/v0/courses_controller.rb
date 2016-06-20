@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 class Api::V0::CoursesController < Api::ApiController
   before_action :validate_token, only: [:create, :update, :destroy]
-  before_action :find_course, only: [:show, :update]
+  before_action :find_course, only: [:show, :update, :destroy]
   before_action :can_update?, only: :update
+  before_action :can_destroy?, only: :destroy
 
   def index
     courses = Course.all
@@ -32,11 +33,10 @@ class Api::V0::CoursesController < Api::ApiController
   end
 
   def destroy
-    course = current_user.courses.find(params[:id])
-    if course.destroy
-      render json: course, serializer: CourseSerializer
+    if @course.destroy
+      render json: @course, serializer: CourseSerializer
     else
-      render json: course.errors, status: :unprocessable_entity
+      render json: @course.errors, status: :unprocessable_entity
     end
   end
 
