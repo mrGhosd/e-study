@@ -40,6 +40,7 @@ gem 'twilio-ruby'
 gem 'kaminari'
 gem 'carrierwave-aws'
 gem 'friendly_id'
+gem 'pundit'
 
 group :development, :test do
   gem 'rspec-rails'

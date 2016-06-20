@@ -3,6 +3,7 @@ class Api::ApiController < ApplicationController
   include JsonWebToken
   include SessionConcern
   include ErrorsConcern
+  include Pundit
   respond_to :json
 
   before_action :set_locale
