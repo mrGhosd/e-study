@@ -2,6 +2,7 @@
 class Api::V0::UsersController < Api::ApiController
   before_action :load_user, only: [:update, :show]
   before_action :validate_token, only: [:update]
+  before_action :allow_to_update?, only: :update
 
   def index
     users = User.includes(:image, :background_image).page(params[:page] || 1).per(10)
@@ -22,6 +23,10 @@ class Api::V0::UsersController < Api::ApiController
   end
 
   private
+
+  def allow_to_update?
+    authorize @user if current_user
+  end
 
   def load_user
     @user = User.find(params[:id])

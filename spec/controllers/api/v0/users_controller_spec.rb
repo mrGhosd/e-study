@@ -59,5 +59,21 @@ describe Api::V0::UsersController do
         end
       end
     end
+
+    context 'different user try to update course' do
+      let!(:another_auth) { create :authorization }
+
+      before do
+        put_with_token another_auth, :update, id: user.id, user: user_attributes
+      end
+
+      it 'return error status' do
+        expect(response.forbidden?).to be_truthy
+      end
+
+      it 'have an error key' do
+        expect(JSON.parse(response.body)).to have_key('error')
+      end
+    end
   end
 end
