@@ -7,6 +7,43 @@ describe Api::V0::HomeworksController do
   let!(:lesson) { create :lesson, course_id: course.id, user_id: auth.user.id }
   let!(:homework) { create :homework, lesson_id: lesson.id, user_id: course.user_id }
 
+  describe 'GET #show' do
+    context 'success response' do
+      before do
+        get_with_token auth, :show, course_id: course.id, lesson_id: lesson.id,
+                                    id: homework.id
+      end
+
+      %w(id text created_at user_id lesson comments).each do |attr|
+        it "response contain #{attr}" do
+          expect(response.body).to be_json_eql(homework.send(attr.to_sym).to_json)
+            .at_path("homework/#{attr}")
+        end
+      end
+
+      it 'contain course value' do
+        json = JSON.parse(response.body)['homework']
+        expect(json['course']['id']).to eq(homework.lesson.course.id)
+      end
+    end
+
+    context 'access error' do
+      let!(:another_auth) { create :authorization }
+      before do
+        get_with_token another_auth, :show, course_id: course.id, lesson_id: lesson.id,
+                                            id: homework.id
+      end
+
+      it 'return error status' do
+        expect(response.forbidden?).to be_truthy
+      end
+
+      it 'have an error key' do
+        expect(JSON.parse(response.body)).to have_key('error')
+      end
+    end
+  end
+
   describe 'POST #create' do
     context 'with valid attributes' do
       it 'create new homework' do
@@ -111,6 +148,23 @@ describe Api::V0::HomeworksController do
         end
       end
     end
+
+    context 'access error' do
+      let!(:another_auth) { create :authorization }
+      before do
+        put_with_token another_auth, :update, course_id: course.id,
+                                              lesson_id: lesson.id, id: homework.id,
+                                              homework: { text: '111' }
+      end
+
+      it 'return error status' do
+        expect(response.forbidden?).to be_truthy
+      end
+
+      it 'have an error key' do
+        expect(JSON.parse(response.body)).to have_key('error')
+      end
+    end
   end
 
   describe 'DELETE #destroy' do
@@ -120,6 +174,23 @@ describe Api::V0::HomeworksController do
                                           lesson_id: lesson.id,
                                           id: homework.id
       end.to change(Homework, :count).by(-1)
+    end
+
+    context 'access error' do
+      let!(:another_auth) { create :authorization }
+      before do
+        delete_with_token another_auth, :destroy, course_id: course.id,
+                                                  lesson_id: lesson.id,
+                                                  id: homework.id
+      end
+
+      it 'return error status' do
+        expect(response.forbidden?).to be_truthy
+      end
+
+      it 'have an error key' do
+        expect(JSON.parse(response.body)).to have_key('error')
+      end
     end
   end
 end
