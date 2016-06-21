@@ -9,6 +9,6 @@ class LessonSerializer < ActiveModel::Serializer
   delegate :course, to: :object
 
   def homeworks
-    object.homeworks.where(user_id: scope.id)
+    scope.present? ? object.homeworks.where(user_id: scope.id) : []
   end
 end
