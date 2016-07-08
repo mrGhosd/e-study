@@ -6,4 +6,5 @@ class CourseSerializer < ActiveModel::Serializer
 
   has_many :lessons
   has_many :comments
+  has_one :image, serializer: AttachSerializer
 end

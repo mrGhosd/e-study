@@ -5,6 +5,7 @@ class Course < ActiveRecord::Base
   belongs_to :user
   has_many :homeworks
   has_many :lessons
+  has_one :image, as: :attachable, dependent: :destroy
 
   has_many :comments, as: :commentable
 
