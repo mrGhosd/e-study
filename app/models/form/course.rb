@@ -8,6 +8,7 @@ class Form::Course < Form::Base
   attribute :begin_date
   attribute :end_date
   attribute :difficult
+  attribute :image
 
   validates :title, :description, :begin_date, :end_date, :difficult, :short_description, :slug, presence: true
   validates :lessons, presence: true
@@ -15,6 +16,10 @@ class Form::Course < Form::Base
   def attributes=(attributes)
     super(attributes)
     @lessons = attributes.symbolize_keys[:lessons]
+  end
+
+  def image=(image)
+    super(Image.find_by(id: image["id"], attachable_type: @object.class.to_s))
   end
 
   def submit
