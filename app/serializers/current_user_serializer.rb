@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class CurrentUserSerializer < ActiveModel::Serializer
-  root 'user'
+  root 'current_user'
   attributes :id, :last_name, :first_name, :email, :middle_name, :notifications, :last_sign_in_at
 
   has_one :image, serializer: AttachSerializer
