@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 class CoursePolicy < ApplicationPolicy
   def update?
-    record.user == user
+    record.author == user
   end
 
   def destroy?
-    record.user == user
+    record.author == user
   end
 end

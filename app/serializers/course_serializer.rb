@@ -4,6 +4,7 @@ class CourseSerializer < ActiveModel::Serializer
   attributes :id, :title, :description, :short_description, :begin_date,
              :end_date, :difficult, :slug, :created_at
 
+  has_one :author, serializer: UserSerializer
   has_many :lessons
   has_many :comments
   has_one :image, serializer: AttachSerializer
