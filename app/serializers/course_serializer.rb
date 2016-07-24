@@ -5,7 +5,7 @@ class CourseSerializer < ActiveModel::Serializer
              :end_date, :difficult, :slug, :created_at
 
   has_one :author, serializer: UserSerializer
-  has_many :lessons
+  has_many :lessons, serializer: LessonsSerializer
   has_many :comments
   has_one :image, serializer: AttachSerializer
 end

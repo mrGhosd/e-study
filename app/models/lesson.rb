@@ -6,6 +6,7 @@ class Lesson < ActiveRecord::Base
   belongs_to :course
   has_many :homeworks
   has_many :comments, as: :commentable
+  has_one :image, as: :attachable, dependent: :destroy
 
   friendly_id :slug, use: :finders
 end

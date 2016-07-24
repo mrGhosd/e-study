@@ -2,8 +2,13 @@ class Form::Lesson < Form::Base
   attribute :title
   attribute :description
   attribute :slug
+  attribute :image
 
   validates :title, :description, :slug, presence: true
+
+  def image=(attr)
+    super(Image.find_by(id: attr["id"], attachable_type: @object.class.to_s))
+  end
 
   def submit
     begin
