@@ -1,9 +1,15 @@
 # frozen_string_literal: true
 class Api::V0::CommentsController < Api::ApiController
   before_action :validate_token
+  before_action :list_object, only: :index
   before_action :define_object, only: [:create, :update]
   before_action :new_object, only: :create
   before_action :edit_object, only: :update
+
+  def index
+    comments = @object.comments.page(params[:page] || 1).per(10)
+    render json: { comments: comments }
+  end
 
   def create
     form = Form::Comment.new(@new_object, params[:comment])
@@ -36,6 +42,14 @@ class Api::V0::CommentsController < Api::ApiController
       @object = comment_params[:type].camelize
                                      .constantize
                                      .find(comment_params[:id])
+    end
+  end
+
+  def list_object
+    if params[:type].present? && params[:id].present?
+      @object = params[:type].camelize
+                             .constantize
+                             .find(params[:id])
     end
   end
 

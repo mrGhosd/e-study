@@ -8,4 +8,8 @@ class CourseSerializer < ActiveModel::Serializer
   has_many :lessons, serializer: LessonsSerializer
   has_many :comments
   has_one :image, serializer: AttachSerializer
+
+  def comments
+    object.comments.limit(10)
+  end
 end

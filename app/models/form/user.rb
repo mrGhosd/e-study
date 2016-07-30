@@ -3,7 +3,7 @@ class Form::User < Form::Base
   attribute :last_name, String
   attribute :first_name, String
   attribute :middle_name, String
-  attribute :date_of_birth, Time
+  attribute :date_of_birth
   attribute :description, String
   attribute :image
 
@@ -12,5 +12,9 @@ class Form::User < Form::Base
 
   def image=(image)
     super(Image.find_by(id: image["id"], attachable_type: @object.class.to_s))
+  end
+
+  def date_of_birth=(date)
+    super(DateTime.parse(date))
   end
 end
