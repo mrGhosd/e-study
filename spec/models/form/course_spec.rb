@@ -5,11 +5,14 @@ describe Form::Course do
   let!(:user) { create :user }
   let!(:course) { create :course, user_id: user.id }
 
+  let!(:teacher) { create :user }
+
   let!(:lesson_attrs) do
     {
       title: 'Lesson title',
       description: 'Lesson description',
-      slug: 'new-slug'
+      slug: 'new-slug',
+      teacher: teacher.id
     }
   end
 

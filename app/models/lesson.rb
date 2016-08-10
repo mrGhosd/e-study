@@ -4,6 +4,8 @@ class Lesson < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :course
+  belongs_to :teacher, class_name: 'User', foreign_key: 'teacher_id'
+
   has_many :homeworks
   has_many :comments, as: :commentable
   has_one :image, as: :attachable, dependent: :destroy

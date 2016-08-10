@@ -10,7 +10,7 @@ class Course < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   has_many :course_teachers, foreign_key: 'teacher_id'
-  has_many :teachers, through: :course_teachers
+  has_many :teachers, through: :course_teachers, source: :teacher
 
   friendly_id :slug, use: :finders
 

@@ -69,16 +69,6 @@ ActiveRecord::Schema.define(version: 20160810164603) do
   add_index "countries", ["name"], name: "index_countries_on_name", using: :btree
   add_index "countries", ["phone_code"], name: "index_countries_on_phone_code", using: :btree
 
-  create_table "course_teachers", force: :cascade do |t|
-    t.integer  "course_id",  null: false
-    t.integer  "teacher_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "course_teachers", ["course_id"], name: "index_course_teachers_on_course_id", using: :btree
-  add_index "course_teachers", ["teacher_id"], name: "index_course_teachers_on_teacher_id", using: :btree
-
   create_table "courses", force: :cascade do |t|
     t.string   "title",                                    null: false
     t.text     "description",                              null: false
@@ -87,8 +77,8 @@ ActiveRecord::Schema.define(version: 20160810164603) do
     t.datetime "updated_at"
     t.string   "slug"
     t.text     "short_description"
-    t.date     "begin_date",        default: '2016-06-16'
-    t.date     "end_date",          default: '2016-07-16'
+    t.date     "begin_date",        default: '2016-08-10'
+    t.date     "end_date",          default: '2016-09-10'
     t.integer  "difficult",         default: 0
   end
 
@@ -127,9 +117,11 @@ ActiveRecord::Schema.define(version: 20160810164603) do
     t.datetime "updated_at"
     t.text     "description", null: false
     t.string   "slug"
+    t.integer  "teacher_id"
   end
 
   add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true, using: :btree
+  add_index "lessons", ["teacher_id"], name: "index_lessons_on_teacher_id", using: :btree
   add_index "lessons", ["title"], name: "index_lessons_on_title", using: :btree
 
   create_table "messages", force: :cascade do |t|
@@ -164,23 +156,24 @@ ActiveRecord::Schema.define(version: 20160810164603) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "middle_name"
+    t.string   "password_digest",                                 null: false
     t.datetime "date_of_birth"
     t.text     "description"
     t.string   "remember_token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "last_sign_in_at", default: '2016-03-11 00:00:00', null: false
-    t.string   "email"
+    t.datetime "last_sign_in_at", default: '2016-08-10 00:00:00', null: false
     t.string   "phone"
     t.string   "phone_code"
-    t.string   "password_digest"
   end
 
   add_index "users", ["date_of_birth"], name: "index_users_on_date_of_birth", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["password_digest"], name: "index_users_on_password_digest", using: :btree
   add_index "users", ["phone"], name: "index_users_on_phone", unique: true, using: :btree
 
 end
