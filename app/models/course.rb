@@ -15,4 +15,8 @@ class Course < ActiveRecord::Base
   friendly_id :slug, use: :finders
 
   enum difficult: { easy: 0, medium: 1, hard: 2 }
+
+  def teachers
+    lessons.map(&:teacher)
+  end
 end
