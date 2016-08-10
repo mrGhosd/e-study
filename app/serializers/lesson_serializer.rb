@@ -8,4 +8,8 @@ class LessonSerializer < ActiveModel::Serializer
   has_many :homeworks, serializer: HomeworkSerializer
 
   delegate :course, to: :object
+
+  def homeworks
+    scope.present? ? object.homeworks.where(user_id: scope.id) : []
+  end
 end
