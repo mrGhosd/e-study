@@ -17,3 +17,4 @@
 /config/database.yml
 dump.rdb
 config/local_env.yml
+coverage

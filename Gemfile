@@ -53,6 +53,7 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner', '~> 1.0.1'
   gem 'json_spec'
+  gem 'simplecov'
 end
 
 group :development do
