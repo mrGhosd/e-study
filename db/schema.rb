@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616224146) do
+ActiveRecord::Schema.define(version: 20160810164603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,16 @@ ActiveRecord::Schema.define(version: 20160616224146) do
 
   add_index "countries", ["name"], name: "index_countries_on_name", using: :btree
   add_index "countries", ["phone_code"], name: "index_countries_on_phone_code", using: :btree
+
+  create_table "course_teachers", force: :cascade do |t|
+    t.integer  "course_id",  null: false
+    t.integer  "teacher_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "course_teachers", ["course_id"], name: "index_course_teachers_on_course_id", using: :btree
+  add_index "course_teachers", ["teacher_id"], name: "index_course_teachers_on_teacher_id", using: :btree
 
   create_table "courses", force: :cascade do |t|
     t.string   "title",                                    null: false
