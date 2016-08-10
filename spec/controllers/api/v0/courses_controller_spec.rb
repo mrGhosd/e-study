@@ -2,6 +2,7 @@
 require 'rails_helper'
 
 describe Api::V0::CoursesController do
+  let!(:teacher) { create :user }
   let!(:auth) { create :authorization }
   let!(:course) { create :course, user_id: auth.user.id }
   let!(:lesson) { create :lesson, user_id: auth.user.id, course_id: course.id }
@@ -10,7 +11,8 @@ describe Api::V0::CoursesController do
     {
       title: 'lesson title',
       description: 'Lesson description',
-      slug: 'another-lesson-title'
+      slug: 'another-lesson-title',
+      teacher_id: teacher.id
     }
   end
 

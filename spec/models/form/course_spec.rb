@@ -12,7 +12,7 @@ describe Form::Course do
       title: 'Lesson title',
       description: 'Lesson description',
       slug: 'new-slug',
-      teacher: teacher.id
+      teacher_id: teacher.id
     }
   end
 

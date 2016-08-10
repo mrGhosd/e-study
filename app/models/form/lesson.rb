@@ -3,17 +3,12 @@ class Form::Lesson < Form::Base
   attribute :description
   attribute :slug
   attribute :image
-  attribute :teacher
+  attribute :teacher_id
 
-  validates :title, :description, :slug, presence: true
+  validates :title, :description, :slug, :teacher_id, presence: true
 
   def image=(attr)
     super(Image.find_by(id: attr["id"], attachable_type: @object.class.to_s))
-  end
-
-  def teacher=(attr)
-    teacher = User.find(attr)
-    super(teacher)
   end
 
   def submit
