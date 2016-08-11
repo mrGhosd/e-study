@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   has_many :homeworks
   has_many :lessons
 
+  has_many :course_students, foreign_key: 'student_id'
+  has_many :studying_courses, through: :course_students, source: :course
+
   has_secure_password
 
   settings index: { number_of_shards: 1 } do
