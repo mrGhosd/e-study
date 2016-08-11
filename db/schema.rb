@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810164603) do
+ActiveRecord::Schema.define(version: 20160811191320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,16 @@ ActiveRecord::Schema.define(version: 20160810164603) do
   add_index "countries", ["name"], name: "index_countries_on_name", using: :btree
   add_index "countries", ["phone_code"], name: "index_countries_on_phone_code", using: :btree
 
+  create_table "course_students", force: :cascade do |t|
+    t.integer  "course_id"
+    t.integer  "student_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "course_students", ["course_id"], name: "index_course_students_on_course_id", using: :btree
+  add_index "course_students", ["student_id"], name: "index_course_students_on_student_id", using: :btree
+
   create_table "courses", force: :cascade do |t|
     t.string   "title",                                    null: false
     t.text     "description",                              null: false
@@ -77,8 +87,8 @@ ActiveRecord::Schema.define(version: 20160810164603) do
     t.datetime "updated_at"
     t.string   "slug"
     t.text     "short_description"
-    t.date     "begin_date",        default: '2016-08-10'
-    t.date     "end_date",          default: '2016-09-10'
+    t.date     "begin_date",        default: '2016-06-16'
+    t.date     "end_date",          default: '2016-07-16'
     t.integer  "difficult",         default: 0
   end
 
@@ -156,24 +166,23 @@ ActiveRecord::Schema.define(version: 20160810164603) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "middle_name"
-    t.string   "password_digest",                                 null: false
     t.datetime "date_of_birth"
     t.text     "description"
     t.string   "remember_token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "last_sign_in_at", default: '2016-08-10 00:00:00', null: false
+    t.datetime "last_sign_in_at", default: '2016-03-11 00:00:00', null: false
+    t.string   "email"
     t.string   "phone"
     t.string   "phone_code"
+    t.string   "password_digest"
   end
 
   add_index "users", ["date_of_birth"], name: "index_users_on_date_of_birth", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["password_digest"], name: "index_users_on_password_digest", using: :btree
   add_index "users", ["phone"], name: "index_users_on_phone", unique: true, using: :btree
 
 end

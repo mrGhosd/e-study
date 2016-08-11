@@ -6,6 +6,7 @@ describe Form::Course do
   let!(:course) { create :course, user_id: user.id }
 
   let!(:teacher) { create :user }
+  let!(:student) { create :user }
 
   let!(:lesson_attrs) do
     {
@@ -25,7 +26,8 @@ describe Form::Course do
       lessons: [lesson_attrs],
       difficult: 'easy',
       begin_date: Time.zone.now,
-      end_date: Time.zone.now
+      end_date: Time.zone.now,
+      students: [student.id]
     }
   end
 
@@ -42,6 +44,18 @@ describe Form::Course do
       it 'form object contain just created course' do
         form.submit
         expect(form.object.title).to eq(course_attrs[:title])
+      end
+
+      it 'change students count for course' do
+        expect do
+          form.submit
+        end.to change(form.object.students, :count).by(1)
+      end
+
+      it 'change lessons count for course' do
+        expect do
+          form.submit
+        end.to change(form.object.lessons, :count).by(1)
       end
     end
 

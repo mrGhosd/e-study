@@ -1,5 +1,5 @@
 class Form::Course < Form::Base
-  attr_accessor :lessons
+  attr_accessor :lessons, :students
 
   attribute :title
   attribute :description
@@ -16,6 +16,7 @@ class Form::Course < Form::Base
   def attributes=(attributes)
     super(attributes)
     @lessons = attributes.symbolize_keys[:lessons]
+    @students = attributes.symbolize_keys[:students]
   end
 
   def image=(image)
@@ -26,6 +27,7 @@ class Form::Course < Form::Base
     begin
       super do
         create_lessons!
+        create_students!
         errors.blank?
       end
     rescue ActiveRecord::RecordNotUnique, ActiveRecord::StatementInvalid
@@ -35,6 +37,13 @@ class Form::Course < Form::Base
   end
 
   private
+
+  def create_students!
+    @students.each do |id|
+      student = User.find_by(id: id)
+      object.students << student if student.present?
+    end if @students.present?
+  end
 
   def create_lessons!
     @lessons.each_with_index do |attr, index|

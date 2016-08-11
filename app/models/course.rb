@@ -12,6 +12,9 @@ class Course < ActiveRecord::Base
   has_many :course_teachers, foreign_key: 'teacher_id'
   has_many :teachers, through: :course_teachers, source: :teacher
 
+  has_many :course_students
+  has_many :students, through: :course_students, class_name: 'User', source: :user
+
   friendly_id :slug, use: :finders
 
   enum difficult: { easy: 0, medium: 1, hard: 2 }
