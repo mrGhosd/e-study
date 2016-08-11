@@ -6,4 +6,5 @@ class LessonsSerializer < ActiveModel::Serializer
   delegate :course, to: :object
 
   has_one :image, serializer: AttachSerializer
+  has_one :teacher, serializer: UsersSerializer
 end

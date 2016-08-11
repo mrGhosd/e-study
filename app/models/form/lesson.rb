@@ -8,7 +8,7 @@ class Form::Lesson < Form::Base
   validates :title, :description, :slug, :teacher_id, presence: true
 
   def image=(attr)
-    super(Image.find_by(id: attr["id"], attachable_type: @object.class.to_s))
+    super(Image.find_by(id: attr["id"], attachable_type: @object.class.to_s)) if attr.present?
   end
 
   def submit

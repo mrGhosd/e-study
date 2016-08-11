@@ -4,17 +4,12 @@ class Api::V0::SearchController < Api::ApiController
 
   def search
     form = Form::Search.new(nil, params)
-    render json: { search: form.search }
+    render json: form.search, each_serializer: serializer_name
   end
 
-  def chats
-    form = Form::Search.new(current_user, params)
-    render json: form.search_chats, each_serializer: ChatsSerializer
-  end
+  private
 
-  def messages
-    chat = Chat.find(params[:id])
-    form = Form::Search.new(chat, params)
-    render json: form.search_messages, each_serializer: MessageSerializer
+  def serializer_name
+    "#{params[:object].pluralize.camelize}Serializer".constantize
   end
 end
