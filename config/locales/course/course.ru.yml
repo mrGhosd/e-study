@@ -1,3 +1,6 @@
 ru:
  course:
-  slug_is_not_unique: 'Слаг для этого курса не уникален'
+  errors:
+   slug_is_not_unique: "Слаг для этого курса не уникален"
+   student_already_exist: "Такой студент уже существует!"
+   student_teacher: "Вы не можете быть и преподавателем, и студентом на одном курсе"

@@ -1,3 +1,6 @@
 en:
  course:
-  slug_is_not_unique: 'Slug for course is not uniq'
+  errors:
+   slug_is_not_unique: "Slug for course is not uniq"
+   student_already_exist: "There is already one student in this course"
+   student_teacher: "You can't be a teacher and a student in the same course"

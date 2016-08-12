@@ -2,6 +2,7 @@
 require 'rails_helper'
 
 describe Api::V0::CoursesController do
+  let!(:student_auth) { create :authorization }
   let!(:teacher) { create :user }
   let!(:auth) { create :authorization }
   let!(:course) { create :course, user_id: auth.user.id }
@@ -120,6 +121,26 @@ describe Api::V0::CoursesController do
 
       it 'have an error key' do
         expect(JSON.parse(response.body)).to have_key('error')
+      end
+    end
+  end
+
+  describe 'PUT #enroll' do
+    context 'with valid attribute' do
+      it 'add student tou course students list' do
+        expect do
+          put_with_token student_auth, :enroll, id: course.id
+        end.to change(course.students, :count).by(1)
+      end
+    end
+
+    context 'with invalid attributes' do
+      before { course.students << student_auth.user }
+
+      it 'doesn\'t change course count' do
+        expect do
+          put_with_token student_auth, :enroll, id: course.id
+        end.to change(course.students, :count).by(0)
       end
     end
   end

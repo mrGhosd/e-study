@@ -1,3 +1,4 @@
 en:
  lesson:
-  slug_is_not_unique: 'Слаг для этого урока не уникален'
+   errors:
+    slug_is_not_unique: 'Слаг для этого урока не уникален'

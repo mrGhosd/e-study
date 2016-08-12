@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     namespace :v0 do
 
       resources :courses do
+        put :enroll, on: :member
+
         resources :lessons do
           resources :homeworks
         end
