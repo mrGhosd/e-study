@@ -6,8 +6,5 @@ class HomeworkSerializer < ActiveModel::Serializer
   has_one :user, serializer: UserSerializer
 
   delegate :lesson, to: :object
-
-  def course
-    object.lesson.course
-  end
+  delegate :course, to: :object
 end

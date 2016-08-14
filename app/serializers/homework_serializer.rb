@@ -5,9 +5,7 @@ class HomeworkSerializer < ActiveModel::Serializer
 
   has_many :comments
   has_one :user, serializer: UserSerializer
-  delegate :lesson, to: :object
 
-  def course
-    object.lesson.course
-  end
+  delegate :lesson, to: :object
+  delegate :course, to: :object
 end
