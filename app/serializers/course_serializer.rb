@@ -6,7 +6,7 @@ class CourseSerializer < ActiveModel::Serializer
 
   has_one :author, serializer: UserSerializer
   has_many :lessons, serializer: LessonsSerializer
-  has_many :comments
+  has_many :comments, serializer: CommentsSerializer
   has_one :image, serializer: AttachSerializer
   has_many :students, serializer: UsersSerializer
 

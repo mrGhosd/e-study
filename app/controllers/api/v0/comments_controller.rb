@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Api::V0::CommentsController < Api::ApiController
-  before_action :validate_token
+  before_action :validate_token, except: :index
   before_action :list_object, only: :index
   before_action :define_object, only: [:create, :update]
   before_action :new_object, only: :create
@@ -8,13 +8,13 @@ class Api::V0::CommentsController < Api::ApiController
 
   def index
     comments = @object.comments.page(params[:page] || 1).per(10)
-    render json: { comments: comments }
+    render json: comments
   end
 
   def create
     form = Form::Comment.new(@new_object, params[:comment])
     if form.submit
-      render json: { comment: form.object }
+      render json: form.object, serializer: CommentSerializer
     else
       render json: { errors: form.errors }, status: :unprocessable_entity
     end
@@ -23,7 +23,7 @@ class Api::V0::CommentsController < Api::ApiController
   def update
     form = Form::Comment.new(@edit_object, params[:comment])
     if form.submit
-      render json: { comment: form.object }
+      render json: form.object, serializer: CommentSerializer
     else
       render json: { errors: form.errors }, status: :unprocessable_entity
     end
