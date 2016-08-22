@@ -87,8 +87,8 @@ ActiveRecord::Schema.define(version: 20160811191320) do
     t.datetime "updated_at"
     t.string   "slug"
     t.text     "short_description"
-    t.date     "begin_date",        default: '2016-06-16'
-    t.date     "end_date",          default: '2016-07-16'
+    t.date     "begin_date",        default: '2016-08-22'
+    t.date     "end_date",          default: '2016-09-22'
     t.integer  "difficult",         default: 0
   end
 
@@ -166,23 +166,24 @@ ActiveRecord::Schema.define(version: 20160811191320) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "middle_name"
+    t.string   "password_digest",                                 null: false
     t.datetime "date_of_birth"
     t.text     "description"
     t.string   "remember_token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "last_sign_in_at", default: '2016-03-11 00:00:00', null: false
-    t.string   "email"
+    t.datetime "last_sign_in_at", default: '2016-08-22 00:00:00', null: false
     t.string   "phone"
     t.string   "phone_code"
-    t.string   "password_digest"
   end
 
   add_index "users", ["date_of_birth"], name: "index_users_on_date_of_birth", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["password_digest"], name: "index_users_on_password_digest", using: :btree
   add_index "users", ["phone"], name: "index_users_on_phone", unique: true, using: :btree
 
 end
