@@ -4,16 +4,17 @@ class Form::Registration < Form::Base
   include JsonWebToken
   include AuthorizationConcern
 
-  attr_accessor :token
+  attr_accessor :token, :authorization
   attribute :email
   attribute :password
   attribute :password_confirmation
 
   validates_confirmation_of :password, if: lambda { |m| m.password.present? }
+  validates :authorization, presence: true
 
   def attributes=(attrs)
     super(attrs)
-    authorization(attrs[:authorization])
+    @authorization = attrs['authorization']
   end
 
   def email=(attr)
@@ -23,10 +24,8 @@ class Form::Registration < Form::Base
   def submit
     begin
       super do
-        if @auth.present? && @object.present?
-          @auth.update(user_id: @object.id)
-        end
-        @token = generate_token_for_auth(@auth)
+        auth = build_authorizaiton(@authorization, @object)
+        @token = generate_token_for_auth(auth)
         true
       end
     rescue ActiveRecord::RecordNotUnique

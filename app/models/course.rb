@@ -22,4 +22,9 @@ class Course < ActiveRecord::Base
   def teachers
     lessons.map(&:teacher)
   end
+
+  def self.test_timer
+    binding.pry
+    CourseMailer.timer.deliver_now
+  end
 end

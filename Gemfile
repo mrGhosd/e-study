@@ -27,8 +27,6 @@ gem 'omniauth-twitter'
 gem 'omniauth-vkontakte'
 gem 'omniauth-instagram'
 gem 'instagram'
-gem 'letter_opener'
-gem 'letter_opener_web'
 gem 'active_model_serializers'
 gem 'rack-cors', require: 'rack/cors'
 gem 'spring-commands-rspec', group: :development
@@ -41,6 +39,11 @@ gem 'kaminari'
 gem 'carrierwave-aws'
 gem 'friendly_id'
 gem 'pundit'
+gem 'que'
+gem 'que-web'
+gem 'whenever'
+gem "letter_opener"
+gem 'letter_opener_web'
 
 group :development, :test do
   gem 'rspec-rails'

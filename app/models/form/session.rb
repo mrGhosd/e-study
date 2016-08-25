@@ -7,18 +7,13 @@ class Form::Session < Form::Base
   attr_accessor :token
   attribute :email
   attribute :password
+  attribute :authorization
 
-  def attributes=(attrs)
-    super(attrs)
-    @user = ::User.find_by(email: email)
-    authorization(attrs[:authorization].merge(user_id: @user.id)) if @user.present?
-    if @auth.present? && @user.present?
-      @auth.update(user_id: @user.id)
-    end
-  end
+  validates :authorization, presence: true
 
   def submit
     return unless valid?
+    @user = User.find_by(email: email) if email.present?
     authorization!
   end
 
@@ -26,7 +21,8 @@ class Form::Session < Form::Base
 
   def authorization!
     if @user && @user.authenticate(password)
-      @token = generate_token_for_auth(@auth)
+      auth = build_authorizaiton(authorization, @user)
+      @token = generate_token_for_auth(auth)
     else
       errors.add(:email, I18n.t('user.errors.user_doesnt_exist'))
       false

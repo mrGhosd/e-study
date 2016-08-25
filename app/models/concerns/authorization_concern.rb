@@ -1,13 +1,7 @@
 # frozen_string_literal: true
 module AuthorizationConcern
-  extend ActiveSupport::Concern
 
-  included do
-    attr_accessor :auth
-    validates :auth, presence: true
-  end
-
-  def authorization(attr)
+  def create_or_update_authorization(attr)
     if attr
       auth = Authorization.find_by(platform: attr['platform'],
                                    app_name: attr['app_name'],
@@ -16,5 +10,10 @@ module AuthorizationConcern
       form.submit
       @auth = form.object
     end
+  end
+
+  def build_authorizaiton(attributes, user)
+    params = attributes.merge(user_id: user.id)
+    create_or_update_authorization(params)
   end
 end
