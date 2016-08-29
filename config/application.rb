@@ -20,7 +20,7 @@ module Estudy
     config.autoload_paths += %W(#{config.root}/app/models/attachments)
     config.i18n.fallbacks = true
     config.i18n.default_locale = 'en'
-    config.active_job.queue_adapter = :que
+    config.active_job.queue_adapter = :sidekiq
     config.assets.enabled = false
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.

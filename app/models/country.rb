@@ -14,7 +14,7 @@ class Country < ActiveRecord::Base
 end
 
 # Delete the previous articles index in Elasticsearch
-Country.__elasticsearch__.client.indices.delete index: Country.index_name
+Country.__elasticsearch__.client.indices.delete index: Country.index_name rescue nil
 
 # Create the new index with the new mapping
 Country.__elasticsearch__.client.indices.create index: Country.index_name, body:
