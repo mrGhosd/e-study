@@ -7,5 +7,7 @@ class CourseMailer < ActionMailer::Base
   end
 
   def timer
+    binding.pry
+    mail(to: 'vforvad@gmail.com', subject: 'Timer test')
   end
 end

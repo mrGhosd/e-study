@@ -24,7 +24,6 @@ class Course < ActiveRecord::Base
   end
 
   def self.test_timer
-    binding.pry
     CourseMailer.timer.deliver_now
   end
 end
