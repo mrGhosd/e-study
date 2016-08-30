@@ -2,7 +2,7 @@ class LessonWorker
   include Sidekiq::Worker
   include Sidetiq::Schedulable
 
-  recurrence { daily(1) }
+  recurrence { hourly(1) }
 
   def perform
     CourseMailer.timer.deliver_now
