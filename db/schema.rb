@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(version: 20160901223759) do
     t.string   "slug"
     t.integer  "teacher_id"
     t.boolean  "active",      default: true
-    t.boolean  "is_repeated", default: false
+    t.boolean  "repeated",    default: false
     t.datetime "begin_date"
     t.integer  "period"
   end

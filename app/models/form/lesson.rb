@@ -4,6 +4,9 @@ class Form::Lesson < Form::Base
   attribute :slug
   attribute :image
   attribute :teacher_id
+  attribute :repeated
+  attribute :period
+  attribute :begin_date
 
   validates :title, :description, :slug, presence: true
 
