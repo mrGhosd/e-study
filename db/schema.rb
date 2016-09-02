@@ -87,8 +87,8 @@ ActiveRecord::Schema.define(version: 20160901223759) do
     t.datetime "updated_at"
     t.string   "slug"
     t.text     "short_description"
-    t.datetime "begin_date",        default: '2016-08-22 00:00:00'
-    t.datetime "end_date",          default: '2016-09-22 00:00:00'
+    t.datetime "begin_date",        default: '2016-09-02 00:00:00'
+    t.datetime "end_date",          default: '2016-10-02 00:00:00'
     t.integer  "difficult",         default: 0
     t.boolean  "active",            default: true
   end
@@ -162,17 +162,6 @@ ActiveRecord::Schema.define(version: 20160901223759) do
   add_index "notifications", ["active"], name: "index_notifications_on_active", using: :btree
   add_index "notifications", ["notificationable_id"], name: "index_notifications_on_notificationable_id", using: :btree
 
-  create_table "que_jobs", id: false, force: :cascade do |t|
-    t.integer  "priority",    limit: 2, default: 100,                                        null: false
-    t.datetime "run_at",                default: "now()",                                    null: false
-    t.integer  "job_id",      limit: 8, default: "nextval('que_jobs_job_id_seq'::regclass)", null: false
-    t.text     "job_class",                                                                  null: false
-    t.json     "args",                  default: [],                                         null: false
-    t.integer  "error_count",           default: 0,                                          null: false
-    t.text     "last_error"
-    t.text     "queue",                 default: "",                                         null: false
-  end
-
   create_table "user_chats", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "chat_id"
@@ -192,7 +181,7 @@ ActiveRecord::Schema.define(version: 20160901223759) do
     t.string   "remember_token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "last_sign_in_at", default: '2016-08-22 00:00:00', null: false
+    t.datetime "last_sign_in_at", default: '2016-09-02 00:00:00', null: false
     t.string   "phone"
     t.string   "phone_code"
   end

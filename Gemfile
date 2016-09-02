@@ -27,7 +27,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-vkontakte'
 gem 'omniauth-instagram'
 gem 'instagram'
-gem 'active_model_serializers'
+gem 'active_model_serializers', '~> 0.9.5'
 gem 'rack-cors', require: 'rack/cors'
 gem 'spring-commands-rspec', group: :development
 gem 'dotenv'
@@ -60,6 +60,7 @@ group :test do
 end
 
 group :development do
+  gem 'knife-solo', '~> 0.4.2'
   gem 'capistrano', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rails', require: false
