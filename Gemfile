@@ -60,7 +60,10 @@ group :test do
 end
 
 group :development do
-  gem 'knife-solo', '~> 0.4.2'
+  gem 'knife-solo'
+  gem 'berkshelf', github: "RiotGames/berkshelf", branch: "fix-for-chef-11"
+  gem 'ffi', '~&gt; 1.2.0'
+  gem 'vagrant'
   gem 'capistrano', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rails', require: false

@@ -18,3 +18,5 @@
 dump.rdb
 config/local_env.yml
 coverage
+/config/chef/nodes
+.vagrant
