@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'https://supermarket.getchef.com/api/v1'
+
+# cookbook 'chef-client'
+
+# cookbook 'apache2', '>= 1.0.0'
+
+# cookbook 'rbenv', '~> 1.7.1'
+cookbook 'runit'
+cookbook 'nginx', '~> 2.7.6'
+# cookbook 'yum-nginx', '~> 0.1.0'
+# cookbook 'rvm',
+#   :git => 'https://github.com/fnichol/chef-rvm'
+# cookbook 'runit'
+#   cookbook 'nginx', :git => 'git://github.com/opscode-cookbooks/nginx.git'
+
+# cookbook 'postgresql',
+#   :git => 'https://github.com/findsyou/cookbooks',
+#   :ref => 'postgresql-improvements'

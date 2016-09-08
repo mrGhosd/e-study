@@ -1,0 +1,15 @@
+{
+  "nginx": {
+    "version": "2.7.6",
+    "default_site_enabled": true,
+    "source": {
+      "modules": ["nginx::http_gzip_static_module", "nginx::http_ssl_module"]
+    }
+  },
+  "run_list": [
+    "recipe[nginx::package]"
+  ],
+  "automatic": {
+    "ipaddress": "127.0.0.1"
+  }
+}

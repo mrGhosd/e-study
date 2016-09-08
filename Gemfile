@@ -11,6 +11,7 @@ gem 'bundler'
 gem 'responders'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'pry'
 gem 'pry-rails'
 gem 'with_advisory_lock'
 gem 'tainbox'
@@ -44,6 +45,8 @@ gem 'letter_opener_web'
 gem 'sidekiq'
 gem 'sidetiq'
 gem 'redis-rails'
+gem 'knife-solo'
+gem 'librarian-chef'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -60,10 +63,6 @@ group :test do
 end
 
 group :development do
-  gem 'knife-solo'
-  gem 'berkshelf', github: "RiotGames/berkshelf", branch: "fix-for-chef-11"
-  gem 'ffi', '~&gt; 1.2.0'
-  gem 'vagrant'
   gem 'capistrano', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rails', require: false

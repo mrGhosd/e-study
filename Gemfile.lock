@@ -223,6 +223,13 @@ GEM
       actionmailer (>= 3.2)
       letter_opener (~> 1.0)
       railties (>= 3.2)
+    librarian (0.1.2)
+      highline
+      thor (~> 0.15)
+    librarian-chef (0.0.4)
+      chef (>= 0.10)
+      librarian (~> 0.1.0)
+      minitar (>= 0.5.2)
     libyajl2 (1.2.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -235,6 +242,7 @@ GEM
     mimemagic (0.3.2)
     mini_magick (4.5.1)
     mini_portile2 (2.1.0)
+    minitar (0.5.4)
     minitest (5.9.0)
     mixlib-archive (0.2.0)
       mixlib-log
@@ -512,10 +520,11 @@ DEPENDENCIES
   json_spec
   jwt
   kaminari
-  knife-solo (~> 0.4.2)
+  knife-solo
   launchy
   letter_opener
   letter_opener_web
+  librarian-chef
   mini_magick
   omniauth
   omniauth-facebook
@@ -523,6 +532,7 @@ DEPENDENCIES
   omniauth-twitter
   omniauth-vkontakte
   pg
+  pry
   pry-rails
   pundit
   rack-cors
