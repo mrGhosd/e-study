@@ -9,7 +9,9 @@ site 'https://supermarket.getchef.com/api/v1'
 
 # cookbook 'rbenv', '~> 1.7.1'
 cookbook 'runit'
+cookbook 'rbenv'
 cookbook 'nginx', '~> 2.7.6'
+# cookbook 'rbenv', git: 'git://github.com/fnichol/chef-rbenv'
 # cookbook 'yum-nginx', '~> 0.1.0'
 # cookbook 'rvm',
 #   :git => 'https://github.com/fnichol/chef-rvm'

@@ -6,8 +6,25 @@
       "modules": ["nginx::http_gzip_static_module", "nginx::http_ssl_module"]
     }
   },
+  "rbenv": {
+    "user_rubies": ["1.9.3-p392"],
+    "global": "1.9.3-p392",
+    "user_installs": [
+      {
+        "user": "vagrant",
+        "global": "1.9.3-p392",
+        "rubies": ["1.9.3-p392"],
+        "gems": {
+          "1.9.3-p392": [
+            { "name": "bundler" }
+          ]
+        }
+      }
+    ]
+  },
   "run_list": [
-    "recipe[nginx::package]"
+    "recipe[nginx::package]",
+    "recipe[rbenv::default]"
   ],
   "automatic": {
     "ipaddress": "127.0.0.1"

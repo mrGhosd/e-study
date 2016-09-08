@@ -9,7 +9,7 @@ Vagrant.configure('2') do |config|
   def path_for_chef_folder(folder)
     Pathname(__FILE__).dirname.join('chef', 'nodes', folder)
   end
-  
+
   Chef::Config.from_file(File.join(File.dirname(__FILE__), 'chef', '.chef', 'knife.rb'))
   vagrant_json = JSON.parse(Pathname(__FILE__).dirname.join('chef', 'nodes', (ENV['NODE'] || 'vagrant.json')).read)
 
