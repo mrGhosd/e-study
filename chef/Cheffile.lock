@@ -9,11 +9,6 @@ SITE
     build-essential (2.4.0)
       7-zip (>= 0.0.0)
     compat_resource (12.14.1)
-    dmg (2.4.0)
-    git (5.0.0)
-      build-essential (>= 0.0.0)
-      dmg (>= 0.0.0)
-      yum-epel (>= 0.0.0)
     nginx (2.7.6)
       apt (~> 2.2)
       bluepill (~> 2.3)
@@ -23,13 +18,10 @@ SITE
       yum-epel (~> 0.3)
     ohai (2.1.0)
     packagecloud (0.2.5)
-    rbenv (1.7.1)
-      apt (>= 0.0.0)
-      build-essential (>= 0.0.0)
-      git (>= 0.0.0)
-      ohai (>= 1.1)
     rsyslog (4.0.1)
       compat_resource (>= 0.0.0)
+    ruby_build (1.0.0)
+      yum-epel (>= 0.0.0)
     runit (1.8.0)
       packagecloud (>= 0.0.0)
       yum-epel (>= 0.0.0)
@@ -38,8 +30,16 @@ SITE
     yum-epel (0.7.1)
       yum (>= 3.6.3)
 
+GIT
+  remote: git://github.com/fnichol/chef-rbenv
+  ref: master
+  sha: 025b504f5743ce798831ea90c1d954bb4c623c97
+  specs:
+    ruby_rbenv (1.1.0)
+      ruby_build (>= 0.0.0)
+
 DEPENDENCIES
   nginx (~> 2.7.6)
-  rbenv (>= 0)
+  ruby_rbenv (>= 0)
   runit (>= 0)
 

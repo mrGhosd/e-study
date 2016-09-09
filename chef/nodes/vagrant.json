@@ -7,15 +7,15 @@
     }
   },
   "rbenv": {
-    "user_rubies": ["1.9.3-p392"],
-    "global": "1.9.3-p392",
+    "user_rubies": ["2.3.0"],
+    "global": "2.3.0",
     "user_installs": [
       {
         "user": "vagrant",
-        "global": "1.9.3-p392",
-        "rubies": ["1.9.3-p392"],
+        "global": "2.3.0",
+        "rubies": ["2.3.0"],
         "gems": {
-          "1.9.3-p392": [
+          "2.3.0": [
             { "name": "bundler" }
           ]
         }
@@ -24,7 +24,8 @@
   },
   "run_list": [
     "recipe[nginx::package]",
-    "recipe[rbenv::default]"
+    "recipe[ruby_build]",
+    "recipe[ruby_rbenv::user]"
   ],
   "automatic": {
     "ipaddress": "127.0.0.1"
