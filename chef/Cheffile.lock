@@ -8,6 +8,7 @@ SITE
       rsyslog (>= 2.0)
     build-essential (2.4.0)
       7-zip (>= 0.0.0)
+    chef-sugar (3.4.0)
     compat_resource (12.14.1)
     nginx (2.7.6)
       apt (~> 2.2)
@@ -17,7 +18,13 @@ SITE
       runit (~> 1.2)
       yum-epel (~> 0.3)
     ohai (2.1.0)
+    openssl (4.4.0)
+      chef-sugar (>= 3.1.1)
     packagecloud (0.2.5)
+    postgresql (4.0.6)
+      apt (>= 1.9.0)
+      build-essential (>= 0.0.0)
+      openssl (~> 4.0)
     rsyslog (4.0.1)
       compat_resource (>= 0.0.0)
     ruby_build (1.0.0)
@@ -40,6 +47,7 @@ GIT
 
 DEPENDENCIES
   nginx (~> 2.7.6)
+  postgresql (~> 4.0.6)
   ruby_rbenv (>= 0)
   runit (>= 0)
 

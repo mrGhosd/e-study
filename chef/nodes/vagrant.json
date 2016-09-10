@@ -22,10 +22,50 @@
       }
     ]
   },
+  "postgresql": {
+    "version": "9.4",
+    "enable_pgdg_yum": true,
+    "dir": "/var/lib/pgsql/9.4/data",
+    "unix_socket_directories": ["/var/run/postgresql"],
+    "client": {
+      "packages": [
+        "postgresql94",
+        "postgresql94-devel"
+      ]
+    },
+    "server": {
+      "config_change_notify": "reload",
+      "packages": ["postgresql94-server"],
+      "service_name": "postgresql-9.4"
+    },
+    "password": {
+      "postgres": "postgres"
+    },
+    "config": {
+      "listen_addresses": "localhost",
+      "port": 5432,
+      "data_directory": "/var/lib/pgsql/9.4/data",
+      "config_change_notify": "reload"
+    },
+    "pg_hba": [
+      {
+        "type": "local",
+        "db": "all",
+        "user": "all",
+        "addr": "nil",
+        "method": "md5"
+      }
+    ],
+    "contrib": {
+      "packages": ["postgresql94-contrib"]
+    },
+    "setup_script": "postgresql94-setup"
+  },
   "run_list": [
     "recipe[nginx::package]",
     "recipe[ruby_build]",
-    "recipe[ruby_rbenv::user]"
+    "recipe[ruby_rbenv::user]",
+    "recipe[postgresql]"
   ],
   "automatic": {
     "ipaddress": "127.0.0.1"
