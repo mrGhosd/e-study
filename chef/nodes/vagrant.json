@@ -61,12 +61,29 @@
     },
     "setup_script": "postgresql94-setup"
   },
+  "java" : {
+    "install_flavor" : "oracle",
+    "jdk_version" : "8",
+    "ark_timeout" : 1800,
+    "oracle": {
+        "accept_oracle_download_terms": true
+      }
+  },
+  "elasticsearch": {
+      "cluster.name" : "es_reimbursement_live",
+      "bootstrap.mlockall" : false,
+      "allocated_memory" : "400m",
+      "network.host" : "127.0.0.1"
+  },
   "run_list": [
     "recipe[nginx::package]",
     "recipe[ruby_build]",
     "recipe[ruby_rbenv::user]",
     "recipe[postgresql]",
-    "recipe[redisio::install]"
+    "recipe[redisio::install]",
+    "recipe[java]",
+    "recipe[elasticsearch]",
+    "recipe[estudy]"
   ],
   "automatic": {
     "ipaddress": "127.0.0.1"

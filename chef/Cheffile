@@ -13,6 +13,8 @@ cookbook 'ruby_rbenv', git: 'git://github.com/fnichol/chef-rbenv'
 cookbook 'nginx', '~> 2.7.6'
 cookbook 'postgresql', '~> 4.0.6'
 cookbook 'redisio', '~> 2.4.2'
+cookbook 'java', '~> 1.42.0'
+cookbook 'elasticsearch', '~> 2.3.2'
 # cookbook 'rbenv', git: 'git://github.com/fnichol/chef-rbenv'
 # cookbook 'yum-nginx', '~> 0.1.0'
 # cookbook 'rvm',

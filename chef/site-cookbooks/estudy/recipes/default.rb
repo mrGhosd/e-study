@@ -7,20 +7,28 @@
 # All rights reserved - Do Not Redistribute
 #
 
-execute "yum update" do
-  command "yum update"
+# %(git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel
+#   libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl).each do |pkg|
+#     package pkg
+#   end
+
+elasticsearch_user 'elasticsearch'
+elasticsearch_install 'elasticsearch' do
+  type :package # type of install
+  version "1.7.2"
+  action :install # could be :remove as well
+end
+elasticsearch_configure 'elasticsearch'
+
+elasticsearch_service 'elasticsearch' do
+  service_actions [:enable, :start]
 end
 
-%(git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel
-  libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl).each do |pkg|
-    package pkg
-  end
 
-
-include_recipe 'ruby_build'
-rbenv_script "bundle_install" do
-  rbenv_version "2.3.0"
-  user          "vagrant"
-  cwd           "/home/vagrant/estudy"
-  code          %{bundle install}
-end
+# include_recipe 'ruby_build'
+# rbenv_script "bundle_install" do
+#   rbenv_version "2.3.0"
+#   user          "vagrant"
+#   cwd           "/home/vagrant/estudy"
+#   code          %{bundle install}
+# end
