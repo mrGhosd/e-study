@@ -65,7 +65,8 @@
     "recipe[nginx::package]",
     "recipe[ruby_build]",
     "recipe[ruby_rbenv::user]",
-    "recipe[postgresql]"
+    "recipe[postgresql]",
+    "recipe[redisio::install]"
   ],
   "automatic": {
     "ipaddress": "127.0.0.1"
