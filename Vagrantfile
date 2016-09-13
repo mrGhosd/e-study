@@ -5,7 +5,7 @@ Vagrant.configure('2') do |config|
   config.vm.box = 'centos/7'
   config.ssh.insert_key = false
   config.vm.network "forwarded_port", guest: 3000, host: 3000
-  config.vm.synced_folder '.', '/home/vagrant/estudy', type: 'rsync'
+  config.vm.synced_folder '.', '/home/vagrant/estudy'
 
   def path_for_chef_folder(folder)
     Pathname(__FILE__).dirname.join('chef', 'nodes', folder)
