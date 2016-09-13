@@ -24,7 +24,8 @@
             },
             { "name": "rubocop"  },
             { "name": "overcommit" },
-            { "name": "sidekiq" }
+            { "name": "sidekiq" },
+            { "name": "unicorn" }
           ]
         }
       }

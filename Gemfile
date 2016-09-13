@@ -44,6 +44,7 @@ gem 'sidetiq'
 gem 'redis-rails'
 gem 'knife-solo'
 gem 'librarian-chef'
+gem 'unicorn'
 
 group :development, :test do
   gem 'rspec-rails'

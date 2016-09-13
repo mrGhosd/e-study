@@ -203,6 +203,7 @@ GEM
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kgio (2.10.0)
     knife-solo (0.4.3)
       chef (>= 10.12)
       erubis (~> 2.7.0)
@@ -348,6 +349,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rainbow (2.1.0)
+    raindrops (0.17.0)
     rake (11.2.2)
     rdoc (4.2.2)
       json (~> 1.4)
@@ -470,6 +472,9 @@ GEM
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     unicode-display_width (1.1.0)
+    unicorn (5.1.0)
+      kgio (~> 2.6)
+      raindrops (~> 0.7)
     uuidtools (2.1.5)
     whenever (0.9.7)
       chronic (>= 0.6.3)
@@ -536,6 +541,7 @@ DEPENDENCIES
   spring-commands-rspec
   tainbox
   twilio-ruby
+  unicorn
   whenever
   with_advisory_lock
 
