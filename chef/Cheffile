@@ -15,6 +15,7 @@ cookbook 'postgresql', '~> 4.0.6'
 cookbook 'redisio', '~> 2.4.2'
 cookbook 'java', '~> 1.42.0'
 cookbook 'elasticsearch', '~> 2.3.2'
+cookbook 'application', '~> 5.1.0'
 # cookbook 'rbenv', git: 'git://github.com/fnichol/chef-rbenv'
 # cookbook 'yum-nginx', '~> 0.1.0'
 # cookbook 'rvm',

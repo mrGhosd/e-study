@@ -16,7 +16,15 @@
         "rubies": ["2.3.0"],
         "gems": {
           "2.3.0": [
-            { "name": "bundler" }
+            { "name": "bundler" },
+            { "name": "rake" },
+            {
+              "name": "rails",
+              "version": "4.2.1"
+            },
+            { "name": "rubocop"  },
+            { "name": "overcommit" },
+            { "name": "sidekiq" }
           ]
         }
       }
@@ -24,42 +32,15 @@
   },
   "postgresql": {
     "version": "9.4",
-    "enable_pgdg_yum": true,
-    "dir": "/var/lib/pgsql/9.4/data",
-    "unix_socket_directories": ["/var/run/postgresql"],
-    "client": {
-      "packages": [
-        "postgresql94",
-        "postgresql94-devel"
-      ]
-    },
-    "server": {
-      "config_change_notify": "reload",
-      "packages": ["postgresql94-server"],
-      "service_name": "postgresql-9.4"
-    },
     "password": {
       "postgres": "postgres"
     },
-    "config": {
-      "listen_addresses": "localhost",
-      "port": 5432,
-      "data_directory": "/var/lib/pgsql/9.4/data",
-      "config_change_notify": "reload"
-    },
     "pg_hba": [
-      {
-        "type": "local",
-        "db": "all",
-        "user": "all",
-        "addr": "nil",
-        "method": "md5"
-      }
-    ],
-    "contrib": {
-      "packages": ["postgresql94-contrib"]
-    },
-    "setup_script": "postgresql94-setup"
+      {"type": "local", "db": "all", "user": "all", "method": "trust"}
+    ]
+  },
+  "redisio": {
+    "version": "3.2.3"
   },
   "java" : {
     "install_flavor" : "oracle",
@@ -76,11 +57,12 @@
       "network.host" : "127.0.0.1"
   },
   "run_list": [
-    "recipe[nginx::package]",
+    "recipe[postgresql::server]",
     "recipe[ruby_build]",
     "recipe[ruby_rbenv::user]",
     "recipe[postgresql]",
-    "recipe[redisio::install]",
+    "recipe[redisio]",
+    "recipe[redisio::enable]",
     "recipe[java]",
     "recipe[elasticsearch]",
     "recipe[estudy]"

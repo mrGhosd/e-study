@@ -4,6 +4,7 @@ require 'json'
 Vagrant.configure('2') do |config|
   config.vm.box = 'centos/7'
   config.ssh.insert_key = false
+  config.vm.network "forwarded_port", guest: 3000, host: 3000
   config.vm.synced_folder '.', '/home/vagrant/estudy', type: 'rsync'
 
   def path_for_chef_folder(folder)
@@ -18,7 +19,6 @@ Vagrant.configure('2') do |config|
      chef.roles_path = Chef::Config[:role_path]
      chef.data_bags_path = Chef::Config[:data_bag_path]
      chef.environments_path = Chef::Config[:environment_path]
-     #chef.environment = ENV[’ENVIRONMENT’] || ’development’
      chef.run_list = vagrant_json.delete('run_list')
      chef.json = vagrant_json
   end
