@@ -5,7 +5,10 @@ class Api::V0::UsersController < Api::ApiController
   before_action :allow_to_update?, only: :update
 
   def index
-    users = User.includes(:image, :background_image).page(params[:page] || 1).per(10)
+    users = User.includes(:image).page(params[:page] || 1).per(10)
+    Rack::MiniProfiler.step('fetch users') do
+     users.all
+    end
     render json: users
   end
 

@@ -33,14 +33,11 @@ class User < ActiveRecord::Base
     find(JWT.decode(token, nil, false).first['id']) if token
   end
 end
-# Delete the previous articles index in Elasticsearch
-User.__elasticsearch__.client.indices.delete index: User.index_name rescue nil
-
-# Create the new index with the new mapping
-begin
-  User.__elasticsearch__.client.indices.create index: User.index_name,
-                                               body: { settings: User.settings.to_hash,
-                                                       mappings: User.mappings.to_hash }
-rescue nil
-end
-User.import
+# # Delete the previous articles index in Elasticsearch
+# User.__elasticsearch__.client.indices.delete index: User.index_name rescue nil
+#
+# # Create the new index with the new mapping
+#   User.__elasticsearch__.client.indices.create index: User.index_name,
+#                                                body: { settings: User.settings.to_hash,
+#                                                        mappings: User.mappings.to_hash } rescue nil
+# User.import rescue nil

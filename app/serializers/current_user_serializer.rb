@@ -6,7 +6,6 @@ class CurrentUserSerializer < ActiveModel::Serializer
              :last_sign_in_at, :date_of_birth, :date_of_birth_h, :studying_courses
 
   has_one :image, serializer: AttachSerializer
-  has_one :background_image, serializer: AttachSerializer
 
   def notifications
     object.notifications.active || []

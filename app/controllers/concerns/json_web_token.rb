@@ -5,7 +5,7 @@ module JsonWebToken
   TOKEN_EXPIRED = 'Authorization token expired'
 
   def validate_token
-    current_authorization = Authorization.find_by_jwt_token(auth_token)
+    current_authorization
     raise ActiveRecord::RecordNotFound if current_authorization.blank?
   rescue ActiveRecord::RecordNotFound
     raise Api::Error.new(USER_NOT_FOUND, 401)

@@ -45,6 +45,7 @@ gem 'redis-rails'
 gem 'knife-solo'
 gem 'librarian-chef'
 gem 'unicorn'
+gem 'rack-mini-profiler', require: false
 
 group :development, :test do
   gem 'rspec-rails'

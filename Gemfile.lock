@@ -320,6 +320,8 @@ GEM
       activesupport (>= 3.0.0)
     rack (1.6.4)
     rack-cors (0.4.0)
+    rack-mini-profiler (0.10.1)
+      rack (>= 1.2.0)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -527,6 +529,7 @@ DEPENDENCIES
   pry-remote
   pundit
   rack-cors
+  rack-mini-profiler
   rails (= 4.2.1)
   redis
   redis-rails

@@ -6,6 +6,8 @@ end
 Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
+  get "/test", to: "tests#test"
+
   namespace :api do
 
     namespace :v0 do

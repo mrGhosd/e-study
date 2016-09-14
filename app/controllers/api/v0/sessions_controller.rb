@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Api::V0::SessionsController < Api::ApiController
-  before_action :validate_token, only: [:current, :destroy]
+  # before_action :validate_token, only: [:current, :destroy]
 
   def create
     form = Form::Session.new(nil, params[:session])
