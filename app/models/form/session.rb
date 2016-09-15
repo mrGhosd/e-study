@@ -13,7 +13,7 @@ class Form::Session < Form::Base
 
   def submit
     return unless valid?
-    @user = User.find_by(email: email) if email.present?
+    @user = ::User.find_by(email: email) if email.present?
     authorization!
   end
 
