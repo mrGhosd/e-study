@@ -1,9 +1,11 @@
 # frozen_string_literal: true
+require 'sidekiq/web'
 if Rails.env == 'development'
   Rails.application.routes.default_url_options[:host] = 'http://localhost:3000'
 end
 
 Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
   get "/test", to: "tests#test"
