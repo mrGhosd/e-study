@@ -5,6 +5,6 @@ class LessonWorker
   recurrence { hourly(1) }
 
   def perform
-
+    Lesson.where
   end
 end

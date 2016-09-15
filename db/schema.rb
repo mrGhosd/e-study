@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(version: 20160915202104) do
     t.boolean  "repeated",    default: false
     t.datetime "begin_date"
     t.integer  "period"
-    t.integer  "length"
+    t.datetime "end_date"
   end
 
   add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true, using: :btree
