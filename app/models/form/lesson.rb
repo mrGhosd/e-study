@@ -17,7 +17,7 @@ class Form::Lesson < Form::Base
 
   def submit
     begin
-      super
+      super "lesson_#{@object.course_id}"
     rescue ActiveRecord::RecordNotUnique, ActiveRecord::StatementInvalid
       errors.add(:slug, I18n.t('lesson.errors.slug_is_not_unique'))
       false
