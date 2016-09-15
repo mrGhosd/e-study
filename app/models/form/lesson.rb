@@ -7,6 +7,7 @@ class Form::Lesson < Form::Base
   attribute :repeated
   attribute :period
   attribute :begin_date
+  attribute :end_date
 
   validates :title, :description, :slug, presence: true
 

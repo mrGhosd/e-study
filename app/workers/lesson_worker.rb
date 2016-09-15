@@ -5,6 +5,6 @@ class LessonWorker
   recurrence { hourly(1) }
 
   def perform
-    Lesson.where
+    Lesson.where('end_date < ?', Time.zone.now).update_all(active: false)
   end
 end

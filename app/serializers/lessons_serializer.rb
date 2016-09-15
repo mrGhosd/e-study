@@ -2,7 +2,7 @@
 class LessonsSerializer < ActiveModel::Serializer
   root 'lessons'
   attributes :id, :title, :description, :slug, :user_id, :course, :repeated
-  attributes :period, :begin_date
+  attributes :period, :begin_date, :end_date
 
   delegate :course, to: :object
 
