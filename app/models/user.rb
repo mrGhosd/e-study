@@ -4,6 +4,7 @@ require 'elasticsearch/model'
 class User < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+  extend ElasticsearchIndex
   has_one :image, as: :attachable, dependent: :destroy
   has_one :background_image, as: :attachable, dependent: :destroy
   has_many :notifications

@@ -87,8 +87,8 @@ ActiveRecord::Schema.define(version: 20160901223759) do
     t.datetime "updated_at"
     t.string   "slug"
     t.text     "short_description"
-    t.datetime "begin_date",        default: '2016-09-02 00:00:00'
-    t.datetime "end_date",          default: '2016-10-02 00:00:00'
+    t.datetime "begin_date",        default: '2016-09-14 00:00:00'
+    t.datetime "end_date",          default: '2016-10-14 00:00:00'
     t.integer  "difficult",         default: 0
     t.boolean  "active",            default: true
   end
@@ -181,7 +181,7 @@ ActiveRecord::Schema.define(version: 20160901223759) do
     t.string   "remember_token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "last_sign_in_at", default: '2016-09-02 00:00:00', null: false
+    t.datetime "last_sign_in_at", default: '2016-09-14 00:00:00', null: false
     t.string   "phone"
     t.string   "phone_code"
   end

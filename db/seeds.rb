@@ -17,9 +17,7 @@
                       password_confirmation: 'Altair_69',
                       email: Faker::Internet.email,
                       date_of_birth: Faker::Date.between(45.years.ago, Time.zone.today))
-  img = Image.new(attachable_type: 'User',
-                  attachable_id: user.id,
-                  type: 'Image')
+  img = Image.new(attachable_type: 'User', attachable_id: user.id, type: 'Image')
   img.remote_file_url = Faker::Avatar.image
   img.save
 end
