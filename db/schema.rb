@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901223759) do
+ActiveRecord::Schema.define(version: 20160915202104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 20160901223759) do
     t.boolean  "repeated",    default: false
     t.datetime "begin_date"
     t.integer  "period"
+    t.integer  "length"
   end
 
   add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true, using: :btree
