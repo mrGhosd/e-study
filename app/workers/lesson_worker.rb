@@ -7,7 +7,6 @@ class LessonWorker
   def perform
     Lesson.where('end_date < ?', Time.zone.now).update_all(active: false)
     update_repeated_lessons
-    # Add support of updated_lessons
   end
 
   private
