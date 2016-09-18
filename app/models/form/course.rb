@@ -39,6 +39,7 @@ class Form::Course < Form::Base
   private
 
   def create_students!
+    object.students << object.author
     @students.each do |id|
       student = User.find_by(id: id)
       object.students << student if student.present?
