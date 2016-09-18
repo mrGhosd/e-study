@@ -9,6 +9,7 @@ class Lesson < ActiveRecord::Base
   has_many :homeworks
   has_many :comments, as: :commentable
   has_one :image, as: :attachable, dependent: :destroy
+  has_many :homework_user_notifications
 
   friendly_id :slug, use: :finders
 end

@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
 
   has_many :course_students, foreign_key: 'student_id'
   has_many :studying_courses, through: :course_students, source: :course
+  has_many :homework_user_notifications
 
   has_secure_password
 
